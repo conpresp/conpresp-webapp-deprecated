@@ -1,0 +1,62 @@
+:root {
+    --dark: #0e2033ec;
+    --darkblue: #2c3d51;
+    --darkgreen: #1ca896;
+    --darkgreenhover: #5bcebf;
+    --light: #ffffff;
+  }
+  
+  body {
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    color: var(--light);
+  }
+  
+  .bg-darkblue {
+    background-color: var(--darkblue) !important;
+  }
+  .bg-darkgreen {
+    background-color: var(--darkgreen) !important;
+  }
+  .img-logo {
+    height: 10em;
+    width: 10em;
+  }
+  /* .bg-dark-x {
+     background-color: var(--dark) !important; 
+  } */
+  
+  h2 {
+    margin-top: auto;
+  }
+  .form-control,
+  .btn {
+    min-height: 3.125rem;
+    line-height: initial;
+  }
+  
+  .text-muted {
+    color: rgb(199 211 223 / 93%) !important;
+  }
+  .btn {
+    background-color: var(--darkgreen);
+    border-color: var(--darkgreen);
+  }
+  
+  .text-dark {
+    color: var(--dark);
+  }
+  
+  .btn:hover {
+    background-color: var(--darkgreenhover);
+    border-color: var(--darkgreenhover);
+  }
+  
+  .text-muted:hover {
+    color: var(--light) !important;
+  }
+  
+  .hide {
+    display: none;
+  }
+  
