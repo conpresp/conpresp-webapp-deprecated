@@ -47,7 +47,7 @@
             <img src="img/logo_1.png" class="p-2 img-logo" alt="" />
           </div>
           <div class="px-lg-5 py-lg-4 p-4 w-100 mt-auto">
-            <form class="nb-5" id="loginForm" action="database/validaLogin.php">
+            <form class="nb-5" id="loginForm" method="POST" action="database/validaLogin.php">
               <div class="form-group mb-4">
                 <label for="exampleInputEmail1" class="font-weight-bold"
                   >Email:</label
@@ -58,6 +58,7 @@
                   id="inputEmail"
                   aria-describedby="emailHelp"
                   placeholder="Digite seu email"
+                  name="email"
                   required
                 />
               </div>
@@ -70,6 +71,7 @@
                   class="form-control bg-dark-x border-0 mb-2"
                   id="inputPassword"
                   placeholder="Digite sua senha"
+                  name="password"
                   
                 />
                 <a
