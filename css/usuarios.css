@@ -10,15 +10,7 @@
     --blue: #0b3d80ec;
     --green: #1c8072d5;
   }
-  
-  body {
-    font-family: "Roboto", sans-serif;
-    font-weight: 400;
-    color: var(--light);
-    background-color: var(--darkgray);
-  }
-  
-  .bg-darkblue {
+.bg-darkblue {
     background-color: var(--darkblue) !important;
   }
   .bg-gray {
@@ -44,15 +36,8 @@
     color: var(--darkgreen) !important;
   }
   
-  .dropdown-item:hover {
-    background-color: var(--dark);
-    color: var(--darkgray);
-  }
-  .text-body {
-    color: var(--dark);
-  }
-  
-  .font-hover:hover {
+
+.font-hover:hover {
     background-color: var(--green);
   }
   
@@ -73,12 +58,12 @@
   a:active {
     text-decoration: none;
   }
-  
-  footer {
+footer {
     position: relative;
     bottom: 0;
     left: 0;
     right: 0;
+    top:150px;
     background: var(--darkblue);
     height: auto;
     padding-top: 20px;
@@ -155,3 +140,7 @@
   div.dataTables_info {
     color: var(--gray);
   }
+
+  .hidden {
+display: none;
+}

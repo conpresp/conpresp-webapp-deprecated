@@ -51,10 +51,13 @@ if($mysqli-> connect_errno)
 
   if ($row > 0) {
     while ($consulta = mysqli_fetch_array($result)) {
-      $_SESSION["user"] = $consulta['username'];
-      $_SESSION['perfil'] = $consulta['perfil'];
       $_SESSION['id'] = $consulta['id'];
-    
+      $_SESSION['perfil'] = $consulta['perfil'];
+      $_SESSION['username'] = $consulta['username'];
+      $_SESSION['email'] = $consulta['email'];
+      $_SESSION['status'] = $consulta['status'];
+      $_SESSION['password']= $consulta['password'];
+
     }
 
     echo "<p style='text-align: center; margin-top: 50px;'>Você foi autenticado com sucesso! Aguarde um instante...</p>";

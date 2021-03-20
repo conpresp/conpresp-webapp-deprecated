@@ -56,7 +56,7 @@
     color: var(--light) !important;
   }
   
-  .hide {
+  .hidden {
     display: none;
   }
   
