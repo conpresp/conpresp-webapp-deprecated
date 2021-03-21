@@ -20,6 +20,10 @@ if ($conn->connect_error) {
     function editsuccess() {
       setTimeout("window.location='logout.php'", 3000);
     }
+
+    function successedit() {
+      setTimeout("window.location='../../index.php?modulo=Conpresp&acao=usuarios'", 3000);
+    }
  </script>
 
   <?php
@@ -31,12 +35,20 @@ if ($conn->connect_error) {
   $status = filter_input(INPUT_POST, 'status', FILTER_SANITIZE_STRING);
   $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
 
+  $idd = $_SESSION['id'];
+
   $result_usuario = "UPDATE users SET username='$username', perfil='$perfil', username='$username', email='$email', status='$status', password='$password'  WHERE id = '$id'";
   $resultado_usuario = mysqli_query($conn, $result_usuario);
 
 if (mysqli_query($conn, $result_usuario)) {
-    echo "<p style='text-align: center; margin-top: 50px;'>Cadastro editado com sucesso! Aguarde um instante para realizar login novamente...</p>";
+
+    if($id == $idd){
+    echo "<p style='text-align: center; margin-top: 50px;'>Seu cadastro foi editado com sucesso! Aguarde um instante para realizar login novamente...</p>";
     echo "<script>editsuccess()</script>";
+    } else {
+      echo "<p style='text-align: center; margin-top: 50px;'>Cadastro do usuário editado com sucesso! Aguarde um instante para realizar login novamente...</p>";
+      echo "<script>successedit()</script>";
+    }
 } else {
 	echo "Erro ao editar!" . mysqli_error($conn);
   }

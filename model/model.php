@@ -22,6 +22,11 @@ class Conpresp {
 		$data = $this->dados;
 		return $data;
     }
+
+	public function docConpresp() {
+		$data = $this->dados;
+		return $data;
+    }
     
 }
 ?>

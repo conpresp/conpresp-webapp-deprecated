@@ -110,7 +110,7 @@ $password = $_SESSION['password'];
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="mr-3">
                                     <div class="text-xs font-weight-normal mb-1">
-                                        <a href="" class="small text-white stretched-link text-decoration-none">
+                                        <a href="index.php?modulo=Conpresp&acao=docConpresp" class="small text-white stretched-link text-decoration-none">
                                             Novo
                                         </a>
                                     </div>
@@ -256,8 +256,8 @@ $password = $_SESSION['password'];
                         <div class="form-group">
                             <label style="color: black">Status</label>
                             <select class="custom-select" name="status" required>
-                                <option value="Ativo" <?php echo $perfil == 'Ativo' ? 'selected' : '' ?>>Ativo </option>
-                                <option value="Inativo" <?php echo $perfil == 'Inativo' ? 'selected' : '' ?>>Inativo</option>
+                                <option value="Ativo" <?php echo $status == 'Ativo' ? 'selected' : '' ?>>Ativo </option>
+                                <option value="Inativo" <?php echo $status == 'Inativo' ? 'selected' : '' ?>>Inativo</option>
                             </select>
                         </div>
 

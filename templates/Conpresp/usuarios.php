@@ -2,14 +2,14 @@
 session_start();
 
 $servername = "localhost";
-$usernames= "root";
+$usernames = "root";
 $passwords = "";
 $dbname = "conpresp_db";
 // Create connection
 $conn = new mysqli($servername, $usernames, $passwords, $dbname);
 // Check connection
 if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
+    die("Connection failed: " . $conn->connect_error);
 }
 
 $id = $_SESSION['id'];
@@ -41,14 +41,13 @@ $result = $conn->query($sql);
     <link rel="stylesheet" href="css/usuarios.css" />
 
     <style>
-         .hidden {
-    display: none;
-    }
+        .hidden {
+            display: none;
+        }
 
-    body {
-        background-color: white;
-    }
-  
+        body {
+            background-color: white;
+        }
     </style>
     <script src="https://kit.fontawesome.com/5e195b88df.js" crossorigin="anonymous"></script>
     <link rel="icon" href="img/logo.png" />
@@ -56,7 +55,7 @@ $result = $conn->query($sql);
 </head>
 
 <body>
-<div id="content-wrapper" class="d-flex flex-column">
+    <div id="content-wrapper" class="d-flex flex-column">
         <div id="content">
             <nav class="navbar navbar-expand navbar-dark bg-darkblue topbar static-top shadow">
                 <a class="navbar-brand" href="index.php?modulo=Conpresp&acao=home">
@@ -115,7 +114,7 @@ $result = $conn->query($sql);
                 if ($perfil == 'Administrador') {
                 ?>
                     <li class="nav-item active font-hover">
-                        <a class="nav-link" href="#" data-toggle="modal" data-target="#agregarUsuarioModal"><i class="fas fa-users bg-gray-icon"></i>Novo Usuário</a>
+                        <a class="nav-link" href="" data-toggle="modal" data-target="#agregarUsuarioModal"><i class="fas fa-users bg-gray-icon"></i>Novo Usuário</a>
                     </li>
                 <?php } ?>
             </ul>
@@ -123,126 +122,93 @@ $result = $conn->query($sql);
     </nav>
 
     <div class="container">
-      
-      <br>
-      <div class="table-responsive-sm">
-      <table class="table" style="margin-top: 50px">
-        <thead class="thead-dark">
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Nome</th>
-            <th scope="col">Email</th>
-            <th scope="col">Perfil</th>
-            <th scope="col">Status</th>
-            <th scope="col">Editar</th>
-            <th scope="col">Deletar</th>
-          </tr>
-        </thead>
-        <tbody>
-        <?php
-                while ($dado = $result->fetch_array()) {
-                ?>
-          <tr>
-            <th scope="row"><?php echo $dado['id']; ?></th>
-            <td style="color:black"><?php echo $dado['username']; ?></td>
-            <td style="color:black"><?php echo $dado['email']; ?></td>
-            <td style="color:black"><?php echo $dado['perfil']; ?></td>
-            <td style="color:black"><?php echo $dado['status']; ?></td>
-         
-            <td><a href="editarUsuario.php?id=<?php echo $dado['id'];  ?>"><span class="material-icons" style="color:#00e676">create</span></a></td>
-             <td>
-             <a href="javascript: if(confirm('Tem certeza que deseja deletar a conta, <?php echo $dado['username']; ?>?'))
+
+        <br>
+        <div class="table-responsive-sm">
+            <table class="table" style="margin-top: 50px">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Perfil</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Editar</th>
+                        <th scope="col">Deletar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    while ($dado = $result->fetch_array()) {
+                    ?>
+                        <tr>
+                            <th scope="row"><?php echo $dado['id']; ?></th>
+                            <td style="color:black"><?php echo $dado['username']; ?></td>
+                            <td style="color:black"><?php echo $dado['email']; ?></td>
+                            <td style="color:black"><?php echo $dado['perfil']; ?></td>
+                            <td style="color:black"><?php echo $dado['status']; ?></td>
+                            <td><a href="editarUsuario.php?id=<?php echo $dado['id'];  ?>" ><span class="material-icons" style="color:#00e676">create</span></a></td>
+                            <td>
+                                <a href="javascript: if(confirm('Tem certeza que deseja deletar a conta, <?php echo $dado['username']; ?>?'))
 			              location.href='deletar.php?id=<?php echo $dado['id']; ?>';">
-              <span class="material-icons" style="color: red">delete </span></a></td>    
-          </tr>
-        </tbody>
-        <?php } ?>
-      </table>
-    </div>
+                                    <span class="material-icons" style="color: red">delete </span></a>
+                            </td>
+                        </tr>
+                </tbody>
+            <?php } ?>
+            </table>
+        </div>
     </div>
 
     <!-- Modal Agregar Usuario-->
     <div class="modal fade" id="agregarUsuarioModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h3>Cadastrar Novo Usuário</h3>
-            <button
-              type="button"
-              class="close"
-              data-dismiss="modal"
-              aria-label="Close"
-            >
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <form method="POST" action="database/validaCadastro.php">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3> Novo Usuário</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form method="POST" action="database/validaCadastro.php">
 
-                <div class="form-group">
-                    <select
-                      class="custom-select"
-                      id="agregarUsuarioSelect"
-                      name="perfil"
-                      required>
-                      <option value="Comum" selected>Usuário Comum</option>
-                      <option value="Moderador"> Usuário Moderador</option>
-                      <option value="Administrador">Usuário Administrador</option>
-                    </select>
-                  </div>
+                        <div class="form-group">
+                            <select class="custom-select" id="agregarUsuarioSelect" name="perfil" required>
+                                <option value="Comum" selected>Usuário Comum</option>
+                                <option value="Moderador"> Usuário Moderador</option>
+                                <option value="Administrador">Usuário Administrador</option>
+                            </select>
+                        </div>
 
-              <div class="form-group">
-                <input
-                  type="text"
-                  id="agregarUsuarioName"
-                  class="form-control"
-                  placeholder="Nome"
-                  name="username"
-                  required/>
-              </div>
+                        <div class="form-group">
+                            <input type="text" id="agregarUsuarioName" class="form-control" placeholder="Nome" name="username" required />
+                        </div>
 
-              <div class="form-group">
-                <input
-                  type="email"
-                  id="agregarUsuarioEmail"
-                  class="form-control"
-                  placeholder="Email"
-                  name="email"
-                  required
-                />
-              </div>
+                        <div class="form-group">
+                            <input type="email" id="agregarUsuarioEmail" class="form-control" placeholder="Email" name="email" required />
+                        </div>
 
-              
-              <div class="form-group">
-                <select
-                  class="custom-select"
-                  id="agregarUsuarioSelect"
-                  name="status"
-                  required>
-                  <option value="Ativo" selected>Status Ativo</option>
-                  <option value="Inativo">Status Inativo</option>
-                </select>
-              </div>
 
-              <div class="form-group">
-                <input
-                  type="password"
-                  id="agregarUsuarioPassword"
-                  class="form-control"
-                  placeholder="Senha"
-                  name="password"
-                  required
-                />
-              </div>
-              
-              <button type="submit" class="btn btn-primary">Cadastrar</button>
-            </form>
-          </div>
+                        <div class="form-group">
+                            <select class="custom-select" id="agregarUsuarioSelect" name="status" required>
+                                <option value="Ativo" selected>Status Ativo</option>
+                                <option value="Inativo">Status Inativo</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="password" id="agregarUsuarioPassword" class="form-control" placeholder="Senha" name="password" required />
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Cadastrar</button>
+                    </form>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-<!-- Usuario Modal -->
-<div class="modal fade" id="usuario-modal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <!-- Usuario Modal -->
+    <div class="modal fade" id="usuario-modal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -280,8 +246,8 @@ $result = $conn->query($sql);
                         <div class="form-group">
                             <label style="color: black">Status</label>
                             <select class="custom-select" name="status" required>
-                                <option value="Ativo" <?php echo $perfil == 'Ativo' ? 'selected' : '' ?>>Ativo </option>
-                                <option value="Inativo" <?php echo $perfil == 'Inativo' ? 'selected' : '' ?>>Inativo</option>
+                                <option value="Ativo" <?php echo $status == 'Ativo' ? 'selected' : '' ?>>Ativo </option>
+                                <option value="Inativo" <?php echo $status == 'Inativo' ? 'selected' : '' ?>>Inativo</option>
                             </select>
                         </div>
 
@@ -298,7 +264,7 @@ $result = $conn->query($sql);
             </div>
         </div>
     </div>
-<footer>
+    <footer>
         <div class="footer-content">
             <a class="" href="index.php?modulo=Conpresp&acao=home">
                 <img src="img/logo_1.png" width="40" height="40" class="justify-content-center align-items-center" alt="" />
@@ -332,4 +298,5 @@ $result = $conn->query($sql);
     <!-- sweetalert2 -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9.14.2/dist/sweetalert2.all.min.js"></script>
 </body>
+
 </html>

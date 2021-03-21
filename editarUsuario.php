@@ -1,5 +1,23 @@
 <?php
 session_start();
+
+$servername = "localhost";
+$usernames= "root";
+$passwords = "";
+$dbname = "conpresp_db";
+
+// Create connection
+$conn = new mysqli($servername, $usernames, $passwords, $dbname);
+// Check connection
+if ($conn->connect_error) {
+  die("Connection failed: " . $conn->connect_error);
+}
+
+$idd = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
+$result_usuario = "SELECT * FROM users WHERE id = '$idd'";
+$resultado_usuario = mysqli_query($conn, $result_usuario);
+$dados = mysqli_fetch_assoc($resultado_usuario);
+
 $id = $_SESSION['id'];
 $perfil = $_SESSION['perfil'];
 $username = $_SESSION['username'];
@@ -110,48 +128,52 @@ $password = $_SESSION['password'];
                 class="card-header py-3 d-flex flex-row align-items-center justify-content-between"
               >
                 <h6 class="m-0 font-weight-bold text-primary">
-                  Novo Usuário
+                  Editar Usuário
                 </h6>
               </div>
               <div class="card-body">
                     <div class="container col-md-6">
-                    <form method="post" action="database/validaCadastro.php" >
+                    <form method="post" action="editarUser.php" >
+
+                    <div class="form-group">
+                            <input type="hidden" class="form-control" name="id" id="id" value="<?php echo $dados['id']; ?>" >
+                        </div>
 
                         <div class="form-group">
                             <label style="color: black">Perfil</label>
                             <select class="custom-select"  name="perfil" required>
-                            <option value="Comum">Comum </option>
-                            <option value="Moderador">Moderador </option>
-                            <option value="Administrador">Administrador</option>
+                            <option value="Comum" <?php echo $dados['perfil'] == 'Comum' ? 'selected' : ''  ?>>Comum </option>
+                            <option value="Moderador" <?php echo $dados['perfil'] == 'Moderador' ? 'selected' : ''  ?>>Moderador </option>
+                            <option value="Administrador" <?php echo $dados['perfil'] == 'Administrador' ? 'selected' : ''  ?>>Administrador</option>
                           </select>
                         </div>
 
                         <div class="form-group">
                             <label style="color: black">Nome</label>
-                            <input type="text" class="form-control" name="username"  required>
+                            <input type="text" class="form-control" name="username" value=" <?php echo $dados['username']?>"  required>
                         </div>
 
                         <div class="form-group">
                             <label style="color: black">Email</label>
-                            <input type="email" class="form-control" name="email"  required>
+                            <input type="email" class="form-control" name="email" value=" <?php echo $dados['email']?>" required>
                         </div>
 
                         <div class="form-group">
                           <label style="color: black">Status</label>
                           <select class="custom-select"  name="status" required>
-                          <option value="Ativo">Ativo </option>
-                          <option value="Inativo">Inativo</option>
+                          <option value="Ativo" <?php echo $dados['status'] == 'Ativo' ? 'selected' : ''  ?>>Ativo </option>
+                          <option value="Inativo" <?php echo $dados['status'] == 'Inativo' ? 'selected' : ''  ?>>Inativo</option>
                         </select>
                       </div>
                       
 
                         <div class="form-group">
                             <label style="color: black">Senha</label>
-                            <input type="password" class="form-control" name="password" required>
+                            <input type="password" class="form-control" name="password" value="<?php echo $dados['password'] ?>" required>
                         </div>
                         <br>
                         <div class="form-group col-col-md-offset-4">
-                            <button type="submit" class="btn btn-dark btn-lg btn-block" >Cadastrar</button>
+                            <button type="submit" class="btn btn-dark btn-lg btn-block" >Salvar</button>
                         </div>
                     </form>
                 </div>
@@ -172,7 +194,7 @@ $password = $_SESSION['password'];
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form method="post" action="/editarUser.php">
+                    <form method="post" action="editarUser.php">
 
                         <div class="form-group">
                             <input type="hidden" class="form-control" name="id" value="<?php echo $id ?>">
