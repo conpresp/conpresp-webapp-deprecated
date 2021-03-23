@@ -22,7 +22,7 @@ if ($conn->connect_error) {
     }
 
     function successedit() {
-      setTimeout("window.location='../../index.php?modulo=Conpresp&acao=usuarios'", 3000);
+      setTimeout("window.location='../usuarios.php'", 3000);
     }
  </script>
 

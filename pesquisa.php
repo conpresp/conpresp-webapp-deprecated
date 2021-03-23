@@ -19,8 +19,32 @@ $email = $_SESSION['email'];
 $status = $_SESSION['status'];
 $password = $_SESSION['password'];
 
-$sql = "select * from users ";
+
+$pesquisa = $_SESSION['pesquisa'];
+
+
+//verificar se está sendo passado na URL a pagina atual, se não atribui a pagina como 1
+$pagina = (isset($_GET['pagina'])) ? $_GET['pagina'] : 1;
+
+//Seleciona todos os registro da tabela
+$sql = "SELECT * from users where username like '%$pesquisa'";
+
 $result = $conn->query($sql);
+
+//Contar todos os registros do banco
+$total_registros = mysqli_num_rows($result);
+
+$quantidade_pg = 5;
+
+$num_paginas = ceil($total_registros / $quantidade_pg);
+
+$inicio = ($quantidade_pg * $pagina) - $quantidade_pg;
+
+$result_registro = "SELECT * FROM users where username like '%$pesquisa%' limit $inicio, $quantidade_pg";
+
+$resultado_registro = mysqli_query($conn, $result_registro);
+
+$total_registros = mysqli_num_rows($resultado_registro);
 
 ?>
 <!DOCTYPE html>
@@ -123,6 +147,15 @@ $result = $conn->query($sql);
 
     <div class="container">
 
+        <form method="post" action="validaPesquisa.php">
+            <div class="form-group">
+                <label style="color: black">Nome</label>
+                <input type="text" class="form-control" name="pesquisa" style="width: 25%" >
+            </div>
+            <br>
+            <button type="submit" class="btn btn-primary" style="margin-top: -13%; margin-left: 30%">Pesquisar</button>
+        </form>
+
         <br>
         <div class="table-responsive-sm">
             <table class="table" style="margin-top: 50px">
@@ -139,7 +172,7 @@ $result = $conn->query($sql);
                 </thead>
                 <tbody>
                     <?php
-                    while ($dado = $result->fetch_array()) {
+                    while ($dado = mysqli_fetch_assoc($resultado_registro)) {
                     ?>
                         <tr>
                             <th scope="row"><?php echo $dado['id']; ?></th>
@@ -147,7 +180,7 @@ $result = $conn->query($sql);
                             <td style="color:black"><?php echo $dado['email']; ?></td>
                             <td style="color:black"><?php echo $dado['perfil']; ?></td>
                             <td style="color:black"><?php echo $dado['status']; ?></td>
-                            <td><a href="editarUsuario.php?id=<?php echo $dado['id'];  ?>" ><span class="material-icons" style="color:#00e676">create</span></a></td>
+                            <td><a href="editarUsuario.php?id=<?php echo $dado['id'];  ?>"><span class="material-icons" style="color:#00e676">create</span></a></td>
                             <td>
                                 <a href="javascript: if(confirm('Tem certeza que deseja deletar a conta, <?php echo $dado['username']; ?>?'))
 			              location.href='deletar.php?id=<?php echo $dado['id']; ?>';">
@@ -291,6 +324,8 @@ $result = $conn->query($sql);
     </footer>
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
+		<script type="text/javascript" src="personalizado.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>

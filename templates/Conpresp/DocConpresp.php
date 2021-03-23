@@ -93,7 +93,7 @@ $password = $_SESSION['password'];
                 if ($perfil == 'Administrador') {
                 ?>
                     <li class="nav-item active font-hover">
-                        <a class="nav-link" href="index.php?modulo=Conpresp&acao=usuarios"><i class="fas fa-users bg-gray-icon"></i>Usuários</a>
+                        <a class="nav-link" href="usuarios.php"><i class="fas fa-users bg-gray-icon"></i>Usuários</a>
                     </li>
                 <?php } ?>
             </ul>

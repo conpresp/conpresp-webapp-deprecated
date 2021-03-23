@@ -2,21 +2,15 @@
 session_start();
 
 $servername = "localhost";
-$usernames= "root";
+$usernames = "root";
 $passwords = "";
 $dbname = "conpresp_db";
-
 // Create connection
 $conn = new mysqli($servername, $usernames, $passwords, $dbname);
 // Check connection
 if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
+    die("Connection failed: " . $conn->connect_error);
 }
-
-$idd = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
-$result_usuario = "SELECT * FROM users WHERE id = '$idd'";
-$resultado_usuario = mysqli_query($conn, $result_usuario);
-$dados = mysqli_fetch_assoc($resultado_usuario);
 
 $id = $_SESSION['id'];
 $perfil = $_SESSION['perfil'];
@@ -24,6 +18,29 @@ $username = $_SESSION['username'];
 $email = $_SESSION['email'];
 $status = $_SESSION['status'];
 $password = $_SESSION['password'];
+
+//verificar se está sendo passado na URL a pagina atual, se não atribui a pagina como 1
+$pagina = (isset($_GET['pagina'])) ? $_GET['pagina'] : 1;
+
+//Seleciona todos os registro da tabela
+$sql = "select * from users";
+
+$result = $conn->query($sql);
+
+//Contar todos os registros do banco
+$total_registros = mysqli_num_rows($result);
+
+$quantidade_pg = 5;
+
+$num_paginas = ceil($total_registros / $quantidade_pg);
+
+$inicio = ($quantidade_pg * $pagina) - $quantidade_pg;
+
+$result_registro = "SELECT * FROM users ORDER BY username limit $inicio, $quantidade_pg";
+
+$resultado_registro = mysqli_query($conn, $result_registro);
+
+$total_registros = mysqli_num_rows($resultado_registro);
 
 ?>
 <!DOCTYPE html>
@@ -39,7 +56,19 @@ $password = $_SESSION['password'];
     <!-- DataTable -->
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css" />
 
-    <link rel="stylesheet" href="css/home.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+    <link rel="stylesheet" href="css/usuarios.css" />
+
+    <style>
+        .hidden {
+            display: none;
+        }
+
+        body {
+            background-color: white;
+        }
+    </style>
     <script src="https://kit.fontawesome.com/5e195b88df.js" crossorigin="anonymous"></script>
     <link rel="icon" href="img/logo.png" />
     <title>CONPRESP</title>
@@ -49,7 +78,7 @@ $password = $_SESSION['password'];
     <div id="content-wrapper" class="d-flex flex-column">
         <div id="content">
             <nav class="navbar navbar-expand navbar-dark bg-darkblue topbar static-top shadow">
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="index.php?modulo=Conpresp&acao=home">
                     <img src="img/logo_1.png" width="30" height="30" class="d-inline-block align-top" alt="" />
                     CONPRESP
                 </a>
@@ -61,11 +90,11 @@ $password = $_SESSION['password'];
                             <img class="img-profile rounded-circle" src="img/user.svg" width="30px" height="30px" />
                         </a>
 
-                        
-                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+
+                        <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                             <?php
-                        if ($perfil == 'Administrador') {
-                        ?>
+                            if ($perfil == 'Administrador') {
+                            ?>
                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#usuario-modal">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400 bg-darkgreen-icon"></i>
                                     Sua Conta
@@ -84,7 +113,7 @@ $password = $_SESSION['password'];
                                 exit;
                             }
                             ?>
-                            </div>
+                        </div>
                     </li>
                 </ul>
             </nav>
@@ -98,90 +127,144 @@ $password = $_SESSION['password'];
 
         <div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample10">
             <ul class="navbar-nav">
-                <li class="nav-item font-hover">
+                <li class="nav-item active font-hover">
                     <a class="nav-link" href="index.php?modulo=Conpresp&acao=home"><i class="fas fa-home bg-gray-icon"></i>Home</a>
                 </li>
                 <?php
                 if ($perfil == 'Administrador') {
                 ?>
-                <li class="nav-item font-hover">
-                    <a class="nav-link" href="usuarios.php"><i class="fas fa-users bg-gray-icon"></i>Usuários</a>
-                </li>
+                    <li class="nav-item active font-hover">
+                        <a class="nav-link" href="" data-toggle="modal" data-target="#agregarUsuarioModal"><i class="fas fa-users bg-gray-icon"></i>Novo Usuário</a>
+                    </li>
                 <?php } ?>
             </ul>
         </div>
     </nav>
-    <div class="container mt-4">
-      <div class="container-fluid">
-        
 
-        <!-- Page Heading -->
-        <div class="d-sm-flex align-items-center justify-content-between mb-4">
-          <h1 class="h3 mb-0 text-gray-800">Novo Usuário</h1>
+    <div class="container">
+
+        <form method="post" action="validaPesquisa.php">
+            <div class="form-group">
+                <label style="color: black">Nome</label>
+                <input type="text" class="form-control" name="pesquisa" style="width: 25%">
+            </div>
+            <br>
+            <button type="submit" class="btn btn-primary" style="margin-top: -13%; margin-left: 30%">Pesquisar</button>
+        </form>
+
+        <br>
+        <div class="table-responsive-sm">
+            <table class="table" style="margin-top: 50px">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Perfil</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Editar</th>
+                        <th scope="col">Deletar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    while ($dado = mysqli_fetch_assoc($resultado_registro)) {
+                    ?>
+                        <tr>
+                            <th scope="row"><?php echo $dado['id']; ?></th>
+                            <td style="color:black"><?php echo $dado['username']; ?></td>
+                            <td style="color:black"><?php echo $dado['email']; ?></td>
+                            <td style="color:black"><?php echo $dado['perfil']; ?></td>
+                            <td style="color:black"><?php echo $dado['status']; ?></td>
+                            <td><a href="editarUsuario.php?id=<?php echo $dado['id'];  ?>"><span class="material-icons" style="color:#00e676">create</span></a></td>
+                            <td>
+                                <a href="javascript: if(confirm('Tem certeza que deseja deletar a conta, <?php echo $dado['username']; ?>?'))
+			              location.href='deletar.php?id=<?php echo $dado['id']; ?>';">
+                                    <span class="material-icons" style="color: red">delete </span></a>
+                            </td>
+                        </tr>
+                </tbody>
+            <?php } ?>
+            </table>
+            <?php
+            $pagina_anterior = $pagina - 1;
+            $pagina_posterior = $pagina + 1;
+            ?>
+            <nav aria-label="Page navigation example" style="margin-left: 40%;">
+                <ul class="pagination">
+                    <li class="page-item">
+                        <?php
+                        if ($pagina_anterior != 0) { ?>
+                            <a class="page-link" href="usuarios.php?pagina=<?php echo $pagina_anterior ?>" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                        <?php  } ?>
+                    </li>
+                    <?php
+                    for ($i = 1; $i < $num_paginas + 1; $i++) { ?>
+                        <li><a class="page-link" href="usuarios.php?pagina=<?php echo $i ?>"><?php echo $i ?></a></li>
+                    <?php    } ?>
+                    <li>
+                        <?php
+                        if ($pagina_posterior <= $num_paginas) { ?>
+                            <a class="page-link" href="usuarios.php?pagina=<?php echo $pagina_posterior ?>" aria-label="Previous">
+                                <span aria-hidden="true">&raquo;</span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                        <?php  } ?>
+                    </li>
+                </ul>
+            </nav>
         </div>
+    </div>
 
-        <!-- Content Row -->
-        <div class="row">
-          <div class="col-xl-12 col-lg-12">
-            <div class="card shadow mb-4">
-              <div
-                class="card-header py-3 d-flex flex-row align-items-center justify-content-between"
-              >
-                <h6 class="m-0 font-weight-bold text-primary">
-                  Editar Usuário
-                </h6>
-              </div>
-              <div class="card-body">
-                    <div class="container col-md-6">
-                    <form method="post" action="editarUser.php" >
+    <!-- Modal Agregar Usuario-->
+    <div class="modal fade" id="agregarUsuarioModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3> Novo Usuário</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form method="POST" action="database/validaCadastro.php">
 
-                    <div class="form-group">
-                            <input type="hidden" class="form-control" name="id" id="id" value="<?php echo $dados['id']; ?>" >
+                        <div class="form-group">
+                            <select class="custom-select" id="agregarUsuarioSelect" name="perfil" required>
+                                <option value="Comum" selected>Usuário Comum</option>
+                                <option value="Moderador"> Usuário Moderador</option>
+                                <option value="Administrador">Usuário Administrador</option>
+                            </select>
                         </div>
 
                         <div class="form-group">
-                            <label style="color: black">Perfil</label>
-                            <select class="custom-select"  name="perfil" required>
-                            <option value="Comum" <?php echo $dados['perfil'] == 'Comum' ? 'selected' : ''  ?>>Comum </option>
-                            <option value="Moderador" <?php echo $dados['perfil'] == 'Moderador' ? 'selected' : ''  ?>>Moderador </option>
-                            <option value="Administrador" <?php echo $dados['perfil'] == 'Administrador' ? 'selected' : ''  ?>>Administrador</option>
-                          </select>
+                            <input type="text" id="agregarUsuarioName" class="form-control" placeholder="Nome" name="username" required />
                         </div>
 
                         <div class="form-group">
-                            <label style="color: black">Nome</label>
-                            <input type="text" class="form-control" name="username" value=" <?php echo $dados['username']?>"  required>
+                            <input type="email" id="agregarUsuarioEmail" class="form-control" placeholder="Email" name="email" required />
+                        </div>
+
+
+                        <div class="form-group">
+                            <select class="custom-select" id="agregarUsuarioSelect" name="status" required>
+                                <option value="Ativo" selected>Status Ativo</option>
+                                <option value="Inativo">Status Inativo</option>
+                            </select>
                         </div>
 
                         <div class="form-group">
-                            <label style="color: black">Email</label>
-                            <input type="email" class="form-control" name="email" value=" <?php echo $dados['email']?>" required>
+                            <input type="password" id="agregarUsuarioPassword" class="form-control" placeholder="Senha" name="password" required />
                         </div>
 
-                        <div class="form-group">
-                          <label style="color: black">Status</label>
-                          <select class="custom-select"  name="status" required>
-                          <option value="Ativo" <?php echo $dados['status'] == 'Ativo' ? 'selected' : ''  ?>>Ativo </option>
-                          <option value="Inativo" <?php echo $dados['status'] == 'Inativo' ? 'selected' : ''  ?>>Inativo</option>
-                        </select>
-                      </div>
-                      
-
-                        <div class="form-group">
-                            <label style="color: black">Senha</label>
-                            <input type="password" class="form-control" name="password" value="<?php echo $dados['password'] ?>" required>
-                        </div>
-                        <br>
-                        <div class="form-group col-col-md-offset-4">
-                            <button type="submit" class="btn btn-dark btn-lg btn-block" >Salvar</button>
-                        </div>
+                        <button type="submit" class="btn btn-primary">Cadastrar</button>
                     </form>
                 </div>
-              </div>
             </div>
-          </div>
         </div>
-      </div>
     </div>
     <!-- Usuario Modal -->
     <div class="modal fade" id="usuario-modal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -194,7 +277,7 @@ $password = $_SESSION['password'];
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form method="post" action="editarUser.php">
+                    <form method="post" action="/editarUser.php">
 
                         <div class="form-group">
                             <input type="hidden" class="form-control" name="id" value="<?php echo $id ?>">
@@ -240,10 +323,9 @@ $password = $_SESSION['password'];
             </div>
         </div>
     </div>
-
     <footer>
         <div class="footer-content">
-            <a class="" href="#">
+            <a class="" href="index.php?modulo=Conpresp&acao=home">
                 <img src="img/logo_1.png" width="40" height="40" class="justify-content-center align-items-center" alt="" />
                 CONPRESP
             </a>
@@ -268,6 +350,8 @@ $password = $_SESSION['password'];
     </footer>
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
+		<script type="text/javascript" src="personalizado.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>

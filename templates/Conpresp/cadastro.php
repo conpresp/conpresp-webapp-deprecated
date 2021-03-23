@@ -87,7 +87,7 @@ $password = $_SESSION['password'];
                 if ($perfil == 'Administrador') {
                 ?>
                 <li class="nav-item font-hover">
-                    <a class="nav-link" href="#"><i class="fas fa-users bg-gray-icon"></i>Usuários</a>
+                    <a class="nav-link" href="usuarios.php"><i class="fas fa-users bg-gray-icon"></i>Usuários</a>
                 </li>
                 <?php } ?>
             </ul>

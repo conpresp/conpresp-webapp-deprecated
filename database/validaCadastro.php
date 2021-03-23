@@ -22,7 +22,7 @@ if($mysqli-> connect_errno)
 <script type="text/javascript">
 
 function cadastrosuccess(){
-    setTimeout("window.location='../index.php?modulo=Conpresp&acao=usuarios'", 1800);
+    setTimeout("window.location='../usuarios.php'", 1800);
 }
 
 function cadastrofailed(){
