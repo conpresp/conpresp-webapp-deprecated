@@ -27,8 +27,25 @@ if(!isset($_GET['pesquisar'])){
     $valorPesquisar = $_GET['pesquisar'];
 }
 
+$check = $_GET['radio'];
+if($check == 'username'){
+$sql = "SELECT * from users where username like '%$valorPesquisar%'";  
+} else if($check == 'email') {
+$sql = "SELECT * from users where email like '%$valorPesquisar%'"; 
+} else if($check == 'perfil'){
+$sql = "SELECT * from users where perfil like '%$valorPesquisar%'";   
+} else if ($check == 'status' && $valorPesquisar == 'Ativo' || $check == 'status' && $valorPesquisar == 'ativo') {
+$sql = "SELECT * from users where status like 'a%'";  
+}
+else if ($check == 'status' && $valorPesquisar == 'Inativo' || $check == 'status' && $valorPesquisar == 'inativo' ) {
+    $sql = "SELECT * from users where status like 'i%'";  
+}
+else if ($check == 'status' && $valorPesquisar == '' ) {
+    $sql = "SELECT * from users where status like '%$valorPesquisar%'";  
+}
+
 //Seleciona todos os registro da tabela
-$sql = "SELECT * from users where username like '%$valorPesquisar%'";
+
 
 $result = $conn->query($sql);
 
@@ -41,7 +58,19 @@ $num_paginas = ceil($total_registros / $quantidade_pg);
 
 $inicio = ($quantidade_pg * $pagina) - $quantidade_pg;
 
-$result_registro = "SELECT * FROM users where username like '%$valorPesquisar%' ORDER BY username  limit $inicio, $quantidade_pg";
+if($check == 'username'){
+ $result_registro = "SELECT * FROM users where username like '%$valorPesquisar%' ORDER BY username  limit $inicio, $quantidade_pg";   
+} else if($check == 'email') {
+$result_registro = "SELECT * FROM users where email like '%$valorPesquisar%' ORDER BY username  limit $inicio, $quantidade_pg"; 
+} else if($check == 'perfil'){
+$result_registro = "SELECT * FROM users where perfil like '%$valorPesquisar%' ORDER BY username  limit $inicio, $quantidade_pg"; 
+} else if($check == "status" && $valorPesquisar == 'Ativo' || $check == 'status' && $valorPesquisar == 'ativo' ){
+$result_registro = "SELECT * FROM users where status like 'a%' ORDER BY username  limit $inicio, $quantidade_pg"; 
+}else if($check == "status" && $valorPesquisar == 'Inativo' || $check == 'status' && $valorPesquisar == 'inativo' ){
+$result_registro = "SELECT * FROM users where status like 'i%' ORDER BY username  limit $inicio, $quantidade_pg"; 
+} else if ($check == "status" && $valorPesquisar=='' ){
+$result_registro = "SELECT * FROM users where status like '%$valorPesquisar%' ORDER BY username  limit $inicio, $quantidade_pg"; 
+}
 
 $resultado_registro = mysqli_query($conn, $result_registro);
 
@@ -147,14 +176,36 @@ $total_registros = mysqli_num_rows($resultado_registro);
     </nav>
 
     <div class="container">
-        
-            <form class="form-inline" method="GET" action="pesquisa.php" style="margin-top:50px">
-                <div class="form-group mx-sm-3 mb-2">
-                    <label for="pesquisar" class="sr-only" style="color:black">Nome</label>
-                    <input type="text" class="form-control"  placeholder="Pesquisar por nome..." name="pesquisar">
-                </div>
-                <button type="submit" class="btn btn-primary mb-2" style="margin-left: 10px;">Pesquisar</button>
-            </form>
+    <form class="form-inline" method="GET" action="pesquisa.php" style="margin-top:50px">
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="radio" id="username" value="username" checked>
+                <label class="form-check-label" for="username">
+                    Nome
+                </label>
+            </div>
+            <div class="form-check" style="margin-left: 10px">
+                <input class="form-check-input" type="radio" name="radio" id="email" value="email">
+                <label class="form-check-label" for="email">
+                    Email
+                </label>
+            </div>
+            <div class="form-check" style="margin-left: 10px">
+                <input class="form-check-input" type="radio" name="radio" id="perfil" value="perfil">
+                <label class="form-check-label" for="perfil">
+                    Perfil
+                </label>
+            </div>
+            <div class="form-check" style="margin-left: 10px">
+                <input class="form-check-input" type="radio" name="radio" id="status" value="status">
+                <label class="form-check-label" for="status">Status</label>
+            </div>
+
+            <div class="form-group mx-sm-3 mb-2">
+                <label for="pesquisar" class="sr-only" style="color:black">Nome</label>
+                <input type="text" class="form-control" placeholder="Pesquisar..." name="pesquisar">
+            </div>
+            <button type="submit" class="btn btn-primary mb-2" style="margin-left: 10px;">Pesquisar</button>
+        </form>
         <div class="table-responsive-sm">
             <table class="table" style="margin-top: 50px">
                 <thead class="thead-dark">
@@ -197,7 +248,7 @@ $total_registros = mysqli_num_rows($resultado_registro);
                     <li class="page-item">
                         <?php
                         if ($pagina_anterior != 0) { ?>
-                            <a class="page-link" href="pesquisa.php?pagina=<?php echo $pagina_anterior ?>&pesquisar=<?php echo $valorPesquisar ?>" aria-label="Previous">
+                            <a class="page-link" href="pesquisa.php?pagina=<?php echo $pagina_anterior ?>&radio=<?php echo $check ?>&pesquisar=<?php echo $valorPesquisar ?>" aria-label="Previous">
                                 <span aria-hidden="true">&laquo;</span>
                                 <span class="sr-only">Previous</span>
                             </a>
@@ -205,12 +256,12 @@ $total_registros = mysqli_num_rows($resultado_registro);
                     </li>
                     <?php
                     for ($i = 1; $i < $num_paginas + 1; $i++) { ?>
-                        <li><a class="page-link" href="pesquisa.php?pagina=<?php echo $i ?>&pesquisar=<?php echo $valorPesquisar ?>"><?php echo $i ?></a></li>
+                        <li><a class="page-link" href="pesquisa.php?pagina=<?php echo $i ?>&radio=<?php echo $check ?>&pesquisar=<?php echo $valorPesquisar ?>"><?php echo $i ?></a></li>
                     <?php    } ?>
                     <li>
                         <?php
                         if ($pagina_posterior <= $num_paginas) { ?>
-                            <a class="page-link" href="pesquisa.php?pagina=<?php echo $pagina_posterior ?>&pesquisar=<?php echo $valorPesquisar ?>" aria-label="Previous">
+                            <a class="page-link" href="pesquisa.php?pagina=<?php echo $pagina_posterior ?>&radio=<?php echo $check ?>&pesquisar=<?php echo $valorPesquisar ?>" aria-label="Previous">
                                 <span aria-hidden="true">&raquo;</span>
                                 <span class="sr-only">Previous</span>
                             </a>

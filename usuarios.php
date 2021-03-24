@@ -142,14 +142,39 @@ $total_registros = mysqli_num_rows($resultado_registro);
     </nav>
 
     <div class="container">
-        
-            <form class="form-inline" method="GET" action="pesquisa.php" style="margin-top:50px">
-                <div class="form-group mx-sm-3 mb-2">
-                    <label for="pesquisar" class="sr-only" style="color:black">Nome</label>
-                    <input type="text" class="form-control"  placeholder="Pesquisar por nome..." name="pesquisar">
-                </div>
-                <button type="submit" class="btn btn-primary mb-2" style="margin-left: 10px;">Pesquisar</button>
-            </form>
+
+        <form class="form-inline" method="GET" action="pesquisa.php" style="margin-top:50px">
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="radio" id="username" value="username" checked>
+                <label class="form-check-label" for="username">
+                    Nome
+                </label>
+            </div>
+            <div class="form-check" style="margin-left: 10px">
+                <input class="form-check-input" type="radio" name="radio" id="email" value="email">
+                <label class="form-check-label" for="email">
+                    Email
+                </label>
+            </div>
+            <div class="form-check" style="margin-left: 10px">
+                <input class="form-check-input" type="radio" name="radio" id="perfil" value="perfil">
+                <label class="form-check-label" for="perfil">
+                    Perfil
+                </label>
+            </div>
+            <div class="form-check" style="margin-left: 10px">
+                <input class="form-check-input" type="radio" name="radio" id="status" value="status">
+                <label class="form-check-label" for="status">
+                   Status
+                </label>
+            </div>
+
+            <div class="form-group mx-sm-3 mb-2">
+                <label for="pesquisar" class="sr-only" style="color:black">Nome</label>
+                <input type="text" class="form-control" placeholder="Pesquisar..." name="pesquisar">
+            </div>
+            <button type="submit" class="btn btn-primary mb-2" style="margin-left: 10px;">Pesquisar</button>
+        </form>
         <div class="table-responsive-sm">
             <table class="table" style="margin-top: 50px">
                 <thead class="thead-dark">
