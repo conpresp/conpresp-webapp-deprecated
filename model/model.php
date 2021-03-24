@@ -13,11 +13,6 @@ class Conpresp {
 		return $data;
     }
 
-	public function home() {
-		$data = $this->dados;
-		return $data;
-    }
-
 	public function usuarios() {
 		$data = $this->dados;
 		return $data;

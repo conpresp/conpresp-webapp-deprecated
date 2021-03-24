@@ -78,7 +78,7 @@ $total_registros = mysqli_num_rows($resultado_registro);
     <div id="content-wrapper" class="d-flex flex-column">
         <div id="content">
             <nav class="navbar navbar-expand navbar-dark bg-darkblue topbar static-top shadow">
-                <a class="navbar-brand" href="index.php?modulo=Conpresp&acao=home">
+                <a class="navbar-brand" href="home.php">
                     <img src="img/logo_1.png" width="30" height="30" class="d-inline-block align-top" alt="" />
                     CONPRESP
                 </a>
@@ -128,7 +128,7 @@ $total_registros = mysqli_num_rows($resultado_registro);
         <div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample10">
             <ul class="navbar-nav">
                 <li class="nav-item active font-hover">
-                    <a class="nav-link" href="index.php?modulo=Conpresp&acao=home"><i class="fas fa-home bg-gray-icon"></i>Home</a>
+                    <a class="nav-link" href="home.php"><i class="fas fa-home bg-gray-icon"></i>Home</a>
                 </li>
                 <?php
                 if ($perfil == 'Administrador') {
@@ -142,17 +142,14 @@ $total_registros = mysqli_num_rows($resultado_registro);
     </nav>
 
     <div class="container">
-
-        <form method="post" action="validaPesquisa.php">
-            <div class="form-group">
-                <label style="color: black">Nome</label>
-                <input type="text" class="form-control" name="pesquisa" style="width: 25%">
-            </div>
-            <br>
-            <button type="submit" class="btn btn-primary" style="margin-top: -13%; margin-left: 30%">Pesquisar</button>
-        </form>
-
-        <br>
+        
+            <form class="form-inline" method="GET" action="pesquisa.php" style="margin-top:50px">
+                <div class="form-group mx-sm-3 mb-2">
+                    <label for="pesquisar" class="sr-only" style="color:black">Nome</label>
+                    <input type="text" class="form-control"  placeholder="Pesquisar por nome..." name="pesquisar">
+                </div>
+                <button type="submit" class="btn btn-primary mb-2" style="margin-left: 10px;">Pesquisar</button>
+            </form>
         <div class="table-responsive-sm">
             <table class="table" style="margin-top: 50px">
                 <thead class="thead-dark">
@@ -325,7 +322,7 @@ $total_registros = mysqli_num_rows($resultado_registro);
     </div>
     <footer>
         <div class="footer-content">
-            <a class="" href="index.php?modulo=Conpresp&acao=home">
+            <a class="" href="home.php">
                 <img src="img/logo_1.png" width="40" height="40" class="justify-content-center align-items-center" alt="" />
                 CONPRESP
             </a>
@@ -351,7 +348,7 @@ $total_registros = mysqli_num_rows($resultado_registro);
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
-		<script type="text/javascript" src="personalizado.js"></script>
+    <script type="text/javascript" src="personalizado.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>

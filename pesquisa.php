@@ -19,15 +19,16 @@ $email = $_SESSION['email'];
 $status = $_SESSION['status'];
 $password = $_SESSION['password'];
 
-
-$pesquisa = $_SESSION['pesquisa'];
-
-
 //verificar se está sendo passado na URL a pagina atual, se não atribui a pagina como 1
 $pagina = (isset($_GET['pagina'])) ? $_GET['pagina'] : 1;
+if(!isset($_GET['pesquisar'])){
+    header("Location: usuarios.php");
+} else {
+    $valorPesquisar = $_GET['pesquisar'];
+}
 
 //Seleciona todos os registro da tabela
-$sql = "SELECT * from users where username like '%$pesquisa'";
+$sql = "SELECT * from users where username like '%$valorPesquisar%'";
 
 $result = $conn->query($sql);
 
@@ -40,7 +41,7 @@ $num_paginas = ceil($total_registros / $quantidade_pg);
 
 $inicio = ($quantidade_pg * $pagina) - $quantidade_pg;
 
-$result_registro = "SELECT * FROM users where username like '%$pesquisa%' limit $inicio, $quantidade_pg";
+$result_registro = "SELECT * FROM users where username like '%$valorPesquisar%' ORDER BY username  limit $inicio, $quantidade_pg";
 
 $resultado_registro = mysqli_query($conn, $result_registro);
 
@@ -82,7 +83,7 @@ $total_registros = mysqli_num_rows($resultado_registro);
     <div id="content-wrapper" class="d-flex flex-column">
         <div id="content">
             <nav class="navbar navbar-expand navbar-dark bg-darkblue topbar static-top shadow">
-                <a class="navbar-brand" href="index.php?modulo=Conpresp&acao=home">
+                <a class="navbar-brand" href="home.php">
                     <img src="img/logo_1.png" width="30" height="30" class="d-inline-block align-top" alt="" />
                     CONPRESP
                 </a>
@@ -132,7 +133,7 @@ $total_registros = mysqli_num_rows($resultado_registro);
         <div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample10">
             <ul class="navbar-nav">
                 <li class="nav-item active font-hover">
-                    <a class="nav-link" href="index.php?modulo=Conpresp&acao=home"><i class="fas fa-home bg-gray-icon"></i>Home</a>
+                    <a class="nav-link" href="home.php"><i class="fas fa-home bg-gray-icon"></i>Home</a>
                 </li>
                 <?php
                 if ($perfil == 'Administrador') {
@@ -146,17 +147,14 @@ $total_registros = mysqli_num_rows($resultado_registro);
     </nav>
 
     <div class="container">
-
-        <form method="post" action="validaPesquisa.php">
-            <div class="form-group">
-                <label style="color: black">Nome</label>
-                <input type="text" class="form-control" name="pesquisa" style="width: 25%" >
-            </div>
-            <br>
-            <button type="submit" class="btn btn-primary" style="margin-top: -13%; margin-left: 30%">Pesquisar</button>
-        </form>
-
-        <br>
+        
+            <form class="form-inline" method="GET" action="pesquisa.php" style="margin-top:50px">
+                <div class="form-group mx-sm-3 mb-2">
+                    <label for="pesquisar" class="sr-only" style="color:black">Nome</label>
+                    <input type="text" class="form-control"  placeholder="Pesquisar por nome..." name="pesquisar">
+                </div>
+                <button type="submit" class="btn btn-primary mb-2" style="margin-left: 10px;">Pesquisar</button>
+            </form>
         <div class="table-responsive-sm">
             <table class="table" style="margin-top: 50px">
                 <thead class="thead-dark">
@@ -190,6 +188,36 @@ $total_registros = mysqli_num_rows($resultado_registro);
                 </tbody>
             <?php } ?>
             </table>
+            <?php
+            $pagina_anterior = $pagina - 1;
+            $pagina_posterior = $pagina + 1;
+            ?>
+            <nav aria-label="Page navigation example" style="margin-left: 40%;">
+                <ul class="pagination">
+                    <li class="page-item">
+                        <?php
+                        if ($pagina_anterior != 0) { ?>
+                            <a class="page-link" href="pesquisa.php?pagina=<?php echo $pagina_anterior ?>&pesquisar=<?php echo $valorPesquisar ?>" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                        <?php  } ?>
+                    </li>
+                    <?php
+                    for ($i = 1; $i < $num_paginas + 1; $i++) { ?>
+                        <li><a class="page-link" href="pesquisa.php?pagina=<?php echo $i ?>&pesquisar=<?php echo $valorPesquisar ?>"><?php echo $i ?></a></li>
+                    <?php    } ?>
+                    <li>
+                        <?php
+                        if ($pagina_posterior <= $num_paginas) { ?>
+                            <a class="page-link" href="pesquisa.php?pagina=<?php echo $pagina_posterior ?>&pesquisar=<?php echo $valorPesquisar ?>" aria-label="Previous">
+                                <span aria-hidden="true">&raquo;</span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                        <?php  } ?>
+                    </li>
+                </ul>
+            </nav>
         </div>
     </div>
 
@@ -299,7 +327,7 @@ $total_registros = mysqli_num_rows($resultado_registro);
     </div>
     <footer>
         <div class="footer-content">
-            <a class="" href="index.php?modulo=Conpresp&acao=home">
+            <a class="" href="home.php">
                 <img src="img/logo_1.png" width="40" height="40" class="justify-content-center align-items-center" alt="" />
                 CONPRESP
             </a>
@@ -325,7 +353,7 @@ $total_registros = mysqli_num_rows($resultado_registro);
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
-		<script type="text/javascript" src="personalizado.js"></script>
+    <script type="text/javascript" src="personalizado.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>

@@ -23,7 +23,7 @@ if($mysqli-> connect_errno)
 
   <script type="text/javascript">
     function loginsuccess() {
-      setTimeout("window.location='../index.php?modulo=Conpresp&acao=home'", 3000);
+      setTimeout("window.location='../home.php'", 3000);
     }
 
     function loginfailed() {

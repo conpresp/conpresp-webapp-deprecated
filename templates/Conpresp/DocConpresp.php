@@ -37,7 +37,7 @@ $password = $_SESSION['password'];
 <div id="content-wrapper" class="d-flex flex-column">
         <div id="content">
             <nav class="navbar navbar-expand navbar-dark bg-darkblue topbar static-top shadow">
-                <a class="navbar-brand" href="index.php?modulo=Conpresp&acao=home">
+                <a class="navbar-brand" href="home.php">
                     <img src="img/logo_1.png" width="30" height="30" class="d-inline-block align-top" alt="" />
                     CONPRESP
                 </a>
@@ -87,7 +87,7 @@ $password = $_SESSION['password'];
         <div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample10">
             <ul class="navbar-nav">
                 <li class="nav-item active font-hover">
-                    <a class="nav-link" href="index.php?modulo=Conpresp&acao=home"><i class="fas fa-home bg-gray-icon"></i>Home</a>
+                    <a class="nav-link" href="home.php"><i class="fas fa-home bg-gray-icon"></i>Home</a>
                 </li>
                 <?php
                 if ($perfil == 'Administrador') {
@@ -2186,7 +2186,7 @@ $password = $_SESSION['password'];
 
     <footer>
         <div class="footer-content">
-            <a class="" href="index.php?modulo=Conpresp&acao=home">
+            <a class="" href="home.php">
                 <img src="img/logo_1.png" width="40" height="40" class="justify-content-center align-items-center" alt="" />
                 CONPRESP
             </a>

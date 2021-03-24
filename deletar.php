@@ -19,7 +19,7 @@ if ($conn->connect_error) {
 
   <script type="text/javascript">
     function deletar() {
-      setTimeout("window.location='../../index.php?modulo=Conpresp&acao=home'", 3000);
+      setTimeout("window.location='../home.php'", 3000);
     }
 
     function deletar2() {

@@ -80,13 +80,13 @@ $password = $_SESSION['password'];
 
         <div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample10">
             <ul class="navbar-nav">
-                <li class="nav-item font-hover">
-                    <a class="nav-link" href="index.php?modulo=Conpresp&acao=home"><i class="fas fa-home bg-gray-icon"></i>Home</a>
+                <li class="nav-item active font-hover">
+                    <a class="nav-link" href="home.php"><i class="fas fa-home bg-gray-icon"></i>Home</a>
                 </li>
                 <?php
                 if ($perfil == 'Administrador') {
                 ?>
-                <li class="nav-item font-hover">
+                <li class="nav-item active font-hover">
                     <a class="nav-link" href="usuarios.php"><i class="fas fa-users bg-gray-icon"></i>Usuários</a>
                 </li>
                 <?php } ?>
