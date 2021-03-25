@@ -2,7 +2,7 @@
 session_start();
 
 $servername = "localhost";
-$usernames= "root";
+$usernames = "root";
 $passwords = "";
 $dbname = "conpresp_db";
 
@@ -10,7 +10,7 @@ $dbname = "conpresp_db";
 $conn = new mysqli($servername, $usernames, $passwords, $dbname);
 // Check connection
 if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
+    die("Connection failed: " . $conn->connect_error);
 }
 
 $idd = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
@@ -49,7 +49,7 @@ $password = $_SESSION['password'];
     <div id="content-wrapper" class="d-flex flex-column">
         <div id="content">
             <nav class="navbar navbar-expand navbar-dark bg-darkblue topbar static-top shadow">
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="home.php">
                     <img src="img/logo_1.png" width="30" height="30" class="d-inline-block align-top" alt="" />
                     CONPRESP
                 </a>
@@ -61,11 +61,11 @@ $password = $_SESSION['password'];
                             <img class="img-profile rounded-circle" src="img/user.svg" width="30px" height="30px" />
                         </a>
 
-                        
-                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+
+                        <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                             <?php
-                        if ($perfil == 'Administrador') {
-                        ?>
+                            if ($perfil == 'Administrador') {
+                            ?>
                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#usuario-modal">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400 bg-darkgreen-icon"></i>
                                     Sua Conta
@@ -84,7 +84,7 @@ $password = $_SESSION['password'];
                                 exit;
                             }
                             ?>
-                            </div>
+                        </div>
                     </li>
                 </ul>
             </nav>
@@ -104,84 +104,91 @@ $password = $_SESSION['password'];
                 <?php
                 if ($perfil == 'Administrador') {
                 ?>
-                <li class="nav-item font-hover">
-                    <a class="nav-link" href="usuarios.php"><i class="fas fa-users bg-gray-icon"></i>Usuários</a>
-                </li>
+                    <li class="nav-item font-hover">
+                        <a class="nav-link" href="usuarios.php"><i class="fas fa-users bg-gray-icon"></i>Usuários</a>
+                    </li>
                 <?php } ?>
             </ul>
         </div>
     </nav>
     <div class="container mt-4">
-      <div class="container-fluid">
-        
+        <div class="container-fluid">
 
-        <!-- Page Heading -->
-        <div class="d-sm-flex align-items-center justify-content-between mb-4">
-          <h1 class="h3 mb-0 text-gray-800">Novo Usuário</h1>
-        </div>
 
-        <!-- Content Row -->
-        <div class="row">
-          <div class="col-xl-12 col-lg-12">
-            <div class="card shadow mb-4">
-              <div
-                class="card-header py-3 d-flex flex-row align-items-center justify-content-between"
-              >
-                <h6 class="m-0 font-weight-bold text-primary">
-                  Editar Usuário
-                </h6>
-              </div>
-              <div class="card-body">
-                    <div class="container col-md-6">
-                    <form method="post" action="editarUser.php" >
-
-                    <div class="form-group">
-                            <input type="hidden" class="form-control" name="id" id="id" value="<?php echo $dados['id']; ?>" >
-                        </div>
-
-                        <div class="form-group">
-                            <label style="color: black">Perfil</label>
-                            <select class="custom-select"  name="perfil" required>
-                            <option value="Comum" <?php echo $dados['perfil'] == 'Comum' ? 'selected' : ''  ?>>Comum </option>
-                            <option value="Moderador" <?php echo $dados['perfil'] == 'Moderador' ? 'selected' : ''  ?>>Moderador </option>
-                            <option value="Administrador" <?php echo $dados['perfil'] == 'Administrador' ? 'selected' : ''  ?>>Administrador</option>
-                          </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label style="color: black">Nome</label>
-                            <input type="text" class="form-control" name="username" value=" <?php echo $dados['username']?>"  required>
-                        </div>
-
-                        <div class="form-group">
-                            <label style="color: black">Email</label>
-                            <input type="email" class="form-control" name="email" value=" <?php echo $dados['email']?>" required>
-                        </div>
-
-                        <div class="form-group">
-                          <label style="color: black">Status</label>
-                          <select class="custom-select"  name="status" required>
-                          <option value="Ativo" <?php echo $dados['status'] == 'Ativo' ? 'selected' : ''  ?>>Ativo </option>
-                          <option value="Inativo" <?php echo $dados['status'] == 'Inativo' ? 'selected' : ''  ?>>Inativo</option>
-                        </select>
-                      </div>
-                      
-
-                        <div class="form-group">
-                            <label style="color: black">Senha</label>
-                            <input type="password" class="form-control" name="password" value="<?php echo $dados['password'] ?>" required>
-                        </div>
-                        <br>
-                        <div class="form-group col-col-md-offset-4">
-                            <button type="submit" class="btn btn-dark btn-lg btn-block" >Salvar</button>
-                        </div>
-                    </form>
-                </div>
-              </div>
+            <!-- Page Heading -->
+            <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                <h1 class="h3 mb-0 text-gray-800">Novo Usuário</h1>
             </div>
-          </div>
+
+            <!-- Content Row -->
+            <div class="row">
+                <div class="col-xl-12 col-lg-12">
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                            <h6 class="m-0 font-weight-bold text-primary">
+                                Editar Usuário
+                            </h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="container col-md-6">
+                                <form method="post" action="editarUser.php">
+
+                                    <div class="form-group">
+                                        <input type="hidden" class="form-control" name="id" id="id" value="<?php echo $dados['id']; ?>">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label style="color: black">Perfil</label>
+                                        <select class="custom-select" name="perfil" required>
+                                            <option value="Comum" <?php echo $dados['perfil'] == 'Comum' ? 'selected' : ''  ?>>Comum </option>
+                                            <option value="Moderador" <?php echo $dados['perfil'] == 'Moderador' ? 'selected' : ''  ?>>Moderador </option>
+                                            <option value="Administrador" <?php echo $dados['perfil'] == 'Administrador' ? 'selected' : ''  ?>>Administrador</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label style="color: black">Nome</label>
+                                        <input type="text" class="form-control" name="username" value=" <?php echo $dados['username'] ?>" required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label style="color: black">Email</label>
+                                        <input type="email" class="form-control" name="email" value=" <?php echo $dados['email'] ?>" required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label style="color: black">Status</label>
+                                        <select class="custom-select" name="status" required>
+                                            <option value="Ativo" <?php echo $dados['status'] == 'Ativo' ? 'selected' : ''  ?>>Ativo </option>
+                                            <option value="Inativo" <?php echo $dados['status'] == 'Inativo' ? 'selected' : ''  ?>>Inativo</option>
+                                        </select>
+                                    </div>
+                                    <br>
+                                    <div class="form-group col-col-md-offset-4">
+                                        <button type="submit" class="btn btn-dark btn-lg btn-block">Salvar</button>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="container col-md-6" style="margin-top: 50px;">
+                                <form method="post" action="editarSenha.php">
+                                    <div class="form-group">
+                                        <input type="hidden" class="form-control" name="id" id="id" value="<?php echo $dados['id']; ?>">
+                                    </div>
+                                    <div class="form-group">
+                                        <label style="color: black">Senha</label>
+                                        <input type="password" class="form-control" name="password" placeholder="Nova Senha!" required>
+                                    </div>
+                                    <br>
+                                    <div class="form-group col-col-md-offset-4">
+                                        <button type="submit" class="btn btn-dark btn-lg btn-block">Atualizar Senha</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
     <!-- Usuario Modal -->
     <div class="modal fade" id="usuario-modal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -194,7 +201,7 @@ $password = $_SESSION['password'];
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form method="post" action="editarUser.php">
+                    <form method="post" action="/editarUser.php">
 
                         <div class="form-group">
                             <input type="hidden" class="form-control" name="id" value="<?php echo $id ?>">
@@ -226,10 +233,21 @@ $password = $_SESSION['password'];
                                 <option value="Inativo" <?php echo $status == 'Inativo' ? 'selected' : '' ?>>Inativo</option>
                             </select>
                         </div>
+                        <br>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-dark" style="margin-right:40%">Salvar</button>
+                        </div>
+                    </form>
+                    <form method="post" action="/editarSenha.php">
+
+                        <div class="form-group">
+                            <input type="hidden" class="form-control" name="id" value="<?php echo $id ?>">
+                        </div>
+
 
                         <div class="form-group">
                             <label style="color: black">Senha</label>
-                            <input type="password" class="form-control" name="password" value="<?php echo $password ?>" required>
+                            <input type="password" class="form-control" name="password" placeholder="Nova Senha.." required>
                         </div>
                         <br>
                         <div class="modal-footer">
@@ -243,7 +261,7 @@ $password = $_SESSION['password'];
 
     <footer>
         <div class="footer-content">
-            <a class="" href="#">
+            <a class="" href="home.php">
                 <img src="img/logo_1.png" width="40" height="40" class="justify-content-center align-items-center" alt="" />
                 CONPRESP
             </a>

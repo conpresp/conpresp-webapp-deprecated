@@ -331,10 +331,21 @@ $total_registros = mysqli_num_rows($resultado_registro);
                                 <option value="Inativo" <?php echo $status == 'Inativo' ? 'selected' : '' ?>>Inativo</option>
                             </select>
                         </div>
+                        <br>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-dark" style="margin-right:40%">Salvar</button>
+                        </div>
+                    </form>
+                    <form method="post" action="/editarSenha.php">
+
+                        <div class="form-group">
+                            <input type="hidden" class="form-control" name="id" value="<?php echo $id ?>">
+                        </div>
+
 
                         <div class="form-group">
                             <label style="color: black">Senha</label>
-                            <input type="password" class="form-control" name="password" value="<?php echo $password ?>" required>
+                            <input type="password" class="form-control" name="password" placeholder="Nova Senha.." required>
                         </div>
                         <br>
                         <div class="modal-footer">

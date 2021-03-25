@@ -23,11 +23,11 @@ if($mysqli-> connect_errno)
 
   <script type="text/javascript">
     function loginsuccess() {
-      setTimeout("window.location='../home.php'", 3000);
+      setTimeout("window.location='../home.php'", 1800);
     }
 
     function loginfailed() {
-      setTimeout("window.location='../index.php?modulo=Conpresp&acao=login'", 3000);
+      setTimeout("window.location='../index.php?modulo=Conpresp&acao=login'", 1800);
     }
   </script>
 
@@ -40,11 +40,12 @@ if($mysqli-> connect_errno)
 
   $email = $_POST["email"];
   $password = $_POST["password"];
+  $deco = md5($password);
 //   $salvar = $nomeUsuario;
 
 
 //   $_SESSION['salvar'] = $nomeUsuario;
-  $sql = "SELECT * from users where email='$email' and password='$password'";
+  $sql = "SELECT * from users where email='$email' and password='$deco'";
 
   $result = mysqli_query($conecta, $sql) or die('Erro ao conectar2');
   $row = mysqli_num_rows($result);

@@ -29,22 +29,22 @@ if ($conn->connect_error) {
   <?php
 
   $id = filter_input(INPUT_POST, 'id', FILTER_SANITIZE_NUMBER_INT);
-  $perfil = filter_input(INPUT_POST, 'perfil', FILTER_SANITIZE_STRING);
-  $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
-  $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_STRING);
-  $status = filter_input(INPUT_POST, 'status', FILTER_SANITIZE_STRING);
+  $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
+
+  $cript = md5($password);
+
   $idd = $_SESSION['id'];
 
-  $result_usuario = "UPDATE users SET username='$username', perfil='$perfil', username='$username', email='$email', status='$status' WHERE id = '$id'";
+  $result_usuario = "UPDATE users SET password='$cript' WHERE id = '$id'";
   $resultado_usuario = mysqli_query($conn, $result_usuario);
 
 if (mysqli_query($conn, $result_usuario)) {
 
     if($id == $idd){
-    echo "<p style='text-align: center; margin-top: 50px;'>Seu cadastro foi editado com sucesso! Aguarde um instante para realizar login novamente...</p>";
+    echo "<p style='text-align: center; margin-top: 50px;'>Sua senha foi atualizada com sucesso! Aguarde um instante para realizar login novamente...</p>";
     echo "<script>editsuccess()</script>";
     } else {
-      echo "<p style='text-align: center; margin-top: 50px;'>Cadastro do usuário editado com sucesso! Aguarde um instante...</p>";
+      echo "<p style='text-align: center; margin-top: 50px;'>Senha do usuário atualizada com sucesso! Aguarde um instante...</p>";
       echo "<script>successedit()</script>";
     }
 } else {

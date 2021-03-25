@@ -24,10 +24,9 @@ $password = $_SESSION['password'];
     <link rel="stylesheet" href="css/home.css" />
 
     <style>
-         .hidden {
-    display: none;
-    }
-  
+        .hidden {
+            display: none;
+        }
     </style>
     <script src="https://kit.fontawesome.com/5e195b88df.js" crossorigin="anonymous"></script>
     <link rel="icon" href="img/logo.png" />
@@ -199,7 +198,7 @@ $password = $_SESSION['password'];
                                                 <div class="btn-group">
                                                     <button class="btnVer btn btn-info" data-toggle="tooltip" title="Ver"><i class="fas fa-eye" aria-hidden="true"></i></button>
                                                     <?php
-                                                    if ($perfil == "Administrador" || $perfil== "Moderador") { ?>
+                                                    if ($perfil == "Administrador" || $perfil == "Moderador") { ?>
                                                         <button class="btnEditar btn btn-warning" data-toggle="tooltip" title="Editar"><i class="fas fa-edit" aria-hidden="true"></i></button>
                                                     <?php   }
                                                     ?>
@@ -260,10 +259,21 @@ $password = $_SESSION['password'];
                                 <option value="Inativo" <?php echo $status == 'Inativo' ? 'selected' : '' ?>>Inativo</option>
                             </select>
                         </div>
+                        <br>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-dark" style="margin-right:40%">Salvar</button>
+                        </div>
+                    </form>
+                    <form method="post" action="/editarSenha.php">
+
+                        <div class="form-group">
+                            <input type="hidden" class="form-control" name="id" value="<?php echo $id ?>">
+                        </div>
+
 
                         <div class="form-group">
                             <label style="color: black">Senha</label>
-                            <input type="password" class="form-control" name="password" value="<?php echo $password ?>" required>
+                            <input type="password" class="form-control" name="password" placeholder="Nova Senha.." required>
                         </div>
                         <br>
                         <div class="modal-footer">

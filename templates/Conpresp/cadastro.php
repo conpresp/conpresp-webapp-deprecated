@@ -161,8 +161,8 @@ $password = $_SESSION['password'];
         </div>
       </div>
     </div>
-    <!-- Usuario Modal -->
-    <div class="modal fade" id="usuario-modal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+   <!-- Usuario Modal -->
+   <div class="modal fade" id="usuario-modal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -204,10 +204,21 @@ $password = $_SESSION['password'];
                                 <option value="Inativo" <?php echo $status == 'Inativo' ? 'selected' : '' ?>>Inativo</option>
                             </select>
                         </div>
+                        <br>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-dark" style="margin-right:40%">Salvar</button>
+                        </div>
+                    </form>
+                    <form method="post" action="/editarSenha.php">
+
+                        <div class="form-group">
+                            <input type="hidden" class="form-control" name="id" value="<?php echo $id ?>">
+                        </div>
+
 
                         <div class="form-group">
                             <label style="color: black">Senha</label>
-                            <input type="password" class="form-control" name="password" value="<?php echo $password ?>" required>
+                            <input type="password" class="form-control" name="password" placeholder="Nova Senha.." required>
                         </div>
                         <br>
                         <div class="modal-footer">

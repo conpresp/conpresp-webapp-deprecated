@@ -41,7 +41,7 @@ mysqli_select_db($conecta, $bd) or print(mysqli_error($conecta));
   $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
   $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_STRING);
   $status = filter_input(INPUT_POST, 'status', FILTER_SANITIZE_STRING);
-  $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
+  $password = md5(filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING));
 
 $sql = "SELECT * from users where email='$email'";
 
