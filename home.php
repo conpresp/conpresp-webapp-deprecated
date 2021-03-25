@@ -202,7 +202,7 @@ $password = $_SESSION['password'];
                                                         <button class="btnEditar btn btn-warning" data-toggle="tooltip" title="Editar"><i class="fas fa-edit" aria-hidden="true"></i></button>
                                                     <?php   }
                                                     ?>
-                                                    <button class="btnPdf btn btn-success" data-toggle="tooltip" title="Pdf"><i class="fas fa-print" aria-hidden="true"></i></button>
+                                                    <a href="pdf.php"><button class="btnPdf btn btn-success" data-toggle="tooltip" title="Pdf"><i class="fas fa-print" aria-hidden="true"></i></button></a>
                                                 </div>
                                             </div>
                                         </td>
