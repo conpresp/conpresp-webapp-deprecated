@@ -37,6 +37,10 @@ if($mysqli-> connect_errno)
   $conecta = mysqli_connect($host, $usuario, $senha, $bd) or die('Erro ao conectar');
 
   mysqli_select_db($conecta, $bd) or print(mysqli_error($conecta));
+  if (!mysqli_set_charset($conecta, "utf8mb4")) {
+    printf("Error loading character set utf8mb4: %s\n", mysqli_error($conecta));
+    exit();
+} else {
 
   $email = $_POST["email"];
   $password = $_POST["password"];
@@ -68,6 +72,7 @@ if($mysqli-> connect_errno)
     echo "<script>loginfailed()</script>";
   }
   mysqli_close($conecta);
+}
   ?> 
   <div class="d-flex justify-content-center" style="margin-top: 100px;">
     <div class="spinner-border text-primary" style="width: 6rem; height: 6rem;"  role="status" >

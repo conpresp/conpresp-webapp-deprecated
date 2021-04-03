@@ -27,8 +27,44 @@ if (!mysqli_set_charset($conn, "utf8mb4")) {
     printf("Error loading character set utf8mb4: %s\n", mysqli_error($conn));
     exit();
 } else {
-    $sql = "select * from imovel";
-
+    if(!isset($_GET['pesquisar'])){
+        header("Location: home.php");
+    } else {
+        $valorPesquisar = $_GET['pesquisar'];
+    }
+    if(!isset($_GET['tipoPesquisa'])){
+        header("Location: home.php");
+    } else {
+        $check = $_GET['tipoPesquisa'];
+    }
+    
+    if($check == 'respPreenchimento'){
+    $sql = "SELECT * from imovel where responsavelPreenchimento like '%$valorPesquisar%'";  
+    } else if($check == 'resConpresp') {
+    $sql = "SELECT * from imovel where resolucaoTombamento like '%$valorPesquisar%'"; 
+    } else if($check == 'denominacao'){
+    $sql = "SELECT * from imovel where denominacao like '%$valorPesquisar%'";   
+    } else if($check == 'terreo'){
+    $sql = "SELECT * from imovel where terreo like '%$valorPesquisar%'";   
+    } else if($check == 'tipo'){
+    $sql = "SELECT * from imovel where tipo like '%$valorPesquisar%'";   
+    } else if($check == 'titulo'){
+    $sql = "SELECT * from imovel where titulo like '%$valorPesquisar%'";   
+    } else if($check == 'logradouro'){
+    $sql = "SELECT * from imovel where logradouro like '%$valorPesquisar%'";   
+    } else if($check == 'numero'){
+    $sql = "SELECT * from imovel where numeroEndereco like '%$valorPesquisar%'";
+    } else if($check == 'distrito'){
+    $sql = "SELECT * from imovel where distrito like '%$valorPesquisar%'";   
+    } else if($check == 'subprefeitura'){
+    $sql = "SELECT * from imovel where prefeituraRegional like '%$valorPesquisar%'";   
+    } else if($check == 'autorOriginal'){
+    $sql = "SELECT * from imovel where autorOriginal like '%$valorPesquisar%'";   
+    } else if($check == 'dataConstrucao'){
+    $sql = "SELECT * from imovel where 	dataConstrucao like '%$valorPesquisar%'";   
+    } else if($check == 'estiloArquitetonico'){
+    $sql = "SELECT * from imovel where estiloArquitetonico like '%$valorPesquisar%'";   
+    }
 
     $result = $conn->query($sql);
 
@@ -41,7 +77,33 @@ if (!mysqli_set_charset($conn, "utf8mb4")) {
 
     $inicio = ($quantidade_pg * $pagina) - $quantidade_pg;
 
-    $result_registro = "SELECT * FROM imovel limit $inicio, $quantidade_pg";
+    if($check == 'respPreenchimento'){
+    $result_registro = "SELECT * FROM imovel where responsavelPreenchimento like '%$valorPesquisar%' limit $inicio, $quantidade_pg";   
+    } else if($check == 'resConpresp') {
+    $result_registro = "SELECT * FROM imovel where resolucaoTombamento like '%$valorPesquisar%' limit $inicio, $quantidade_pg"; 
+    } else if($check == 'denominacao'){
+    $result_registro = "SELECT * FROM imovel where denominacao like '%$valorPesquisar%' limit $inicio, $quantidade_pg"; 
+    } else if($check == 'terreo'){
+    $result_registro = "SELECT * FROM imovel where terreo like '%$valorPesquisar%' limit $inicio, $quantidade_pg"; 
+    } else if($check == 'tipo'){
+    $result_registro = "SELECT * FROM imovel where tipo like '%$valorPesquisar%' limit $inicio, $quantidade_pg"; 
+    } else if($check == 'titulo'){
+    $result_registro = "SELECT * FROM imovel where titulo like '%$valorPesquisar%' limit $inicio, $quantidade_pg"; 
+    } else if($check == 'logradouro'){
+    $result_registro = "SELECT * FROM imovel where logradouro like '%$valorPesquisar%' limit $inicio, $quantidade_pg"; 
+    } else if($check == 'numero'){
+    $result_registro = "SELECT * FROM imovel where numeroEndereco like '%$valorPesquisar%' limit $inicio, $quantidade_pg"; 
+    } else if($check == 'distrito'){
+    $result_registro = "SELECT * FROM imovel where distrito like '%$valorPesquisar%' limit $inicio, $quantidade_pg"; 
+    } else if($check == 'subprefeitura'){
+    $result_registro = "SELECT * FROM imovel where prefeituraRegional like '%$valorPesquisar%' limit $inicio, $quantidade_pg"; 
+    } else if($check == 'autorOriginal'){
+    $result_registro = "SELECT * FROM imovel where autorOriginal like '%$valorPesquisar%' limit $inicio, $quantidade_pg"; 
+    } else if($check == 'dataConstrucao'){
+    $result_registro = "SELECT * FROM imovel where dataConstrucao like '%$valorPesquisar%'  limit $inicio, $quantidade_pg"; 
+    } else if($check == 'estiloArquitetonico'){
+    $result_registro = "SELECT * FROM imovel where estiloArquitetonico like '%$valorPesquisar%'  limit $inicio, $quantidade_pg"; 
+    }
 
     $resultado_registro = mysqli_query($conn, $result_registro);
 
@@ -220,31 +282,35 @@ if (!mysqli_set_charset($conn, "utf8mb4")) {
                                             <option value="" selected disabled>
                                                 Pesquisar por...
                                             </option>
-                                            <option value="respPreenchimento">Responsável pelo Preenchimento</option>
-                                            <option value="resConpresp"> Resolução Conpresp</option>
-                                            <option value="denominacao">Denominação </option>
-                                            <option value="terreo">Uso Original (Térreo)</option>
+                                            <option value="respPreenchimento" <?php echo $check == 'respPreenchimento' ? 'selected' : ''  ?>>Responsável pelo Preenchimento</option>
+                                            <option value="resConpresp" <?php echo $check == 'resConpresp' ? 'selected' : ''  ?>> Resolução Conpresp</option>
+                                            <option value="denominacao" <?php echo $check== 'denominacao' ? 'selected' : ''  ?>>Denominação </option>
+                                            <option value="terreo" <?php echo $check == 'terreo' ? 'selected' : ''  ?>>Uso Original (Térreo)</option>
                                             <option disabled>----------------------------------------</option>
-                                            <option value="tipo">Tipo do Endereço</option>
-                                            <option value="titulo">Título</option>
-                                            <option value="logradouro">logradouro</option>
-                                            <option value="numero">Número do Endereço</option>
-                                            <option value="distrito">Distrito</option>
-                                            <option value="subprefeitura">Prefeitura Regional</option>
+                                            <option value="tipo" <?php echo $check == 'tipo' ? 'selected' : ''  ?>>Tipo do Endereço</option>
+                                            <option value="titulo" <?php echo $check =='titulo' ? 'selected' : ''  ?>>Título</option>
+                                            <option value="logradouro" <?php echo $check == 'logradouro' ? 'selected' : ''  ?>>logradouro</option>
+                                            <option value="numero" <?php echo $check  =='numero' ? 'selected' : ''  ?>>Número do Endereço</option>
+                                            <option value="distrito" <?php echo $check == 'distrito' ? 'selected' : ''  ?>>Distrito</option>
+                                            <option value="subprefeitura" <?php echo $check== 'subprefeitura' ? 'selected' : ''  ?>>Prefeitura Regional</option>
                                             <option disabled>----------------------------------------</option>
-                                            <option value="autorOriginal">Autor do projeto original</option>
-                                            <option value="dataConstrucao">Data de construção</option>
-                                            <option value="estiloArquitetonico">Estilo Arquitetônico</option>
+                                            <option value="autorOriginal" <?php echo $check == 'autorOriginal' ? 'selected' : ''  ?>>Autor do projeto original</option>
+                                            <option value="dataConstrucao" <?php echo $check == 'dataConstrucao' ? 'selected' : ''  ?>>Data de construção</option>
+                                            <option value="estiloArquitetonico" <?php echo $check == 'estiloArquitetonico' ? 'selected' : ''  ?>>Estilo Arquitetônico</option>
                                             
                                         </select>
                                     </div>
 
                                     <div class="form-group mx-sm-3 mb-2">
                                         <label for="pesquisar" class="sr-only" style="color:black">Nome</label>
-                                        <input type="text" class="form-control" placeholder="Pesquisar..." name="pesquisar">
+                                        <input type="text" class="form-control" placeholder="Pesquisar..." name="pesquisar" value=" <?php echo $valorPesquisar ?>">
                                     </div>
                                     <button type="submit" class="btn btn-primary mb-2" style="margin-left: 10px;">Pesquisar</button>
+                                    <a href="home.php"><button type="button" class="btn btn-primary mb-2" style="margin-left: 10px;">Resetar</button></a>
                                 </form>
+                                <script>
+                               
+                                </script>
                                 <div class="table-responsive" style="margin-top:50px">
                                     <table class="table table-hover" id="tablaHome">
                                         <thead class="thead-dark">
@@ -293,7 +359,7 @@ if (!mysqli_set_charset($conn, "utf8mb4")) {
                                     <nav aria-label="...">
                                         <ul class="pagination p-4 pagination-sm d-flex justify-content-center flex-wrap">
                                             <li class="page-item ">
-                                                <a class="page-link" href="home.php?pagina=<?php echo 1 ?>">Primeira</a>
+                                                <a class="page-link" href="homePesquisa.php?pagina=<?php echo 1 ?>&tipoPesquisa=<?php echo $check ?>&pesquisar=<?php echo $valorPesquisar ?>">Primeira</a>
                                             </li>
                                             <?php
                                             for ($i = 1; $i < $num_paginas + 1; $i++) {
@@ -301,10 +367,10 @@ if (!mysqli_set_charset($conn, "utf8mb4")) {
                                                 if ($pagina == $i)
                                                     $estilo = "class='page-item active'";
                                             ?>
-                                                <li <?php echo $estilo ?>><a class="page-link " href="home.php?pagina=<?php echo $i ?>"><?php echo $i ?></a></li>
+                                                <li <?php echo $estilo ?>><a class="page-link " href="homePesquisa.php?pagina=<?php echo $i ?>&tipoPesquisa=<?php echo $check ?>&pesquisar=<?php echo $valorPesquisar ?>"><?php echo $i ?></a></li>
                                             <?php    } ?>
                                             <li class="page-item">
-                                                <a class="page-link" href="home.php?pagina=<?php echo $num_paginas ?>">Última</a>
+                                                <a class="page-link"  href="homePesquisa.php?pagina=<?php echo $num_paginas ?>&tipoPesquisa=<?php echo $check ?>&pesquisar=<?php echo $valorPesquisar ?>">Última</a>
                                             </li>
                                         </ul>
                                     </nav>

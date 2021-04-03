@@ -36,6 +36,10 @@ function cadastrofailed(){
 $conecta = mysqli_connect($host, $usuario, $senha, $bd) or die ('Erro ao conectar');
 
 mysqli_select_db($conecta, $bd) or print(mysqli_error($conecta));
+if (!mysqli_set_charset($conecta, "utf8mb4")) {
+  printf("Error loading character set utf8mb4: %s\n", mysqli_error($conecta));
+  exit();
+} else {
 
   $perfil = filter_input(INPUT_POST, 'perfil', FILTER_SANITIZE_STRING);
   $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
@@ -64,7 +68,7 @@ if($row>0){
     echo "<p style='text-align: center; margin-top: 50px;'>Usuário cadastrado com sucesso! Aguarde um instante...</p>";
     echo "<script>cadastrosuccess()</script>";}
     mysqli_close($conecta);
-  
+    }
 ?>
 <div class="d-flex justify-content-center" style="margin-top: 100px;">
     <div class="spinner-border text-primary" style="width: 6rem; height: 6rem;"  role="status" >

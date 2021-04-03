@@ -19,6 +19,10 @@ $email = $_SESSION['email'];
 $status = $_SESSION['status'];
 $password = $_SESSION['password'];
 
+if (!mysqli_set_charset($conn, "utf8mb4")) {
+    printf("Error loading character set utf8mb4: %s\n", mysqli_error($conn));
+    exit();
+} else {
 //verificar se está sendo passado na URL a pagina atual, se não atribui a pagina como 1
 $pagina = (isset($_GET['pagina'])) ? $_GET['pagina'] : 1;
 if(!isset($_GET['pesquisar'])){
@@ -428,5 +432,5 @@ $total_registros = mysqli_num_rows($resultado_registro);
     <!-- sweetalert2 -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9.14.2/dist/sweetalert2.all.min.js"></script>
 </body>
-
+<?php } ?>
 </html>

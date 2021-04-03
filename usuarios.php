@@ -6,7 +6,7 @@ $usernames = "root";
 $passwords = "";
 $dbname = "conpresp_db";
 // Create connection
-$conn = new mysqli($servername, $usernames, $passwords, $dbname);
+$conn= mysqli_connect($servername, $usernames, $passwords, $dbname) or die('Erro ao conectar');
 // Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
@@ -23,6 +23,10 @@ $password = $_SESSION['password'];
 $pagina = (isset($_GET['pagina'])) ? $_GET['pagina'] : 1;
 
 //Seleciona todos os registro da tabela
+if (!mysqli_set_charset($conn, "utf8mb4")) {
+    printf("Error loading character set utf8mb4: %s\n", mysqli_error($conn));
+    exit();
+} else {
 $sql = "select * from users";
 
 $result = $conn->query($sql);
@@ -44,12 +48,12 @@ $total_registros = mysqli_num_rows($resultado_registro);
 
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1,
-    shrink-to-fit=no" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
@@ -392,5 +396,5 @@ $total_registros = mysqli_num_rows($resultado_registro);
     <!-- sweetalert2 -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9.14.2/dist/sweetalert2.all.min.js"></script>
 </body>
-
+<?php } ?>
 </html>

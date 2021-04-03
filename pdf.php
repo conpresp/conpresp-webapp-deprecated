@@ -7,7 +7,7 @@ $usernames = "root";
 $passwords = "";
 $dbname = "conpresp_db";
 // Create connection
-$conn = new mysqli($servername, $usernames, $passwords, $dbname);
+$conn= mysqli_connect($servername, $usernames, $passwords, $dbname) or die('Erro ao conectar');
 // Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
@@ -76,6 +76,8 @@ require_once 'dompdf/autoload.inc.php';
 $pdf = new Dompdf();
 
 $pdf -> loadHtml($html);
+
+$pdf -> setPaper('A4', 'portrait');
 
 $pdf -> render();
 
