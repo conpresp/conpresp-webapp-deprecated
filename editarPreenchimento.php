@@ -44,6 +44,8 @@ if (!mysqli_set_charset($conn, "utf8mb4")) {
 
     <link rel="stylesheet" href="css/home.css" />
     <link rel="stylesheet" href="css/doc_conpresp.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
 
     <style>
       .hidden {
@@ -142,7 +144,7 @@ if (!mysqli_set_charset($conn, "utf8mb4")) {
               <div class="card-body">
                 <div class="row color-text">
                   <div class="col-md-12 order-md-1">
-                    <form class="needs-validation" method="POST" action="update.php" >
+                    <form class="needs-validation" method="POST" action="update.php">
                       <div class="row justify-content-center">
                         <a href="home.php" name="btn-cancel" class="btn btn-primary btn-lg m-2 col-md-3"><i class="fa fa-times" aria-hidden="true"></i>
                           Cancelar</a>
@@ -1076,31 +1078,6 @@ if (!mysqli_set_charset($conn, "utf8mb4")) {
                         <label>Observações:</label>
                         <textarea id="observacoes" class="form-control" aria-label="With textarea" name="observacoes"><?php echo $dados['observacoes'] ?></textarea>
                       </div>
-
-                      <div class="mb-3 p-2 subtitulos">
-                        <h4>6. Levantamento Fotográficoo</h4>
-                      </div>
-
-                      <div class="mb-3">
-                        <label>Documentação Gráfica:</label>
-                        <h6>
-                          Imagens em formato JPG com um máximo de 2 mb por
-                          imagem
-                        </h6>
-                        <input type="file" class="form-control-file" name="documentacaoGrafica" id="documentacaoGrafica" />
-                      </div>
-
-                      <div class="mb-3">
-                        <label>Documentação Fotográfica:</label>
-                        <h6>
-                          Imagens em formato JPG com um máximo de 2 mb por
-                          imagem
-                        </h6>
-                        <input type="file" class="form-control-file" name="documentacaoFotografica" id="documentacaoFotografica" />
-                      </div>
-
-                      <hr class="mb-4" />
-
                       <div class="row justify-content-center">
                         <a href="home.php" name="btn-cancel" class="btn btn-primary btn-lg m-2 col-md-3"><i class="fa fa-times" aria-hidden="true"></i>
                           Cancelar</a>
@@ -1110,6 +1087,79 @@ if (!mysqli_set_charset($conn, "utf8mb4")) {
                         </button>
                       </div>
                     </form>
+                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+                    <form method="post" action="editarDocumentacaoGrafica.php" enctype="multipart/form-data">
+                      <div class="mb-3 p-2 subtitulos">
+                        <h4>6. Documentação Gráfica</h4>
+                      </div>
+                      <div class="form-group">
+                        <input type="hidden" class="form-control" name="id" id="id" value="<?php echo $dados['id']; ?>">
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6 mb-3">
+                          <label>Documentação Gráfica</label>
+                          <h6>
+                            Selecione uma imagem para a documentação gráfica!
+                          </h6>
+                          <input type="file" class="form-control-file" name="documentacaoGrafica" id="documentacaoGrafica" />
+                        </div>
+                        <div class="col-md-6 mb-3">
+                          <?php if (isset($dados['documentacaoGrafica'])) {   ?>
+                            <img src="imgGrafica/img1/<?php echo $dados['documentacaoGrafica'] ?>" width="200px" height="200px" />
+                          <?php } ?>
+                        </div>
+                      </div>
+                      <div class="row justify-content-center">
+                        <a href="home.php" name="btn-cancel" class="btn btn-primary btn-lg m-2 col-md-3"><i class="fa fa-times" aria-hidden="true"></i>
+                          Cancelar</a>
+                        <button class="btn btn-info btn-lg m-2 col-md-3" name="envia1" type="submit" disabled="true" id="envia1">
+                          <i class="fa fa-floppy-o" aria-hidden="true"></i>
+                          Salvar
+                        </button>
+                      </div>
+                    </form>
+
+
+                    <form method="post" action="editarDocumentacaoFotografica.php" enctype="multipart/form-data" id="form2">
+                      <div class="row">
+                        <div class="form-group">
+                          <input type="hidden" class="form-control" name="id" id="id" value="<?php echo $dados['id']; ?>">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                          <label>Documentação Fotográfica</label>
+                          <h6>
+                            Selecione uma imagem para a documentação fotográfica!
+                          </h6>
+                          <input type="file" class="form-control-file" name="documentacaoFotografica" id="documentacaoFotografica" />
+                        </div>
+                        <div class="col-md-6 mb-3">
+                          <?php if (isset($dados['documentacaoFotografica'])) {   ?>
+                            <img src="imgFotografica/img1/<?php echo $dados['documentacaoFotografica'] ?>" width="200px" height="200px" />
+                          <?php } ?>
+                        </div>
+                      </div>
+
+                      <div class="row justify-content-center">
+                        <a href="home.php" name="btn-cancel" class="btn btn-primary btn-lg m-2 col-md-3"><i class="fa fa-times" aria-hidden="true"></i>
+                          Cancelar</a>
+                        <button class="btn btn-info btn-lg m-2 col-md-3" name="envia2" type="submit" id="envia2" disabled="true">
+                          <i class="fa fa-floppy-o" aria-hidden="true"></i>
+                          Salvar
+                        </button>
+                      </div>
+                    </form>
+
+                    <script type="text/javascript">
+                      $("#documentacaoFotografica").change(function() {
+                        $("#envia2").attr("disabled", false);
+                      });
+                    </script>
+                      <script type="text/javascript">
+                      $("#documentacaoGrafica").change(function() {
+                        $("#envia1").attr("disabled", false);
+                      });
+                    </script>
                   </div>
                 </div>
               </div>
@@ -1120,73 +1170,73 @@ if (!mysqli_set_charset($conn, "utf8mb4")) {
     </div>
 
     <!-- Usuario Modal -->
-  <div class="modal fade" id="usuario-modal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" style="color:black">Editar sua conta</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <form method="post" action="/editarUser.php">
+    <div class="modal fade" id="usuario-modal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" style="color:black">Editar sua conta</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form method="post" action="/editarUser.php">
 
-            <div class="form-group">
-              <input type="hidden" class="form-control" name="id" value="<?php echo $id ?>">
-            </div>
+              <div class="form-group">
+                <input type="hidden" class="form-control" name="id" value="<?php echo $id ?>">
+              </div>
 
-            <div class="form-group">
-              <label style="color: black">Perfil</label>
-              <select class="custom-select" name="perfil" required>
-                <option value="Comum" <?php echo $perfil == 'Comum' ? 'selected' : '' ?>>Comum </option>
-                <option value="Moderador" <?php echo $perfil == 'Moderador' ? 'selected' : '' ?>>Moderador </option>
-                <option value="Administrador" <?php echo $perfil == 'Administrador' ? 'selected' : '' ?>>Administrador</option>
-              </select>
-            </div>
+              <div class="form-group">
+                <label style="color: black">Perfil</label>
+                <select class="custom-select" name="perfil" required>
+                  <option value="Comum" <?php echo $perfil == 'Comum' ? 'selected' : '' ?>>Comum </option>
+                  <option value="Moderador" <?php echo $perfil == 'Moderador' ? 'selected' : '' ?>>Moderador </option>
+                  <option value="Administrador" <?php echo $perfil == 'Administrador' ? 'selected' : '' ?>>Administrador</option>
+                </select>
+              </div>
 
-            <div class="form-group">
-              <label style="color: black">Nome</label>
-              <input type="text" class="form-control" name="username" value="<?php echo $username ?>" required>
-            </div>
+              <div class="form-group">
+                <label style="color: black">Nome</label>
+                <input type="text" class="form-control" name="username" value="<?php echo $username ?>" required>
+              </div>
 
-            <div class="form-group">
-              <label style="color: black">Email</label>
-              <input type="email" class="form-control" name="email" value="<?php echo $email ?>" required >
-            </div>
+              <div class="form-group">
+                <label style="color: black">Email</label>
+                <input type="email" class="form-control" name="email" value="<?php echo $email ?>" required>
+              </div>
 
-            <div class="form-group">
-              <label style="color: black">Status</label>
-              <select class="custom-select" name="status" required>
-                <option value="Ativo" <?php echo $status == 'Ativo' ? 'selected' : '' ?>>Ativo </option>
-                <option value="Inativo" <?php echo $status == 'Inativo' ? 'selected' : '' ?>>Inativo</option>
-              </select>
-            </div>
-            <br>
-            <div class="modal-footer">
-              <button type="submit" class="btn btn-dark" style="margin-right:40%">Salvar</button>
-            </div>
-          </form>
-          <form method="post" action="/editarSenha.php">
+              <div class="form-group">
+                <label style="color: black">Status</label>
+                <select class="custom-select" name="status" required>
+                  <option value="Ativo" <?php echo $status == 'Ativo' ? 'selected' : '' ?>>Ativo </option>
+                  <option value="Inativo" <?php echo $status == 'Inativo' ? 'selected' : '' ?>>Inativo</option>
+                </select>
+              </div>
+              <br>
+              <div class="modal-footer">
+                <button type="submit" class="btn btn-dark" style="margin-right:40%">Salvar</button>
+              </div>
+            </form>
+            <form method="post" action="/editarSenha.php">
 
-            <div class="form-group">
-              <input type="hidden" class="form-control" name="id" value="<?php echo $id ?>">
-            </div>
+              <div class="form-group">
+                <input type="hidden" class="form-control" name="id" value="<?php echo $id ?>">
+              </div>
 
 
-            <div class="form-group">
-              <label style="color: black">Senha</label>
-              <input type="password" class="form-control" name="password" placeholder="Nova Senha.." required>
-            </div>
-            <br>
-            <div class="modal-footer">
-              <button type="submit" class="btn btn-dark" style="margin-right:40%">Salvar</button>
-            </div>
-          </form>
+              <div class="form-group">
+                <label style="color: black">Senha</label>
+                <input type="password" class="form-control" name="password" placeholder="Nova Senha.." required>
+              </div>
+              <br>
+              <div class="modal-footer">
+                <button type="submit" class="btn btn-dark" style="margin-right:40%">Salvar</button>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
     </div>
-  </div>
     <footer>
       <div class="footer-content">
         <a class="" href="home.php">

@@ -42,6 +42,29 @@ if (!mysqli_set_charset($conecta, "utf8mb4")) {
     printf("Error loading character set utf8mb4: %s\n", mysqli_error($conecta));
     exit();
 } else {
+  $msg = false;
+  $extensao = '';
+  $novaExt = '.png';
+
+  if(isset($_FILES['documentacaoFotografica'])) {
+      
+    $extensao = strtolower(substr($_FILES['documentacaoFotografica']['name'], -4));
+    $documentacaoFotografica = md5(time()).$novaExt;
+    $diretorio = '../imgFotografica/img1/';
+
+    move_uploaded_file($_FILES['documentacaoFotografica']['tmp_name'], $diretorio.$documentacaoFotografica);
+    
+  }
+
+  if(isset($_FILES['documentacaoGrafica'])) {
+
+    $extensao = strtolower(substr($_FILES['documentacaoGrafica']['name'], -4));
+    $documentacaoGrafica = md5(time()). $novaExt;
+    $diretorio = '../imgGrafica/img1/';
+
+    move_uploaded_file($_FILES['documentacaoGrafica']['tmp_name'], $diretorio.$documentacaoGrafica);
+  }
+
 $responsavelPreenchimento = $_POST["responsavelPreenchimento"] ? $responsavelPreenchimento = $_POST["responsavelPreenchimento"] : '';
 $grupoTipoEquipe = $_POST["grupoTipoEquipe"] ? $grupoTipoEquipe = $_POST["grupoTipoEquipe"] : '';
 $itemResolucao = $_POST["itemResolucao"] ? $itemResolucao = $_POST["itemResolucao"] : 0;
@@ -82,8 +105,7 @@ $dadosAmbiencia = $_POST["dadosAmbiencia"] ? $dadosAmbiencia = $_POST["dadosAmbi
 $fontesBibliograficas = $_POST["fontesBibliograficas"] ? $fontesBibliograficas = $_POST["fontesBibliograficas"] : '';
 $outrasInformacoes = $_POST["outrasInformacoes"] ? $outrasInformacoes = $_POST["outrasInformacoes"] : '';
 $observacoes = $_POST["observacoes"] ?  $observacoes = $_POST["observacoes"] : '';
-$documentacaoGrafica = $_POST["documentacaoGrafica"] ? $documentacaoGrafica = $_POST["documentacaoGrafica"] : '';
-$documentacaoFotografica = $_POST["documentacaoFotografica"] ? $documentacaoFotografica = $_POST["documentacaoFotografica"] : $documentacaoFotografica = '';
+
 
 // echo $responsavelPreenchimento. '<br>';
 // echo $grupoTipoEquipe. '<br>';
@@ -137,7 +159,7 @@ $sql .=  "('$responsavelPreenchimento','$grupoTipoEquipe', $itemResolucao, '$den
 '$resolucaoTombamento', '$resolucaoCondephaat', '$resolucaoIphan', '$tipo','$titulo','$logradouro','$numeroEndereco', '$distrito', '$prefeituraRegional','$setor','$quadra','$lote',
 '$autorOriginal','$construtor','$dataConstrucao', '$estiloArquitetonico','$tecnicaConstrutiva', $numeroPavimentos,'$areaLote', '$areaConstruida','$grauTombamento',
 '$grauAlteracao', '$comentarioGrauAlteracao', '$grauEstadoConservacao', '$comentarioEstadoConservacao', '$observacoesPavimentos', '$dadosHistoricos','$dadosArquitetonicos',
-'$dadosAmbiencia', '$fontesBibliograficas', '$outrasInformacoes', '$observacoes', '$documentacaoFotografica', '$documentacaoGrafica')";
+'$dadosAmbiencia', '$fontesBibliograficas', '$outrasInformacoes', '$observacoes', '$documentacaoFotografica','$documentacaoGrafica')";
 
 if ($conecta->query($sql) === TRUE) {
     echo "<p style='text-align: center; margin-top: 50px;'>Registro cadastrado com sucesso! Aguarde um instante...</p>";
@@ -145,7 +167,7 @@ if ($conecta->query($sql) === TRUE) {
   } else {
     echo "Error: " . $sql . "<br>" . $conecta->error;
     echo "<p style='text-align: center; margin-top: 50px;'>Erro ao efetuar registro! Aguarde um instante...</p>";
-    // echo "<script>imovelfailed()</script>";
+    echo "<script>imovelfailed()</script>";
   }
   mysqli_close($conecta);
 }

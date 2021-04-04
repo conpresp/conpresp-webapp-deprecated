@@ -122,7 +122,7 @@ $password = $_SESSION['password'];
             <div class="card-body">
               <div class="row color-text">
                 <div class="col-md-12 order-md-1">
-                  <form class="needs-validation" method="POST" action="database/validaHome.php">
+                  <form class="needs-validation" method="POST" action="database/validaHome.php" enctype="multipart/form-data">
                     <div class="row justify-content-center">
                       <a href="home.php" name="btn-cancel" class="btn btn-primary btn-lg m-2 col-md-3"><i class="fa fa-times" aria-hidden="true"></i>
                         Cancelar</a>
@@ -1067,26 +1067,28 @@ $password = $_SESSION['password'];
                     </div>
 
                     <div class="mb-3 p-2 subtitulos">
-                      <h4>6. Levantamento Fotográficoo</h4>
-                    </div>
+                        <h4>6. Documentação Gráfica</h4>
+                      </div>
 
-                    <div class="mb-3">
-                      <label>Documentação Gráfica:</label>
-                      <h6>
-                        Imagens em formato JPG com um máximo de 2 mb por
-                        imagem
-                      </h6>
-                      <input type="file" class="form-control-file" name="documentacaoGrafica" id="documentacaoGrafica"/>
-                    </div>
+                      <div class="mb-3">
+                        <label>Documentação Gráfica:</label>
+                        <h6>
+                        Selecione uma imagem para a documentação fotográfica!
+                        </h6>
+                        <input type="file" class="form-control-file" name="documentacaoGrafica" id="documentacaoGrafica" required/>
+                      </div>
 
-                    <div class="mb-3">
-                      <label>Documentação Fotográfica:</label>
-                      <h6>
-                        Imagens em formato JPG com um máximo de 2 mb por
-                        imagem
-                      </h6>
-                      <input type="file" class="form-control-file" name="documentacaoFotografica" id="documentacaoFotografica"/>
-                    </div>
+                      <div class="mb-3 p-2 subtitulos">
+                        <h4>7. Documentação Fotográfica </h4>
+                      </div>
+
+                      <div class="mb-3">
+                        <label>Documentação Fotográfica:</label>
+                        <h6>
+                        Selecione uma imagem para a documentação fotográfica!
+                        </h6>
+                        <input type="file" class="form-control-file" name="documentacaoFotografica" id="documentacaoFotografica" required/>
+                      </div>
 
                     <hr class="mb-4" />
 
