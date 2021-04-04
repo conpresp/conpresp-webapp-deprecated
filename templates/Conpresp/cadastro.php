@@ -162,73 +162,73 @@ $password = $_SESSION['password'];
       </div>
     </div>
    <!-- Usuario Modal -->
-   <div class="modal fade" id="usuario-modal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" style="color:black">Editar sua conta</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form method="post" action="/editarUser.php">
-
-                        <div class="form-group">
-                            <input type="hidden" class="form-control" name="id" value="<?php echo $id ?>">
-                        </div>
-
-                        <div class="form-group">
-                            <label style="color: black">Perfil</label>
-                            <select class="custom-select" name="perfil" required>
-                                <option value="Comum" <?php echo $perfil == 'Comum' ? 'selected' : '' ?>>Comum </option>
-                                <option value="Moderador" <?php echo $perfil == 'Moderador' ? 'selected' : '' ?>>Moderador </option>
-                                <option value="Administrador" <?php echo $perfil == 'Administrador' ? 'selected' : '' ?>>Administrador</option>
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label style="color: black">Nome</label>
-                            <input type="text" class="form-control" name="username" value="<?php echo $username ?>" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label style="color: black">Email</label>
-                            <input type="email" class="form-control" name="email" value="<?php echo $email ?>" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label style="color: black">Status</label>
-                            <select class="custom-select" name="status" required>
-                                <option value="Ativo" <?php echo $status == 'Ativo' ? 'selected' : '' ?>>Ativo </option>
-                                <option value="Inativo" <?php echo $status == 'Inativo' ? 'selected' : '' ?>>Inativo</option>
-                            </select>
-                        </div>
-                        <br>
-                        <div class="modal-footer">
-                            <button type="submit" class="btn btn-dark" style="margin-right:40%">Salvar</button>
-                        </div>
-                    </form>
-                    <form method="post" action="/editarSenha.php">
-
-                        <div class="form-group">
-                            <input type="hidden" class="form-control" name="id" value="<?php echo $id ?>">
-                        </div>
-
-
-                        <div class="form-group">
-                            <label style="color: black">Senha</label>
-                            <input type="password" class="form-control" name="password" placeholder="Nova Senha.." required>
-                        </div>
-                        <br>
-                        <div class="modal-footer">
-                            <button type="submit" class="btn btn-dark" style="margin-right:40%">Salvar</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
+  <div class="modal fade" id="usuario-modal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" style="color:black">Editar sua conta</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
+        <div class="modal-body">
+          <form method="post" action="/editarUser.php">
+
+            <div class="form-group">
+              <input type="hidden" class="form-control" name="id" value="<?php echo $id ?>">
+            </div>
+
+            <div class="form-group">
+              <label style="color: black">Perfil</label>
+              <select class="custom-select" name="perfil" required>
+                <option value="Comum" <?php echo $perfil == 'Comum' ? 'selected' : '' ?>>Comum </option>
+                <option value="Moderador" <?php echo $perfil == 'Moderador' ? 'selected' : '' ?>>Moderador </option>
+                <option value="Administrador" <?php echo $perfil == 'Administrador' ? 'selected' : '' ?>>Administrador</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label style="color: black">Nome</label>
+              <input type="text" class="form-control" name="username" value="<?php echo $username ?>" required>
+            </div>
+
+            <div class="form-group">
+              <label style="color: black">Email</label>
+              <input type="email" class="form-control" name="email" value="<?php echo $email ?>" required >
+            </div>
+
+            <div class="form-group">
+              <label style="color: black">Status</label>
+              <select class="custom-select" name="status" required>
+                <option value="Ativo" <?php echo $status == 'Ativo' ? 'selected' : '' ?>>Ativo </option>
+                <option value="Inativo" <?php echo $status == 'Inativo' ? 'selected' : '' ?>>Inativo</option>
+              </select>
+            </div>
+            <br>
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-dark" style="margin-right:40%">Salvar</button>
+            </div>
+          </form>
+          <form method="post" action="/editarSenha.php">
+
+            <div class="form-group">
+              <input type="hidden" class="form-control" name="id" value="<?php echo $id ?>">
+            </div>
+
+
+            <div class="form-group">
+              <label style="color: black">Senha</label>
+              <input type="password" class="form-control" name="password" placeholder="Nova Senha.." required>
+            </div>
+            <br>
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-dark" style="margin-right:40%">Salvar</button>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
+  </div>
 
     <footer>
         <div class="footer-content">

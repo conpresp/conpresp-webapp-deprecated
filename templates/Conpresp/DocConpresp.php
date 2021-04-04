@@ -188,6 +188,9 @@ $password = $_SESSION['password'];
                           <option value="" selected >
                             Selecionar classificação...
                           </option>
+                          <option value="Cemitérios, Mausoléus e Túmulos">
+                           Cemitérios, Mausoléus e Túmulos
+                          </option>
                           <option value="Cinemas, Conservatórios e Teatros">
                             Cinemas, Conservatórios e Teatros
                           </option>
@@ -261,6 +264,9 @@ $password = $_SESSION['password'];
                           </option>
                           <option value="Pública Federal">
                             Pública Federal
+                          </option>
+                          <option value="Privada">
+                            Privada
                           </option>
                           <option value="Instituição Religiosa">
                             Instituição Religiosa
@@ -1085,7 +1091,7 @@ $password = $_SESSION['password'];
                     <hr class="mb-4" />
 
                     <div class="row justify-content-center">
-                      <a href="home.html" name="btn-cancel" class="btn btn-primary btn-lg m-2 col-md-3"><i class="fa fa-times" aria-hidden="true"></i>
+                      <a href="home.php" name="btn-cancel" class="btn btn-primary btn-lg m-2 col-md-3"><i class="fa fa-times" aria-hidden="true"></i>
                         Cancelar</a>
                       <button class="btn btn-info btn-lg m-2 col-md-3" name="btn-guardar" type="submit">
                         <i class="fa fa-floppy-o" aria-hidden="true"></i>
@@ -1102,8 +1108,8 @@ $password = $_SESSION['password'];
     </div>
   </div>
 
-  <!-- Usuario Modal -->
-  <div class="modal fade" id="usuario-modal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<!-- Usuario Modal -->
+<div class="modal fade" id="usuario-modal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -1121,7 +1127,7 @@ $password = $_SESSION['password'];
 
             <div class="form-group">
               <label style="color: black">Perfil</label>
-              <select class="custom-select" name="perfil" >
+              <select class="custom-select" name="perfil" required>
                 <option value="Comum" <?php echo $perfil == 'Comum' ? 'selected' : '' ?>>Comum </option>
                 <option value="Moderador" <?php echo $perfil == 'Moderador' ? 'selected' : '' ?>>Moderador </option>
                 <option value="Administrador" <?php echo $perfil == 'Administrador' ? 'selected' : '' ?>>Administrador</option>
@@ -1130,17 +1136,17 @@ $password = $_SESSION['password'];
 
             <div class="form-group">
               <label style="color: black">Nome</label>
-              <input type="text" class="form-control" name="username" value="<?php echo $username ?>" >
+              <input type="text" class="form-control" name="username" value="<?php echo $username ?>" required>
             </div>
 
             <div class="form-group">
               <label style="color: black">Email</label>
-              <input type="email" class="form-control" name="email" value="<?php echo $email ?>" >
+              <input type="email" class="form-control" name="email" value="<?php echo $email ?>" required >
             </div>
 
             <div class="form-group">
               <label style="color: black">Status</label>
-              <select class="custom-select" name="status" >
+              <select class="custom-select" name="status" required>
                 <option value="Ativo" <?php echo $status == 'Ativo' ? 'selected' : '' ?>>Ativo </option>
                 <option value="Inativo" <?php echo $status == 'Inativo' ? 'selected' : '' ?>>Inativo</option>
               </select>
@@ -1159,7 +1165,7 @@ $password = $_SESSION['password'];
 
             <div class="form-group">
               <label style="color: black">Senha</label>
-              <input type="password" class="form-control" name="password" placeholder="Nova Senha.." >
+              <input type="password" class="form-control" name="password" placeholder="Nova Senha.." required>
             </div>
             <br>
             <div class="modal-footer">
