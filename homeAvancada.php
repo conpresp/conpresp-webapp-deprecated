@@ -19,18 +19,192 @@ $email = $_SESSION['email'];
 $status = $_SESSION['status'];
 $password = $_SESSION['password'];
 
-//verificar se está sendo passado na URL a pagina atual, se não atribui a pagina como 1
-$pagina = (isset($_GET['pagina'])) ? $_GET['pagina'] : 1;
-
 //Seleciona todos os registro da tabela
 if (!mysqli_set_charset($conn, "utf8mb4")) {
     printf("Error loading character set utf8mb4: %s\n", mysqli_error($conn));
     exit();
 } else {
-    $sql = "select * from imovel";
 
 
-    $result = mysqli_query($conn, $sql);
+    if (isset($_GET['respPreenchimento'])) {
+        $resPreenchimento = $_GET['respPreenchimento'];
+    } else {
+        $resPreenchimento = '';
+    }
+
+    if (isset($_GET['responsavelPreenchimento'])) {
+        $responsavelPreenchimento = $_GET['responsavelPreenchimento'];
+    } else {
+        $responsavelPreenchimento = '';
+    }
+
+
+    if (isset($_GET['resolucaoConpresp'])) {
+        $resolucaoConpresp = $_GET['resolucaoConpresp'];
+    } else {
+        $resolucaoConpresp = '';
+    }
+
+    if (isset($_GET['resolucaoTombamento'])) {
+        $resolucaoTombamento = $_GET['resolucaoTombamento'];
+    } else {
+        $resolucaoTombamento = '';
+    }
+
+
+    if (isset($_GET['resDenominacao'])) {
+        $resDenominacao = $_GET['resDenominacao'];
+    } else {
+        $resDenominacao = '';
+    }
+
+    if (isset($_GET['denominacao'])) {
+        $denominacao = $_GET['denominacao'];
+    } else {
+        $denominacao = '';
+    }
+
+    if (isset($_GET['resTerreo'])) {
+        $resTerreo = $_GET['resTerreo'];
+    } else {
+        $resTerreo = '';
+    }
+
+    if (isset($_GET['terreo'])) {
+        $terreo = $_GET['terreo'];
+    } else {
+        $terreo = '';
+    }
+
+
+    if (isset($_GET['resTipo'])) {
+        $resTipo = $_GET['resTipo'];
+    } else {
+        $resTipo = '';
+    }
+
+    if (isset($_GET['tipo'])) {
+        $tipo = $_GET['tipo'];
+    } else {
+        $tipo = '';
+    }
+
+
+    if (isset($_GET['resTitulo'])) {
+        $resTitulo = $_GET['resTitulo'];
+    } else {
+        $resTitulo = '';
+    }
+
+    if (isset($_GET['titulo'])) {
+        $titulo = $_GET['titulo'];
+    } else {
+        $titulo = '';
+    }
+
+
+    if (isset($_GET['resLogradouro'])) {
+        $resLogradouro = $_GET['resLogradouro'];
+    } else {
+        $resLogradouro = '';
+    }
+
+    if (isset($_GET['logradouro'])) {
+        $logradouro = $_GET['logradouro'];
+    } else {
+        $logradouro = '';
+    }
+
+
+    if (isset($_GET['resNumeroEndereco'])) {
+        $resNumeroEndereco = $_GET['resNumeroEndereco'];
+    } else {
+        $resNumeroEndereco = '';
+    }
+
+    if (isset($_GET['numeroEndereco'])) {
+        $numeroEndereco = $_GET['numeroEndereco'];
+    } else {
+        $numeroEndereco = '';
+    }
+
+
+    if (isset($_GET['resDistrito'])) {
+        $resDistrito = $_GET['resDistrito'];
+    } else {
+        $resDistrito = '';
+    }
+
+    if (isset($_GET['distrito'])) {
+        $distrito = $_GET['distrito'];
+    } else {
+        $distrito = '';
+    }
+
+
+    if (isset($_GET['resPrefeituraRegional'])) {
+        $resPrefeituraRegional = $_GET['resPrefeituraRegional'];
+    } else {
+        $resPrefeituraRegional = '';
+    }
+
+    if (isset($_GET['prefeituraRegional'])) {
+        $prefeituraRegional = $_GET['prefeituraRegional'];
+    } else {
+        $prefeituraRegional = '';
+    }
+
+
+    if (isset($_GET['resAutorOriginal'])) {
+        $resAutorOriginal = $_GET['resAutorOriginal'];
+    } else {
+        $resAutorOriginal = '';
+    }
+
+    if (isset($_GET['autorOriginal'])) {
+        $autorOriginal = $_GET['autorOriginal'];
+    } else {
+        $autorOriginal = '';
+    }
+
+
+    if (isset($_GET['resDataConstrucao'])) {
+        $resDataConstrucao = $_GET['resDataConstrucao'];
+    } else {
+        $resDataConstrucao = '';
+    }
+
+    if (isset($_GET['dataConstrucao'])) {
+        $dataConstrucao = $_GET['dataConstrucao'];
+    } else {
+        $dataConstrucao = '';
+    }
+
+
+    if (isset($_GET['resEstiloArquitetonico'])) {
+        $resEstiloArquitetonico = $_GET['resEstiloArquitetonico'];
+    } else {
+        $resEstiloArquitetonico = '';
+    }
+
+    if (isset($_GET['estiloArquitetonico'])) {
+        $estiloArquitetonico = $_GET['estiloArquitetonico'];
+    } else {
+        $estiloArquitetonico = '';
+    }
+
+    if (!$responsavelPreenchimento && !$resolucaoTombamento && !$denominacao && !$terreo && !$tipo && !$titulo && !$logradouro && !$numeroEndereco && !$distrito && !$prefeituraRegional && !$autorOriginal && !$dataConstrucao && !$estiloArquitetonico) {
+        header('Location: home.php');
+    }
+    //verificar se está sendo passado na URL a pagina atual, se não atribui a pagina como 1
+    $pagina = (isset($_GET['pagina'])) ? $_GET['pagina'] : 1;
+
+    $sqlAvancado = "SELECT * from imovel where responsavelPreenchimento like '%$responsavelPreenchimento%' and resolucaoTombamento like '%$resolucaoTombamento%' 
+and denominacao like '%$denominacao%' and terreo like '%$terreo%' and tipo like '%$tipo%' and titulo like '%$titulo%' and logradouro like '%$logradouro%'
+and numeroEndereco like '%$numeroEndereco%' and distrito like '%$distrito%' and prefeituraRegional like '%$prefeituraRegional%' and 
+autorOriginal like '%$autorOriginal%' and dataConstrucao like '%$dataConstrucao%' and estiloArquitetonico like '%$estiloArquitetonico%'";
+
+    $result = mysqli_query($conn, $sqlAvancado);
 
     //Contar todos os registros do banco
     $total_registros = mysqli_num_rows($result);
@@ -41,11 +215,20 @@ if (!mysqli_set_charset($conn, "utf8mb4")) {
 
     $inicio = ($quantidade_pg * $pagina) - $quantidade_pg;
 
-    $result_registro = "SELECT * FROM imovel limit $inicio, $quantidade_pg";
+    $sqlAvancado2 = "SELECT * from imovel where responsavelPreenchimento like '%$responsavelPreenchimento%' and resolucaoTombamento like '%$resolucaoTombamento%' 
+and denominacao like '%$denominacao%' and terreo like '%$terreo%' and tipo like '%$tipo%' and titulo like '%$titulo%' and logradouro like '%$logradouro%'
+and numeroEndereco like '%$numeroEndereco%' and distrito like '%$distrito%' and prefeituraRegional like '%$prefeituraRegional%' and 
+autorOriginal like '%$autorOriginal%' and dataConstrucao like '%$dataConstrucao%' and estiloArquitetonico like '%$estiloArquitetonico%'  limit $inicio, $quantidade_pg";
 
-    $resultado_registro = mysqli_query($conn, $result_registro);
+    $resultado_registro = mysqli_query($conn, $sqlAvancado2);
 
     $total_registros = mysqli_num_rows($resultado_registro);
+
+        $msg = '';
+    if($total_registros == 0) {
+        $msg = 'Nenhum resultado encontrado!';
+        $_SESSION['semResultado'] = $msg;
+    }
 
     $sql1 = " SELECT DISTINCT responsavelPreenchimento  FROM imovel where responsavelPreenchimento != '' order by responsavelPreenchimento ASC";
     $result1 = mysqli_query($conn, $sql1);
@@ -85,8 +268,8 @@ if (!mysqli_set_charset($conn, "utf8mb4")) {
 
     $sql13 = " SELECT DISTINCT estiloArquitetonico  FROM imovel where estiloArquitetonico != '' order by estiloArquitetonico ASC";
     $result13 = mysqli_query($conn, $sql13);
-
 ?>
+
     <!DOCTYPE html>
     <html lang="en">
 
@@ -251,18 +434,18 @@ if (!mysqli_set_charset($conn, "utf8mb4")) {
                                 </h6>
                             </div>
                             <div class="card-body">
-                                <div class="col d-flex justify-content-center">
-                                    <div class="card" style="height: 150px; width: 30%">
-                                        <div class="card-header">
-                                            <p style="color: black;">Filtro</p>
-                                        </div>
-                                        <div class="col d-flex justify-content-center">
-                                            <button type="button" class="btn btn-primary" style="margin-top: 20px; width: 200px; height: 50%" data-toggle="modal" data-target="#pesquisa-modal">Pesquisar</button>
-                                        </div>
+                            <div class="col d-flex justify-content-center">
+                                <div class="card" style="height: 150px; width: 30%" >
+                                    <div class="card-header">
+                                        <p style="color: black;">Filtro</p>
+                                    </div>
+                                    <div class="col d-flex justify-content-center">
+                                    <button type="button" class="btn btn-primary" style="margin-top: 20px; width: 200px; height: 50%" data-toggle="modal" data-target="#pesquisa-modal">Pesquisar</button>
                                     </div>
                                 </div>
-
+                                </div>
                                 <div class="table-responsive" style="margin-top:50px">
+                                <p style="color: black;text-align: center"><?php echo $msg?></p>
                                     <table class="table table-hover" id="tablaHome">
                                         <thead class="thead-dark">
                                             <tr>
@@ -277,6 +460,7 @@ if (!mysqli_set_charset($conn, "utf8mb4")) {
                                             </tr>
                                         </thead>
                                         <tbody id="tbodyList" class="text-body">
+                                        
                                             <?php
                                             while ($dados = mysqli_fetch_assoc($resultado_registro)) {
                                             ?>
@@ -310,7 +494,7 @@ if (!mysqli_set_charset($conn, "utf8mb4")) {
                                     <nav aria-label="...">
                                         <ul class="pagination p-4 pagination-sm d-flex justify-content-center flex-wrap">
                                             <li class="page-item ">
-                                                <a class="page-link" href="home.php?pagina=<?php echo 1 ?>">Primeira</a>
+                                                <a class="page-link" href="homeAvancada.php?pagina=<?php echo 1 ?>&respPreenchimento=<?php echo $resPreenchimento ?>&responsavelPreenchimento=<?php echo $responsavelPreenchimento ?>&resolucaoConpresp=<?php echo $resolucaoConpresp ?>&resolucaoTombamento=<?php echo $resolucaoTombamento ?>&resDenominacao=<?php echo $resDenominacao ?>&denominacao=<?php echo $denominacao ?>&resTerreo=<?php echo $resTerreo ?>&terreo=<?php echo $terreo ?>&resTipo=<?php echo $resTipo ?>&tipo=<?php echo $tipo ?>&resTitulo=<?php echo $resTitulo ?>&titulo=<?php echo $titulo ?>&resLogradouro=<?php echo $resLogradouro ?>&logradouro=<?php echo $logradouro ?>&resNumeroEndereco=<?php echo $resNumeroEndereco ?>&numeroEndereco=<?php echo $numeroEndereco ?>&resDistrito=<?php echo $resDistrito ?>&distrito=<?php echo $distrito ?>&resPrefeituraRegional=<?php echo $resPrefeituraRegional ?>&prefeituraRegional=<?php echo $prefeituraRegional ?>&resAutorOriginal=<?php echo $resAutorOriginal ?>&autorOriginal=<?php echo $autorOriginal ?>&resDataConstrucao=<?php echo $resDataConstrucao ?>&dataConstrucao=<?php echo $dataConstrucao ?>&resEstiloArquitetonico=<?php echo $resEstiloArquitetonico ?>&estiloArquitetonico=<?php echo $estiloArquitetonico ?>">Primeira</a>
                                             </li>
                                             <?php
                                             for ($i = 1; $i < $num_paginas + 1; $i++) {
@@ -318,10 +502,10 @@ if (!mysqli_set_charset($conn, "utf8mb4")) {
                                                 if ($pagina == $i)
                                                     $estilo = "class='page-item active'";
                                             ?>
-                                                <li <?php echo $estilo ?>><a class="page-link " href="home.php?pagina=<?php echo $i ?>"><?php echo $i ?></a></li>
+                                                <li <?php echo $estilo ?>><a class="page-link" href="homeAvancada.php?pagina=<?php echo $i ?>&respPreenchimento=<?php echo $resPreenchimento ?>&responsavelPreenchimento=<?php echo $responsavelPreenchimento ?>&resolucaoConpresp=<?php echo $resolucaoConpresp ?>&resolucaoTombamento=<?php echo $resolucaoTombamento ?>&resDenominacao=<?php echo $resDenominacao ?>&denominacao=<?php echo $denominacao ?>&resTerreo=<?php echo $resTerreo ?>&terreo=<?php echo $terreo ?>&resTipo=<?php echo $resTipo ?>&tipo=<?php echo $tipo ?>&resTitulo=<?php echo $resTitulo ?>&titulo=<?php echo $titulo ?>&resLogradouro=<?php echo $resLogradouro ?>&logradouro=<?php echo $logradouro ?>&resNumeroEndereco=<?php echo $resNumeroEndereco ?>&numeroEndereco=<?php echo $numeroEndereco ?>&resDistrito=<?php echo $resDistrito ?>&distrito=<?php echo $distrito ?>&resPrefeituraRegional=<?php echo $resPrefeituraRegional ?>&prefeituraRegional=<?php echo $prefeituraRegional ?>&resAutorOriginal=<?php echo $resAutorOriginal ?>&autorOriginal=<?php echo $autorOriginal ?>&resDataConstrucao=<?php echo $resDataConstrucao ?>&dataConstrucao=<?php echo $dataConstrucao ?>&resEstiloArquitetonico=<?php echo $resEstiloArquitetonico ?>&estiloArquitetonico=<?php echo $estiloArquitetonico ?>"><?php echo $i ?></a></li>
                                             <?php    } ?>
                                             <li class="page-item">
-                                                <a class="page-link" href="home.php?pagina=<?php echo $num_paginas ?>">Última</a>
+                                                <a class="page-link" href="homeAvancada.php?pagina=<?php echo $num_paginas ?>&respPreenchimento=<?php echo $resPreenchimento ?>&responsavelPreenchimento=<?php echo $responsavelPreenchimento ?>&resolucaoConpresp=<?php echo $resolucaoConpresp ?>&resolucaoTombamento=<?php echo $resolucaoTombamento ?>&resDenominacao=<?php echo $resDenominacao ?>&denominacao=<?php echo $denominacao ?>&resTerreo=<?php echo $resTerreo ?>&terreo=<?php echo $terreo ?>&resTipo=<?php echo $resTipo ?>&tipo=<?php echo $tipo ?>&resTitulo=<?php echo $resTitulo ?>&titulo=<?php echo $titulo ?>&resLogradouro=<?php echo $resLogradouro ?>&logradouro=<?php echo $logradouro ?>&resNumeroEndereco=<?php echo $resNumeroEndereco ?>&numeroEndereco=<?php echo $numeroEndereco ?>&resDistrito=<?php echo $resDistrito ?>&distrito=<?php echo $distrito ?>&resPrefeituraRegional=<?php echo $resPrefeituraRegional ?>&prefeituraRegional=<?php echo $prefeituraRegional ?>&resAutorOriginal=<?php echo $resAutorOriginal ?>&autorOriginal=<?php echo $autorOriginal ?>&resDataConstrucao=<?php echo $resDataConstrucao ?>&dataConstrucao=<?php echo $dataConstrucao ?>&resEstiloArquitetonico=<?php echo $resEstiloArquitetonico ?>&estiloArquitetonico=<?php echo $estiloArquitetonico ?>">Última</a>
                                             </li>
                                         </ul>
                                     </nav>
@@ -692,7 +876,6 @@ if (!mysqli_set_charset($conn, "utf8mb4")) {
                 </div>
             </div>
         </div>
-
 
         <footer>
             <div class="footer-content">

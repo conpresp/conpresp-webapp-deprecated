@@ -55,7 +55,7 @@ if (!mysqli_set_charset($conn, "utf8mb4")) {
     //Seleciona todos os registro da tabela
 
 
-    $result = $conn->query($sql);
+    $result = mysqli_query($conn, $sql);
 
     //Contar todos os registros do banco
     $total_registros = mysqli_num_rows($result);
@@ -85,6 +85,11 @@ if (!mysqli_set_charset($conn, "utf8mb4")) {
     $resultado_registro = mysqli_query($conn, $result_registro);
 
     $total_registros = mysqli_num_rows($resultado_registro);
+
+    $msg = '';
+    if($total_registros == 0) {
+        $msg = 'Nenhum resultado encontrado!';
+    }
 
 ?>
     <!DOCTYPE html>
@@ -207,7 +212,8 @@ if (!mysqli_set_charset($conn, "utf8mb4")) {
                 <a href="usuarios.php"><button type="button" class="btn btn-primary mb-2" style="margin-left: 10px;">Resetar</button></a>
             </form>
             <div class="table-responsive-sm">
-                <table class="table" style="margin-top: 50px">
+            <p style="color: black;text-align: center" ><?php echo $msg?></p>
+                <table class="table" style="margin-top: 30px">
                     <thead class="thead-dark">
                         <tr>
                             <th scope="col">#</th>

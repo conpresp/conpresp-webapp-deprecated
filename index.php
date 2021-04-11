@@ -1,7 +1,7 @@
 <?php
 
 
-if(!isset($_GET['modulo'])){ echo '<pre>' . file_get_contents('texto.txt') . '</pre>' ; die();  }
+if(!isset($_GET['modulo'])){ echo '<pre>' . header('Location: index.php?modulo=Conpresp&acao=login') . '</pre>' ; die();  }
 
 require 'controller.php';
 require 'templates/view.php';

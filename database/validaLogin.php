@@ -67,14 +67,8 @@ if($mysqli-> connect_errno)
 
     echo "<p style='text-align: center; margin-top: 50px;'>Você foi autenticado com sucesso! Aguarde um instante...</p>";
     echo "<script>loginsuccess()</script>";
-  } else {
-    echo "<p style='text-align: center; margin-top: 50px;'>Você não foi autenticado com sucesso! Aguarde um instante...</p>";
-    echo "<script>loginfailed()</script>";
-  }
-  mysqli_close($conecta);
-}
-  ?> 
-  <div class="d-flex justify-content-center" style="margin-top: 100px;">
+?>
+<div class="d-flex justify-content-center" style="margin-top: 100px;">
     <div class="spinner-border text-primary" style="width: 6rem; height: 6rem;"  role="status" >
       <span class="sr-only">Loading...</span>
     </div>
@@ -82,3 +76,16 @@ if($mysqli-> connect_errno)
  
 </font>
 </meta>
+
+<?php
+  } else {
+
+    $_SESSION['erroLogin'] = 'Usuário ou senha inválidos!';
+    header('Location: ../index.php?modulo=Conpresp&acao=login');
+    // echo "<p style='text-align: center; margin-top: 50px;'>Você não foi autenticado com sucesso! Aguarde um instante...</p>";
+    // echo "<script>loginfailed()</script>";
+  }
+  mysqli_close($conecta);
+}
+  ?> 
+  

@@ -55,8 +55,10 @@ $row=mysqli_num_rows($result);
 if($row>0){
     while($consulta = mysqli_fetch_array($result)){
   }
-  echo "<p style='text-align: center; margin-top: 50px;'>E-mail já em uso! Aguarde um instante...</p>";
-  echo "<script>cadastrofailed()</script>";}
+  $msg = 'E-mail já em uso!';
+  $_SESSION['erroEmail'] = $msg; 
+  header('Location: ../index.php?modulo=Conpresp&acao=Cadastro');
+}
   else {
     $sql2 ="INSERT into users(perfil,username,email,status,password) values";
     $sql2 .=  "('$perfil','$username','$email','$status', '$password')";
@@ -66,11 +68,9 @@ if($row>0){
         echo "Error: " . $sql2 . "<br>" . $conecta->error;
       }
     echo "<p style='text-align: center; margin-top: 50px;'>Usuário cadastrado com sucesso! Aguarde um instante...</p>";
-    echo "<script>cadastrosuccess()</script>";}
-    mysqli_close($conecta);
-    }
-?>
-<div class="d-flex justify-content-center" style="margin-top: 100px;">
+    echo "<script>cadastrosuccess()</script>";
+  ?>
+  <div class="d-flex justify-content-center" style="margin-top: 100px;">
     <div class="spinner-border text-primary" style="width: 6rem; height: 6rem;"  role="status" >
       <span class="sr-only">Loading...</span>
     </div>
@@ -78,3 +78,11 @@ if($row>0){
 
   </font>
   </meta>
+
+  <?php
+  
+  }
+    mysqli_close($conecta);
+    }
+
+?>

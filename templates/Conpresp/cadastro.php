@@ -7,6 +7,13 @@ $email = $_SESSION['email'];
 $status = $_SESSION['status'];
 $password = $_SESSION['password'];
 
+if(isset($_SESSION['erroEmail'])){
+  $msg = $_SESSION['erroEmail'];
+  unset($_SESSION['erroEmail']);
+} else {
+  $msg = '';
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -115,6 +122,7 @@ $password = $_SESSION['password'];
               </div>
               <div class="card-body">
                     <div class="container col-md-6">
+                    <p style="color: red;"><?php echo $msg ?></p>
                     <form method="post" action="database/validaCadastro.php" >
 
                         <div class="form-group">

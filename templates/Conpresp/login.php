@@ -1,3 +1,14 @@
+<?php 
+session_start();
+
+if(isset($_SESSION['erroLogin'])) {
+  $msg = $_SESSION['erroLogin'];
+  unset($_SESSION['erroLogin']);
+}
+else {
+  $msg = '';
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -47,6 +58,7 @@
             <img src="img/logo_1.png" class="p-2 img-logo" alt="" />
           </div>
           <div class="px-lg-5 py-lg-4 p-4 w-100 mt-auto">
+          <p style="color: red;"><?php echo $msg ?></p>
             <form class="nb-5" id="loginForm" method="POST" action="database/validaLogin.php">
               <div class="form-group mb-4">
                 <label for="exampleInputEmail1" class="font-weight-bold"

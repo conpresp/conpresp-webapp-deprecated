@@ -1079,8 +1079,6 @@ if (!mysqli_set_charset($conn, "utf8mb4")) {
                         <textarea id="observacoes" class="form-control" aria-label="With textarea" name="observacoes"><?php echo $dados['observacoes'] ?></textarea>
                       </div>
                       <div class="row justify-content-center">
-                        <a href="home.php" name="btn-cancel" class="btn btn-primary btn-lg m-2 col-md-3"><i class="fa fa-times" aria-hidden="true"></i>
-                          Cancelar</a>
                         <button class="btn btn-info btn-lg m-2 col-md-3" name="btn-guardar" type="submit">
                           <i class="fa fa-floppy-o" aria-hidden="true"></i>
                           Salvar
@@ -1111,8 +1109,6 @@ if (!mysqli_set_charset($conn, "utf8mb4")) {
                         </div>
                       </div>
                       <div class="row justify-content-center">
-                        <a href="home.php" name="btn-cancel" class="btn btn-primary btn-lg m-2 col-md-3"><i class="fa fa-times" aria-hidden="true"></i>
-                          Cancelar</a>
                         <button class="btn btn-info btn-lg m-2 col-md-3" name="envia1" type="submit" disabled="true" id="envia1">
                           <i class="fa fa-floppy-o" aria-hidden="true"></i>
                           Salvar
@@ -1141,14 +1137,17 @@ if (!mysqli_set_charset($conn, "utf8mb4")) {
                       </div>
 
                       <div class="row justify-content-center">
-                        <a href="home.php" name="btn-cancel" class="btn btn-primary btn-lg m-2 col-md-3"><i class="fa fa-times" aria-hidden="true"></i>
-                          Cancelar</a>
                         <button class="btn btn-info btn-lg m-2 col-md-3" name="envia2" type="submit" id="envia2" disabled="true">
                           <i class="fa fa-floppy-o" aria-hidden="true"></i>
                           Salvar
                         </button>
                       </div>
                     </form>
+
+                    <div class="row justify-content-center">
+                        <a href="home.php" name="btn-cancel" class="btn btn-primary btn-lg m-2 col-md-3"><i class="fa fa-times" aria-hidden="true"></i>
+                          Cancelar</a>
+                    </div>
 
                     <script type="text/javascript">
                       $("#documentacaoFotografica").change(function() {
