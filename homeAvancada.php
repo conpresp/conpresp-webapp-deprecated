@@ -224,8 +224,8 @@ autorOriginal like '%$autorOriginal%' and dataConstrucao like '%$dataConstrucao%
 
     $total_registros = mysqli_num_rows($resultado_registro);
 
-        $msg = '';
-    if($total_registros == 0) {
+    $msg = '';
+    if ($total_registros == 0) {
         $msg = 'Nenhum resultado encontrado!';
         $_SESSION['semResultado'] = $msg;
     }
@@ -434,18 +434,22 @@ autorOriginal like '%$autorOriginal%' and dataConstrucao like '%$dataConstrucao%
                                 </h6>
                             </div>
                             <div class="card-body">
-                            <div class="col d-flex justify-content-center">
-                                <div class="card" style="height: 150px; width: 30%" >
-                                    <div class="card-header">
-                                        <p style="color: black;">Filtro</p>
+                                <div class="col d-flex justify-content-center">
+                                    <div class="card" style="height: 150px; width: 30%">
+                                        <div class="card-header">
+                                            <p style="color: black;">Filtro</p>
+                                        </div>
+                                        <div class="col d-flex justify-content-center">
+                                            <button type="button" class="btn btn-primary" style="margin-top: 20px; width: 200px; height: 50%" data-toggle="modal" data-target="#pesquisa-modal">Pesquisar</button>
+                                        </div>
                                     </div>
-                                    <div class="col d-flex justify-content-center">
-                                    <button type="button" class="btn btn-primary" style="margin-top: 20px; width: 200px; height: 50%" data-toggle="modal" data-target="#pesquisa-modal">Pesquisar</button>
-                                    </div>
-                                </div>
                                 </div>
                                 <div class="table-responsive" style="margin-top:50px">
-                                <p style="color: black;text-align: center"><?php echo $msg?></p>
+                                    <?php if ($msg != '') { ?>
+                                        <div class="alert alert-dark" role="alert">
+                                            <p style="text-align: center;"><?php echo $msg ?></p>
+                                        </div>
+                                    <?php } ?>
                                     <table class="table table-hover" id="tablaHome">
                                         <thead class="thead-dark">
                                             <tr>
@@ -460,7 +464,7 @@ autorOriginal like '%$autorOriginal%' and dataConstrucao like '%$dataConstrucao%
                                             </tr>
                                         </thead>
                                         <tbody id="tbodyList" class="text-body">
-                                        
+
                                             <?php
                                             while ($dados = mysqli_fetch_assoc($resultado_registro)) {
                                             ?>
