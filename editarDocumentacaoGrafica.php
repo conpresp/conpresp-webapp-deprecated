@@ -42,13 +42,23 @@ if (!mysqli_set_charset($conn, "utf8mb4")) {
   $novaExt = '.png';
 
   if(isset($_FILES['documentacaoGrafica'])) {
-
+    if($_FILES['documentacaoGrafica']['size'] <= 2097152 ){
     $extensao = strtolower(substr($_FILES['documentacaoGrafica']['name'], -4));
-    $nome =  $extensao = strtolower(substr($_FILES['documentacaoGrafica']['name'], 0));
-    $documentacaoGrafica = md5(time()). $novaExt;
+    
+    if($extensao == '.PNG' || $extensao == '.png' || $extensao == '.JPG' || $extensao == '.jpg' || $extensao == '.JPEG' || $extensao == '.jpeg') {
+    $documentacaoGrafica = md5(time()).$novaExt;
     $diretorio = 'imgGrafica/img1/';
-
     move_uploaded_file($_FILES['documentacaoGrafica']['tmp_name'], $diretorio.$documentacaoGrafica);
+    } else {
+      $mgsExt = 'Formato de imagem não compatível! O formato deve ser PNG | JPEG | JPG';
+      $_SESSION['formatoImagem'] = $mgsExt;
+      header('Location: '.$_SERVER['HTTP_REFERER']. '');
+    }
+  } else {
+      $mgsSize = 'Tamanho da imagem maior que o permitido. A imagem pode ser até 2MB!';
+      $_SESSION['formatoImagem'] = $mgsSize;
+      header('Location: '.$_SERVER['HTTP_REFERER']. '');
+  }
   }
 
   $id = filter_input(INPUT_POST, 'id', FILTER_SANITIZE_NUMBER_INT);

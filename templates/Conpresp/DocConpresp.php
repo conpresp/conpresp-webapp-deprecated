@@ -8,6 +8,15 @@ $email = $_SESSION['email'];
 $status = $_SESSION['status'];
 $password = $_SESSION['password'];
 
+
+if(isset($_SESSION['formatoImagem2'])) {
+  $msg = $_SESSION['formatoImagem2'];
+  unset($_SESSION['formatoImagem2']);
+}
+else {
+  $msg = '';
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -127,11 +136,11 @@ $password = $_SESSION['password'];
                       <a href="home.php" name="btn-cancel" class="btn btn-primary btn-lg m-2 col-md-3"><i class="fa fa-times" aria-hidden="true"></i>
                         Cancelar</a>
                     </div>
-
-                    <!-- <div class="mb-3">
-                      <label>Código:</label>
-                      <input type="text" class="form-control" id="codigo" name="codigo" disabled />
-                    </div> -->
+                    <?php if ($msg != '') { ?>
+                        <div class="alert alert-danger" role="alert">
+                          <?php echo $msg ?>
+                        </div>
+                      <?php } ?>
                     <div class="mb-3">
                       <label>Responsal pelo Preenchimento:</label>
                       <input type="text" class="form-control" id="nome" name="responsavelPreenchimento"  />

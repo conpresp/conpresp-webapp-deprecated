@@ -28,6 +28,13 @@ if (!mysqli_set_charset($conn, "utf8mb4")) {
   $status = $_SESSION['status'];
   $password = $_SESSION['password'];
 
+  if (isset($_SESSION['formatoImagem'])) {
+    $msg = $_SESSION['formatoImagem'];
+    unset($_SESSION['formatoImagem']);
+  } else {
+    $msg = '';
+  }
+
 ?>
   <!DOCTYPE html>
   <html lang="en">
@@ -149,7 +156,11 @@ if (!mysqli_set_charset($conn, "utf8mb4")) {
                         <a href="home.php" name="btn-cancel" class="btn btn-primary btn-lg m-2 col-md-3"><i class="fa fa-times" aria-hidden="true"></i>
                           Cancelar</a>
                       </div>
-
+                      <?php if ($msg != '') { ?>
+                        <div class="alert alert-danger" role="alert">
+                          <?php echo $msg ?>
+                        </div>
+                      <?php } ?>
                       <div class="form-group">
                         <input type="hidden" class="form-control" name="id" id="id" value="<?php echo $dados['id']; ?>">
                       </div>
@@ -1145,8 +1156,8 @@ if (!mysqli_set_charset($conn, "utf8mb4")) {
                     </form>
 
                     <div class="row justify-content-center">
-                        <a href="home.php" name="btn-cancel" class="btn btn-primary btn-lg m-2 col-md-3"><i class="fa fa-times" aria-hidden="true"></i>
-                          Cancelar</a>
+                      <a href="home.php" name="btn-cancel" class="btn btn-primary btn-lg m-2 col-md-3"><i class="fa fa-times" aria-hidden="true"></i>
+                        Cancelar</a>
                     </div>
 
                     <script type="text/javascript">
@@ -1154,7 +1165,7 @@ if (!mysqli_set_charset($conn, "utf8mb4")) {
                         $("#envia2").attr("disabled", false);
                       });
                     </script>
-                      <script type="text/javascript">
+                    <script type="text/javascript">
                       $("#documentacaoGrafica").change(function() {
                         $("#envia1").attr("disabled", false);
                       });
