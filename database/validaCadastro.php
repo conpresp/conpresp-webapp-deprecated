@@ -57,7 +57,7 @@ if($row>0){
   }
   $msg = 'E-mail já em uso!';
   $_SESSION['erroEmail'] = $msg; 
-  header('Location: ../index.php?modulo=Conpresp&acao=Cadastro');
+  header('Location: ../index.php?modulo=Conpresp&acao=cadastro');
 }
   else {
     $sql2 ="INSERT into users(perfil,username,email,status,password) values";
