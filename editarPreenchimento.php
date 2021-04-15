@@ -151,7 +151,7 @@ if (!mysqli_set_charset($conn, "utf8mb4")) {
               <div class="card-body">
                 <div class="row color-text">
                   <div class="col-md-12 order-md-1">
-                    <form class="needs-validation" method="POST" action="update.php">
+                    <form class="needs-validation" method="POST" action="update.php" enctype="multipart/form-data" >
                       <div class="row justify-content-center">
                         <a href="home.php" name="btn-cancel" class="btn btn-primary btn-lg m-2 col-md-3"><i class="fa fa-times" aria-hidden="true"></i>
                           Cancelar</a>
@@ -1089,77 +1089,94 @@ if (!mysqli_set_charset($conn, "utf8mb4")) {
                         <label>Observações:</label>
                         <textarea id="observacoes" class="form-control" aria-label="With textarea" name="observacoes"><?php echo $dados['observacoes'] ?></textarea>
                       </div>
+      
+                    <div class="mb-3 p-2 subtitulos">
+                        <h4>6. Documentação Gráfica</h4>
+                      </div>
+
+                      <div class="mb-3">
+                        <label>Documentação Gráfica:</label>
+                        <h6>
+                        Selecione uma imagem para a documentação fotográfica!
+                        </h6>
+                        <input type="file" class="form-control-file" name="documentacaoGrafica" id="documentacaoGrafica"/>
+                        <?php if (isset($dados['documentacaoGrafica']) && $dados['documentacaoGrafica'] != null && $dados['documentacaoGrafica'] != ' ') {   ?>
+                            <div><img src="imgGrafica/img1/<?php echo $dados['documentacaoGrafica'] ?>" width="300px" height="300px" style="margin-left: 50%"/></div>
+                         <?php } ?>
+                      </div>
+
+                      <div class="mb-3">
+                        <label>Documentação Gráfica:</label>
+                        <h6>
+                        Selecione uma imagem para a documentação fotográfica!
+                        </h6>
+                        <input type="file" class="form-control-file" name="documentacaoGrafica2" id="documentacaoGrafica2" />
+                        <?php if (isset($dados['documentacaoGrafica2']) && $dados['documentacaoGrafica2'] != null && $dados['documentacaoGrafica2'] != ' ') {   ?>
+                            <div><img src="imgGrafica/img2/<?php echo $dados['documentacaoGrafica2'] ?>" width="300px" height="300px" style="margin-left: 50%"/></div>
+                         <?php } ?>
+                      </div>
+
+                      <div class="mb-3">
+                        <label>Documentação Gráfica:</label>
+                        <h6>
+                        Selecione uma imagem para a documentação fotográfica!
+                        </h6>
+                        <input type="file" class="form-control-file" name="documentacaoGrafica3" id="documentacaoGrafica3" >
+                        <?php if (isset($dados['documentacaoGrafica3']) && $dados['documentacaoGrafica3'] != null && $dados['documentacaoGrafica3'] != ' ') {   ?>
+                            <div><img src="imgGrafica/img3/<?php echo $dados['documentacaoGrafica3'] ?>" width="300px" height="300px" style="margin-left: 50%"/></div>
+                         <?php } ?>
+                 
+                      </div>
+                         
+                      <div class="mb-3 p-2 subtitulos">
+                        <h4>7. Documentação Fotográfica </h4>
+                      </div>
+
+                      <div class="mb-3">
+                        <label>Documentação Fotográfica:</label>
+                        <h6>
+                        Selecione uma imagem para a documentação fotográfica!
+                        </h6>
+                        <input type="file" class="form-control-file" name="documentacaoFotografica" id="documentacaoFotografica"/>
+                        <?php if (isset($dados['documentacaoFotografica']) && $dados['documentacaoFotografica'] != null && $dados['documentacaoFotografica'] != ' ') {   ?>
+                            <div><img src="imgFotografica/img1/<?php echo $dados['documentacaoFotografica'] ?>" width="300px" height="300px" style="margin-left: 50%"/></div>
+                         <?php } ?>
+                      </div>
+
+                      <div class="mb-3">
+                        <label>Documentação Fotográfica:</label>
+                        <h6>
+                        Selecione uma imagem para a documentação fotográfica!
+                        </h6>
+                        <input type="file" class="form-control-file" name="documentacaoFotografica2" id="documentacaoFotografica2"/>
+                        <?php if (isset($dados['documentacaoFotografica2']) && $dados['documentacaoFotografica2'] != null && $dados['documentacaoFotografica2'] != ' ') {   ?>
+                            <div><img src="imgFotografica/img2/<?php echo $dados['documentacaoFotografica2'] ?>" width="300px" height="300px" style="margin-left: 50%"/></div>
+                         <?php } ?>
+                      </div>
+
+                      <div class="mb-3">
+                        <label>Documentação Fotográfica:</label>
+                        <h6>
+                        Selecione uma imagem para a documentação fotográfica!
+                        </h6>
+                        <input type="file" class="form-control-file" name="documentacaoFotografica3" id="documentacaoFotografica3"/>
+                        <?php if (isset($dados['documentacaoFotografica3']) && $dados['documentacaoFotografica3'] != null && $dados['documentacaoFotografica3'] != ' ') {   ?>
+                            <div><img src="imgFotografica/img3/<?php echo $dados['documentacaoFotografica3'] ?>" width="300px" height="300px" style="margin-left: 50%"/></div>
+                         <?php } ?>
+                      </div>
+                      
                       <div class="row justify-content-center">
                         <button class="btn btn-info btn-lg m-2 col-md-3" name="btn-guardar" type="submit">
                           <i class="fa fa-floppy-o" aria-hidden="true"></i>
                           Salvar
                         </button>
                       </div>
-                    </form>
-                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-
-                    <form method="post" action="editarDocumentacaoGrafica.php" enctype="multipart/form-data">
-                      <div class="mb-3 p-2 subtitulos">
-                        <h4>6. Documentação Gráfica</h4>
-                      </div>
-                      <div class="form-group">
-                        <input type="hidden" class="form-control" name="id" id="id" value="<?php echo $dados['id']; ?>">
-                      </div>
-                      <div class="row">
-                        <div class="col-md-6 mb-3">
-                          <label>Documentação Gráfica</label>
-                          <h6>
-                            Selecione uma imagem para a documentação gráfica!
-                          </h6>
-                          <input type="file" class="form-control-file" name="documentacaoGrafica" id="documentacaoGrafica" />
-                        </div>
-                        <div class="col-md-6 mb-3">
-                          <?php if (isset($dados['documentacaoGrafica'])) {   ?>
-                            <img src="imgGrafica/img1/<?php echo $dados['documentacaoGrafica'] ?>" width="200px" height="200px" />
-                          <?php } ?>
-                        </div>
-                      </div>
-                      <div class="row justify-content-center">
-                        <button class="btn btn-info btn-lg m-2 col-md-3" name="envia1" type="submit" disabled="true" id="envia1">
-                          <i class="fa fa-floppy-o" aria-hidden="true"></i>
-                          Salvar
-                        </button>
-                      </div>
-                    </form>
-
-
-                    <form method="post" action="editarDocumentacaoFotografica.php" enctype="multipart/form-data" id="form2">
-                      <div class="row">
-                        <div class="form-group">
-                          <input type="hidden" class="form-control" name="id" id="id" value="<?php echo $dados['id']; ?>">
-                        </div>
-                        <div class="col-md-6 mb-3">
-                          <label>Documentação Fotográfica</label>
-                          <h6>
-                            Selecione uma imagem para a documentação fotográfica!
-                          </h6>
-                          <input type="file" class="form-control-file" name="documentacaoFotografica" id="documentacaoFotografica" />
-                        </div>
-                        <div class="col-md-6 mb-3">
-                          <?php if (isset($dados['documentacaoFotografica'])) {   ?>
-                            <img src="imgFotografica/img1/<?php echo $dados['documentacaoFotografica'] ?>" width="200px" height="200px" />
-                          <?php } ?>
-                        </div>
-                      </div>
-
-                      <div class="row justify-content-center">
-                        <button class="btn btn-info btn-lg m-2 col-md-3" name="envia2" type="submit" id="envia2" disabled="true">
-                          <i class="fa fa-floppy-o" aria-hidden="true"></i>
-                          Salvar
-                        </button>
-                      </div>
-                    </form>
-
+                      </form>
                     <div class="row justify-content-center">
                       <a href="home.php" name="btn-cancel" class="btn btn-primary btn-lg m-2 col-md-3"><i class="fa fa-times" aria-hidden="true"></i>
                         Cancelar</a>
                     </div>
-
+                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
                     <script type="text/javascript">
                       $("#documentacaoFotografica").change(function() {
                         $("#envia2").attr("disabled", false);

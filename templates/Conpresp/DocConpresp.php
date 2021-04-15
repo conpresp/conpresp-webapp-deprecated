@@ -131,7 +131,7 @@ else {
             <div class="card-body">
               <div class="row color-text">
                 <div class="col-md-12 order-md-1">
-                  <form class="needs-validation" method="POST" action="database/validaHome.php" enctype="multipart/form-data">
+                  <form method="POST" action="database/validaHome.php" enctype="multipart/form-data">
                     <div class="row justify-content-center">
                       <a href="home.php" name="btn-cancel" class="btn btn-primary btn-lg m-2 col-md-3"><i class="fa fa-times" aria-hidden="true"></i>
                         Cancelar</a>
@@ -1087,6 +1087,22 @@ else {
                         <input type="file" class="form-control-file" name="documentacaoGrafica" id="documentacaoGrafica" required/>
                       </div>
 
+                      <div class="mb-3">
+                        <label>Documentação Gráfica:</label>
+                        <h6>
+                        Selecione uma imagem para a documentação fotográfica!
+                        </h6>
+                        <input type="file" class="form-control-file" name="documentacaoGrafica2" id="documentacaoGrafica2" />
+                      </div>
+
+                      <div class="mb-3">
+                        <label>Documentação Gráfica:</label>
+                        <h6>
+                        Selecione uma imagem para a documentação fotográfica!
+                        </h6>
+                        <input type="file" class="form-control-file" name="documentacaoGrafica3" id="documentacaoGrafica3" >
+                      </div>
+
                       <div class="mb-3 p-2 subtitulos">
                         <h4>7. Documentação Fotográfica </h4>
                       </div>
@@ -1097,6 +1113,22 @@ else {
                         Selecione uma imagem para a documentação fotográfica!
                         </h6>
                         <input type="file" class="form-control-file" name="documentacaoFotografica" id="documentacaoFotografica" required/>
+                      </div>
+
+                      <div class="mb-3">
+                        <label>Documentação Fotográfica:</label>
+                        <h6>
+                        Selecione uma imagem para a documentação fotográfica!
+                        </h6>
+                        <input type="file" class="form-control-file" name="documentacaoFotografica2" id="documentacaoFotografica2"/>
+                      </div>
+
+                      <div class="mb-3">
+                        <label>Documentação Fotográfica:</label>
+                        <h6>
+                        Selecione uma imagem para a documentação fotográfica!
+                        </h6>
+                        <input type="file" class="form-control-file" name="documentacaoFotografica3" id="documentacaoFotografica3"/>
                       </div>
 
                     <hr class="mb-4" />

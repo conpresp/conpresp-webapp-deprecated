@@ -1,7 +1,5 @@
 <?php
 
-use FontLib\Table\Type\name;
-
 session_start();
 
 $servername = "localhost";
@@ -82,7 +80,185 @@ if (!mysqli_set_charset($conn, "utf8mb4")) {
   $fontesBibliograficas = filter_input(INPUT_POST, 'fontesBibliograficas', FILTER_SANITIZE_STRING);
   $outrasInformacoes= filter_input(INPUT_POST, 'outrasInformacoes', FILTER_SANITIZE_STRING);
   $observacoes = filter_input(INPUT_POST, 'observacoes', FILTER_SANITIZE_STRING);
+  $documentacaoFotografica = null;
+  $documentacaoFotografica2 = null;
+  $documentacaoFotografica3 = null;
+  $documentacaoGrafica = null;
+  $documentacaoGrafica2 = null;
+  $documentacaoGrafica3 = null;
 
+  $msg = false;
+  $extensao = '';
+  $novaExt = '.png';
+
+  $selectUpdate = "SELECT documentacaoFotografica, documentacaoFotografica2, documentacaoFotografica3, documentacaoGrafica, documentacaoGrafica2, documentacaoGrafica3 from imovel where id = '$id' ";
+  $resultSelect = mysqli_query($conn, $selectUpdate);
+
+  while($dados = mysqli_fetch_assoc($resultSelect)) {   
+  if (isset($_FILES['documentacaoFotografica'])) {
+    if ($_FILES['documentacaoFotografica']['size'] <= 2097152 ) {
+      $extensao = strtolower(substr($_FILES['documentacaoFotografica']['name'], -4));
+     
+      if ($extensao == '.PNG' || $extensao == '.png' || $extensao == '.JPG' || $extensao == '.jpg' || $extensao == '.JPEG' || $extensao == '.jpeg') {
+        $documentacaoFotografica = md5(time()) . $novaExt;
+        $diretorio = 'imgFotografica/img1/';
+        
+        move_uploaded_file($_FILES['documentacaoFotografica']['tmp_name'], $diretorio . $documentacaoFotografica);
+   
+      } else if (!$extensao || $extensao = ''){
+        $documentacaoFotografica = $dados['documentacaoFotografica'];
+      }else {
+        $mgsExt = 'Uma ou mais imagens está com formato não compatível! O formato deve ser PNG | JPEG | JPG';
+        $_SESSION['formatoImagem'] = $mgsExt;
+        header('Location: ' . $_SERVER['HTTP_REFERER'] . '');
+        mysqli_close($conn);
+      }
+    } else {
+      $mgsSize = 'Uma ou mais imagens está com o tamanho maior que o permitido. A imagem pode ser até 2MB!';
+      $_SESSION['formatoImagem'] = $mgsSize;
+      header('Location: ' . $_SERVER['HTTP_REFERER'] . '');
+      mysqli_close($conn);
+    } 
+  }else if(!isset($_FILES['documentacaoFotografica'])){
+    $documentacaoFotografica = null;
+  }
+
+  if (isset($_FILES['documentacaoFotografica2'])) {
+    if ($_FILES['documentacaoFotografica2']['size'] <= 2097152 ) {
+      $extensao = strtolower(substr($_FILES['documentacaoFotografica2']['name'], -4));
+     
+      if ($extensao == '.PNG' || $extensao == '.png' || $extensao == '.JPG' || $extensao == '.jpg' || $extensao == '.JPEG' || $extensao == '.jpeg') {
+        $documentacaoFotografica2 = md5(time()) . $novaExt;
+        $diretorio2 = 'imgFotografica/img2/';
+        
+        move_uploaded_file($_FILES['documentacaoFotografica2']['tmp_name'], $diretorio2 . $documentacaoFotografica2);
+   
+      }else if (!$extensao || $extensao = ''){
+        $documentacaoFotografica2 =  $dados['documentacaoFotografica2'];
+      }else {
+        $mgsExt = 'Uma ou mais imagens está com formato não compatível! O formato deve ser PNG | JPEG | JPG';
+        $_SESSION['formatoImagem'] = $mgsExt;
+        header('Location: ' . $_SERVER['HTTP_REFERER'] . '');
+        mysqli_close($conn);
+      }
+    } else {
+      $mgsSize = 'Uma ou mais imagens está com o tamanho maior que o permitido. A imagem pode ser até 2MB!';
+      $_SESSION['formatoImagem'] = $mgsSize;
+      header('Location: ' . $_SERVER['HTTP_REFERER'] . '');
+      mysqli_close($conn);
+    }
+  } else if(!isset($_FILES['documentacaoFotografica2'])){
+    $documentacaoFotografica2 = null;
+  }
+
+  if (isset($_FILES['documentacaoFotografica3'])) {
+    if ($_FILES['documentacaoFotografica3']['size'] <= 2097152 ) {
+      $extensao = strtolower(substr($_FILES['documentacaoFotografica3']['name'], -4));
+     
+      if ($extensao == '.PNG' || $extensao == '.png' || $extensao == '.JPG' || $extensao == '.jpg' || $extensao == '.JPEG' || $extensao == '.jpeg') {
+        $documentacaoFotografica3 = md5(time()) . $novaExt;
+        $diretorio3 = 'imgFotografica/img3/';
+        
+        move_uploaded_file($_FILES['documentacaoFotografica3']['tmp_name'], $diretorio3 . $documentacaoFotografica3);
+   
+      } else if (!$extensao || $extensao = ''){
+        $documentacaoFotografica3 =  $dados['documentacaoFotografica3'];
+      }else {
+        $mgsExt = 'Uma ou mais imagens está com formato não compatível! O formato deve ser PNG | JPEG | JPG';
+        $_SESSION['formatoImagem'] = $mgsExt;
+        header('Location: ' . $_SERVER['HTTP_REFERER'] . '');
+        mysqli_close($conn);
+      }
+    } else {
+      $mgsSize = 'Uma ou mais imagens está com o tamanho maior que o permitido. A imagem pode ser até 2MB!';
+      $_SESSION['formatoImagem'] = $mgsSize;
+      header('Location: ' . $_SERVER['HTTP_REFERER'] . '');
+      mysqli_close($conn);
+    }
+  } else if(!isset($_FILES['documentacaoFotografica3'])){
+    $documentacaoFotografica3 = null;
+  }
+
+  
+if(isset($_FILES['documentacaoGrafica'])) {
+  if($_FILES['documentacaoGrafica']['size'] <= 2097152 ){
+  $extensao = strtolower(substr($_FILES['documentacaoGrafica']['name'], -4));
+  
+  if($extensao == '.PNG' || $extensao == '.png' || $extensao == '.JPG' || $extensao == '.jpg' || $extensao == '.JPEG' || $extensao == '.jpeg') {
+  $documentacaoGrafica = md5(time()).$novaExt;
+  $diretorio4 = 'imgGrafica/img1/';
+  move_uploaded_file($_FILES['documentacaoGrafica']['tmp_name'], $diretorio4.$documentacaoGrafica);
+  } else if (!$extensao || $extensao = ''){
+    $documentacaoGrafica = $dados['documentacaoGrafica'];;
+  }else {
+    $mgsExt = 'Uma ou mais imagens está com formato não compatível! O formato deve ser PNG | JPEG | JPG';
+    $_SESSION['formatoImagem'] = $mgsExt;
+    header('Location: '.$_SERVER['HTTP_REFERER']. '');
+    mysqli_close($conn);
+  }
+} else {
+    $mgsSize = 'Uma ou mais imagens está com o tamanho maior que o permitido. A imagem pode ser até 2MB!';
+    $_SESSION['formatoImagem'] = $mgsSize;
+    header('Location: '.$_SERVER['HTTP_REFERER']. '');
+    mysqli_close($conn);
+}
+} else if(!isset($_FILES['documentacaoGrafica'])){
+  $documentacaoGrafica = null;
+}
+
+if(isset($_FILES['documentacaoGrafica2'])) {
+  if($_FILES['documentacaoGrafica2']['size'] <= 2097152 ){
+  $extensao = strtolower(substr($_FILES['documentacaoGrafica2']['name'], -4));
+  
+  if($extensao == '.PNG' || $extensao == '.png' || $extensao == '.JPG' || $extensao == '.jpg' || $extensao == '.JPEG' || $extensao == '.jpeg') {
+  $documentacaoGrafica2 = md5(time()).$novaExt;
+  $diretorio5 = 'imgGrafica/img2/';
+  move_uploaded_file($_FILES['documentacaoGrafica2']['tmp_name'], $diretorio5.$documentacaoGrafica2);
+  } else if (!$extensao || $extensao = ''){
+    $documentacaoGrafica2 = $dados['documentacaoGrafica2'];;
+  }else {
+    $mgsExt = 'Uma ou mais imagens está com formato não compatível! O formato deve ser PNG | JPEG | JPG';
+    $_SESSION['formatoImagem'] = $mgsExt;
+    header('Location: '.$_SERVER['HTTP_REFERER']. '');
+    mysqli_close($conn);
+  }
+} else {
+    $mgsSize = 'Uma ou mais imagens está com o tamanho maior que o permitido. A imagem pode ser até 2MB!';
+    $_SESSION['formatoImagem'] = $mgsSize;
+    header('Location: '.$_SERVER['HTTP_REFERER']. '');
+    mysqli_close($conn);
+}
+} else if(!isset($_FILES['documentacaoGrafica2'])){
+  $documentacaoGrafica2 = null;
+}
+
+if(isset($_FILES['documentacaoGrafica3'])) {
+  if($_FILES['documentacaoGrafica3']['size'] <= 2097152 ){
+  $extensao = strtolower(substr($_FILES['documentacaoGrafica3']['name'], -4));
+  
+  if($extensao == '.PNG' || $extensao == '.png' || $extensao == '.JPG' || $extensao == '.jpg' || $extensao == '.JPEG' || $extensao == '.jpeg') {
+  $documentacaoGrafica3 = md5(time()).$novaExt;
+  $diretorio6 = 'imgGrafica/img3/';
+  move_uploaded_file($_FILES['documentacaoGrafica3']['tmp_name'], $diretorio6.$documentacaoGrafica3);
+  } else if (!$extensao || $extensao = ''){
+    $documentacaoGrafica3 = $dados['documentacaoGrafica3'];;
+  }else {
+    $mgsExt = 'Uma ou mais imagens está com formato não compatível! O formato deve ser PNG | JPEG | JPG';
+    $_SESSION['formatoImagem'] = $mgsExt;
+    header('Location: '.$_SERVER['HTTP_REFERER']. '');
+    mysqli_close($conn);
+  }
+} else {
+    $mgsSize = 'Uma ou mais imagens está com o tamanho maior que o permitido. A imagem pode ser até 2MB!';
+    $_SESSION['formatoImagem'] = $mgsSize;
+    header('Location: '.$_SERVER['HTTP_REFERER']. '');
+    mysqli_close($conn);
+}
+} else if(!isset($_FILES['documentacaoGrafica3'])){
+  $documentacaoGrafica3 = null;
+} 
+
+  }
 
   $result_usuario = "UPDATE imovel SET responsavelPreenchimento ='$responsavelPreenchimento', grupoTipoEquipe='$grupoTipoEquipe', 
   itemResolucao=$itemResolucao, denominacao='$denominacao', classificacao='$classificacao', usoAtual='$usoAtual', propriedade='$propriedade',
@@ -93,7 +269,8 @@ if (!mysqli_set_charset($conn, "utf8mb4")) {
   areaConstruida='$areaConstruida', grauTombamento='$grauTombamento', grauAlteracao='$grauAlteracao', comentarioGrauAlteracao='$comentarioGrauAlteracao',
   grauEstadoConservacao='$grauEstadoConservacao', comentarioEstadoConservacao='$comentarioEstadoConservacao', observacoesPavimentos='$observacoesPavimentos',
   dadosHistoricos='$dadosHistoricos', dadosArquitetonicos='$dadosArquitetonicos', dadosAmbiencia='$dadosAmbiencia', fontesBibliograficas='$fontesBibliograficas',
-  outrasInformacoes='$outrasInformacoes', observacoes='$observacoes' WHERE id = '$id'";
+  outrasInformacoes='$outrasInformacoes', observacoes='$observacoes', documentacaoFotografica='$documentacaoFotografica', documentacaoFotografica2='$documentacaoFotografica2',
+  documentacaoFotografica3='$documentacaoFotografica3', documentacaoGrafica='$documentacaoGrafica', documentacaoGrafica2='$documentacaoGrafica2', documentacaoGrafica3='$documentacaoGrafica3' WHERE id = '$id'";
   
   $resultado_usuario = mysqli_query($conn, $result_usuario);
 

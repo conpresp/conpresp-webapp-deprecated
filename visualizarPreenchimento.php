@@ -1079,26 +1079,79 @@ $password = $_SESSION['password'];
                     </div>
 
                     <div class="mb-3 p-2 subtitulos">
-                      <h4>6. Levantamento Fotográficoo</h4>
-                    </div>
+                        <h4>6. Documentação Gráfica</h4>
+                      </div>
 
-                    <div class="mb-3">
-                      <label>Documentação Gráfica:</label>
-                      <h6>
-                        Imagens em formato JPG com um máximo de 2 mb por
-                        imagem
-                      </h6>
-                      <input type="file" class="form-control-file" name="documentacaoGrafica" id="documentacaoGrafica" disabled/>
-                    </div>
+                      <div class="mb-3">
+                        <label>Documentação Gráfica:</label>
+                        <h6>
+                        Selecione uma imagem para a documentação fotográfica!
+                        </h6>
+                        <input type="file" class="form-control-file" name="documentacaoGrafica" id="documentacaoGrafica" disabled/>
+                        <?php if (isset($dados['documentacaoGrafica']) && $dados['documentacaoGrafica'] != null && $dados['documentacaoGrafica'] != ' ') {   ?>
+                            <div><img src="imgGrafica/img1/<?php echo $dados['documentacaoGrafica'] ?>" width="300px" height="300px" style="margin-left: 50%"/></div>
+                         <?php } ?>
+                      </div>
 
-                    <div class="mb-3">
-                      <label>Documentação Fotográfica:</label>
-                      <h6>
-                        Imagens em formato JPG com um máximo de 2 mb por
-                        imagem
-                      </h6>
-                      <input type="file" class="form-control-file" name="documentacaoFotografica" id="documentacaoFotografica" disabled/>
-                    </div>
+                      <div class="mb-3">
+                        <label>Documentação Gráfica:</label>
+                        <h6>
+                        Selecione uma imagem para a documentação fotográfica!
+                        </h6>
+                        <input type="file" class="form-control-file" name="documentacaoGrafica2" id="documentacaoGrafica2" disabled />
+                        <?php if (isset($dados['documentacaoGrafica2']) && $dados['documentacaoGrafica2'] != null && $dados['documentacaoGrafica2'] != ' ') {   ?>
+                            <div><img src="imgGrafica/img2/<?php echo $dados['documentacaoGrafica2'] ?>" width="300px" height="300px" style="margin-left: 50%"/></div>
+                         <?php } ?>
+                      </div>
+
+                      <div class="mb-3">
+                        <label>Documentação Gráfica:</label>
+                        <h6>
+                        Selecione uma imagem para a documentação fotográfica!
+                        </h6>
+                        <input type="file" class="form-control-file" name="documentacaoGrafica3" id="documentacaoGrafica3" disabled/>
+                        <?php if (isset($dados['documentacaoGrafica3']) && $dados['documentacaoGrafica3'] != null && $dados['documentacaoGrafica3'] != ' ') {   ?>
+                            <div><img src="imgGrafica/img3/<?php echo $dados['documentacaoGrafica3'] ?>" width="300px" height="300px" style="margin-left: 50%"/></div>
+                         <?php } ?>
+                 
+                      </div>
+                         
+                      <div class="mb-3 p-2 subtitulos">
+                        <h4>7. Documentação Fotográfica </h4>
+                      </div>
+
+                      <div class="mb-3">
+                        <label>Documentação Fotográfica:</label>
+                        <h6>
+                        Selecione uma imagem para a documentação fotográfica!
+                        </h6>
+                        <input type="file" class="form-control-file" name="documentacaoFotografica" id="documentacaoFotografica" disabled/>
+                        <?php if (isset($dados['documentacaoFotografica']) && $dados['documentacaoFotografica'] != null && $dados['documentacaoFotografica'] != ' ') {   ?>
+                            <div><img src="imgFotografica/img1/<?php echo $dados['documentacaoFotografica'] ?>" width="300px" height="300px" style="margin-left: 50%"/></div>
+                         <?php } ?>
+                      </div>
+
+                      <div class="mb-3">
+                        <label>Documentação Fotográfica:</label>
+                        <h6>
+                        Selecione uma imagem para a documentação fotográfica!
+                        </h6>
+                        <input type="file" class="form-control-file" name="documentacaoFotografica2" id="documentacaoFotografica2" disabled/>
+                        <?php if (isset($dados['documentacaoFotografica2']) && $dados['documentacaoFotografica2'] != null && $dados['documentacaoFotografica2'] != ' ') {   ?>
+                            <div><img src="imgFotografica/img2/<?php echo $dados['documentacaoFotografica2'] ?>" width="300px" height="300px" style="margin-left: 50%"/></div>
+                         <?php } ?>
+                      </div>
+
+                      <div class="mb-3">
+                        <label>Documentação Fotográfica:</label>
+                        <h6>
+                        Selecione uma imagem para a documentação fotográfica!
+                        </h6>
+                        <input type="file" class="form-control-file" name="documentacaoFotografica3" id="documentacaoFotografica3" disabled/>
+                        <?php if (isset($dados['documentacaoFotografica3']) && $dados['documentacaoFotografica3'] != null && $dados['documentacaoFotografica3'] != ' ') {   ?>
+                            <div><img src="imgFotografica/img3/<?php echo $dados['documentacaoFotografica3'] ?>" width="300px" height="300px" style="margin-left: 50%"/></div>
+                         <?php } ?>
+                      </div>
 
                     <hr class="mb-4" />
 
