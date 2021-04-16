@@ -438,7 +438,7 @@ if (!mysqli_set_charset($conn, "utf8mb4")) {
 
                             <div class="col-md-6 mb-3" style="margin-top: 7px;">
                                 <select id="resolucaoConpresp" class="custom-select d-block w-100" name="resolucaoConpresp">
-                                    <option value="resolucaoConpresp" selected>Resolucação Conpresp</option>
+                                    <option value="resolucaoConpresp" selected>Resolução Conpresp</option>
                                 </select>
                             </div>
 

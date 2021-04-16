@@ -96,11 +96,11 @@ if (!mysqli_set_charset($conn, "utf8mb4")) {
 
   while($dados = mysqli_fetch_assoc($resultSelect)) {   
   if (isset($_FILES['documentacaoFotografica'])) {
-    if ($_FILES['documentacaoFotografica']['size'] <= 2097152 ) {
+    if ($_FILES['documentacaoFotografica']['size'] <= 3145728  ) {
       $extensao = strtolower(substr($_FILES['documentacaoFotografica']['name'], -4));
      
       if ($extensao == '.PNG' || $extensao == '.png' || $extensao == '.JPG' || $extensao == '.jpg' || $extensao == '.JPEG' || $extensao == '.jpeg') {
-        $documentacaoFotografica = md5(time()) . $novaExt;
+        $documentacaoFotografica = $_FILES['documentacaoFotografica']['name'];
         $diretorio = 'imgFotografica/img1/';
         
         move_uploaded_file($_FILES['documentacaoFotografica']['tmp_name'], $diretorio . $documentacaoFotografica);
@@ -124,11 +124,11 @@ if (!mysqli_set_charset($conn, "utf8mb4")) {
   }
 
   if (isset($_FILES['documentacaoFotografica2'])) {
-    if ($_FILES['documentacaoFotografica2']['size'] <= 2097152 ) {
+    if ($_FILES['documentacaoFotografica2']['size'] <= 3145728  ) {
       $extensao = strtolower(substr($_FILES['documentacaoFotografica2']['name'], -4));
      
       if ($extensao == '.PNG' || $extensao == '.png' || $extensao == '.JPG' || $extensao == '.jpg' || $extensao == '.JPEG' || $extensao == '.jpeg') {
-        $documentacaoFotografica2 = md5(time()) . $novaExt;
+        $documentacaoFotografica2 = $_FILES['documentacaoFotografica2']['name'];
         $diretorio2 = 'imgFotografica/img2/';
         
         move_uploaded_file($_FILES['documentacaoFotografica2']['tmp_name'], $diretorio2 . $documentacaoFotografica2);
@@ -152,11 +152,11 @@ if (!mysqli_set_charset($conn, "utf8mb4")) {
   }
 
   if (isset($_FILES['documentacaoFotografica3'])) {
-    if ($_FILES['documentacaoFotografica3']['size'] <= 2097152 ) {
+    if ($_FILES['documentacaoFotografica3']['size'] <= 3145728  ) {
       $extensao = strtolower(substr($_FILES['documentacaoFotografica3']['name'], -4));
      
       if ($extensao == '.PNG' || $extensao == '.png' || $extensao == '.JPG' || $extensao == '.jpg' || $extensao == '.JPEG' || $extensao == '.jpeg') {
-        $documentacaoFotografica3 = md5(time()) . $novaExt;
+        $documentacaoFotografica3 = $_FILES['documentacaoFotografica3']['name'];
         $diretorio3 = 'imgFotografica/img3/';
         
         move_uploaded_file($_FILES['documentacaoFotografica3']['tmp_name'], $diretorio3 . $documentacaoFotografica3);
@@ -181,11 +181,11 @@ if (!mysqli_set_charset($conn, "utf8mb4")) {
 
   
 if(isset($_FILES['documentacaoGrafica'])) {
-  if($_FILES['documentacaoGrafica']['size'] <= 2097152 ){
+  if($_FILES['documentacaoGrafica']['size'] <= 3145728  ){
   $extensao = strtolower(substr($_FILES['documentacaoGrafica']['name'], -4));
   
   if($extensao == '.PNG' || $extensao == '.png' || $extensao == '.JPG' || $extensao == '.jpg' || $extensao == '.JPEG' || $extensao == '.jpeg') {
-  $documentacaoGrafica = md5(time()).$novaExt;
+  $documentacaoGrafica = $_FILES['documentacaoGrafica']['name'];
   $diretorio4 = 'imgGrafica/img1/';
   move_uploaded_file($_FILES['documentacaoGrafica']['tmp_name'], $diretorio4.$documentacaoGrafica);
   } else if (!$extensao || $extensao = ''){
@@ -207,11 +207,11 @@ if(isset($_FILES['documentacaoGrafica'])) {
 }
 
 if(isset($_FILES['documentacaoGrafica2'])) {
-  if($_FILES['documentacaoGrafica2']['size'] <= 2097152 ){
+  if($_FILES['documentacaoGrafica2']['size'] <= 3145728  ){
   $extensao = strtolower(substr($_FILES['documentacaoGrafica2']['name'], -4));
   
   if($extensao == '.PNG' || $extensao == '.png' || $extensao == '.JPG' || $extensao == '.jpg' || $extensao == '.JPEG' || $extensao == '.jpeg') {
-  $documentacaoGrafica2 = md5(time()).$novaExt;
+  $documentacaoGrafica2 = $_FILES['documentacaoGrafica2']['name'];
   $diretorio5 = 'imgGrafica/img2/';
   move_uploaded_file($_FILES['documentacaoGrafica2']['tmp_name'], $diretorio5.$documentacaoGrafica2);
   } else if (!$extensao || $extensao = ''){
@@ -233,11 +233,11 @@ if(isset($_FILES['documentacaoGrafica2'])) {
 }
 
 if(isset($_FILES['documentacaoGrafica3'])) {
-  if($_FILES['documentacaoGrafica3']['size'] <= 2097152 ){
+  if($_FILES['documentacaoGrafica3']['size'] <= 3145728  ){
   $extensao = strtolower(substr($_FILES['documentacaoGrafica3']['name'], -4));
   
   if($extensao == '.PNG' || $extensao == '.png' || $extensao == '.JPG' || $extensao == '.jpg' || $extensao == '.JPEG' || $extensao == '.jpeg') {
-  $documentacaoGrafica3 = md5(time()).$novaExt;
+  $documentacaoGrafica3 = $_FILES['documentacaoGrafica3']['name'];
   $diretorio6 = 'imgGrafica/img3/';
   move_uploaded_file($_FILES['documentacaoGrafica3']['tmp_name'], $diretorio6.$documentacaoGrafica3);
   } else if (!$extensao || $extensao = ''){
