@@ -1044,15 +1044,15 @@ else {
 
                     <div class="mb-3">
                       <label>Dados Históricos:</label>
-                      <input type="text" class="form-control" id="dadosHistoricos" name="dadosHistoricos" />
+                      <textarea aria-label="With textarea"  class="form-control" id="dadosHistoricos" name="dadosHistoricos" ></textarea>
                     </div>
                     <div class="mb-3">
                       <label>Dados Arquitetônicos:</label>
-                      <input type="text" class="form-control" id="dadosArquitetonicos" name="dadosArquitetonicos" />
+                      <textarea aria-label="With textarea"  class="form-control" id="dadosArquitetonicos" name="dadosArquitetonicos"></textarea>
                     </div>
                     <div class="mb-3">
                       <label>Dados de Ambiência:</label>
-                      <input type="text" class="form-control" id="dadosAmbiencia" name="dadosAmbiencia" />
+                      <textarea aria-label="With textarea" class="form-control" id="dadosAmbiencia" name="dadosAmbiencia"></textarea>
                     </div>
 
                     <div class="mb-3">
@@ -1067,7 +1067,7 @@ else {
                     </div>
                     <div class="mb-3">
                       <label>Outras Informações:</label>
-                      <input type="text" class="form-control" id="outrasInformacoes" name="outrasInformacoes" />
+                      <textarea aria-label="With textarea" class="form-control" id="outrasInformacoes" name="outrasInformacoes"></textarea>
                     </div>
 
                     <div class="mb-3">

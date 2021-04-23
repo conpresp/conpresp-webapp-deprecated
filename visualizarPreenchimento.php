@@ -1046,17 +1046,17 @@ $password = $_SESSION['password'];
                     </div>
 
                     <div class="mb-3">
-                      <label>Dados Históricos:</label>
-                      <input type="text" class="form-control" id="dadosHistoricos" name="dadosHistoricos" value="<?php echo $dados['dadosHistoricos'] ?>" disabled/>
-                    </div>
-                    <div class="mb-3">
-                      <label>Dados Arquitetônicos:</label>
-                      <input type="text" class="form-control" id="dadosArquitetonicos" name="dadosArquitetonicos" value="<?php echo $dados['dadosArquitetonicos'] ?>" disabled/>
-                    </div>
-                    <div class="mb-3">
-                      <label>Dados de Ambiência:</label>
-                      <input type="text" class="form-control" id="dadosAmbiencia" name="dadosAmbiencia" value="<?php echo $dados['dadosAmbiencia'] ?>" disabled/>
-                    </div>
+                        <label>Dados Históricos:</label>
+                        <textarea aria-label="With textarea" class="form-control" id="dadosHistoricos" name="dadosHistoricos" disabled ><?php echo $dados['dadosHistoricos'] ?></textarea>
+                      </div>
+                      <div class="mb-3">
+                        <label>Dados Arquitetônicos:</label>
+                        <textarea aria-label="With textarea" class="form-control" id="dadosArquitetonicos" name="dadosArquitetonicos" disabled><?php echo $dados['dadosArquitetonicos'] ?></textarea>
+                      </div>
+                      <div class="mb-3">
+                        <label>Dados de Ambiência:</label>
+                        <textarea aria-label="With textarea" class="form-control" id="dadosAmbiencia" name="dadosAmbiencia" disabled><?php echo $dados['dadosAmbiencia'] ?></textarea>
+                      </div>
 
                     <div class="mb-3">
                       <label>Fontes Bibliográficas:</label>
@@ -1070,7 +1070,7 @@ $password = $_SESSION['password'];
                     </div>
                     <div class="mb-3">
                       <label>Outras Informações:</label>
-                      <input type="text" class="form-control" id="outrasInformacoes" name="outrasInformacoes" value="<?php echo $dados['outrasInformacoes'] ?>" disabled/>
+                      <textarea aria-label="With textarea"  class="form-control" id="outrasInformacoes" name="outrasInformacoes" disabled ><?php echo $dados['outrasInformacoes'] ?></textarea>
                     </div>
 
                     <div class="mb-3">

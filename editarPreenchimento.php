@@ -1059,15 +1059,15 @@ if (!mysqli_set_charset($conn, "utf8mb4")) {
 
                       <div class="mb-3">
                         <label>Dados Históricos:</label>
-                        <input type="text" class="form-control" id="dadosHistoricos" name="dadosHistoricos" value="<?php echo $dados['dadosHistoricos'] ?>" />
+                        <textarea aria-label="With textarea" class="form-control" id="dadosHistoricos" name="dadosHistoricos" ><?php echo $dados['dadosHistoricos'] ?></textarea>
                       </div>
                       <div class="mb-3">
                         <label>Dados Arquitetônicos:</label>
-                        <input type="text" class="form-control" id="dadosArquitetonicos" name="dadosArquitetonicos" value="<?php echo $dados['dadosArquitetonicos'] ?>" />
+                        <textarea aria-label="With textarea" class="form-control" id="dadosArquitetonicos" name="dadosArquitetonicos" ><?php echo $dados['dadosArquitetonicos'] ?></textarea>
                       </div>
                       <div class="mb-3">
                         <label>Dados de Ambiência:</label>
-                        <input type="text" class="form-control" id="dadosAmbiencia" name="dadosAmbiencia" value="<?php echo $dados['dadosAmbiencia'] ?>" />
+                        <textarea aria-label="With textarea" class="form-control" id="dadosAmbiencia" name="dadosAmbiencia" ><?php echo $dados['dadosAmbiencia'] ?></textarea>
                       </div>
 
                       <div class="mb-3">
@@ -1082,7 +1082,7 @@ if (!mysqli_set_charset($conn, "utf8mb4")) {
                       </div>
                       <div class="mb-3">
                         <label>Outras Informações:</label>
-                        <input type="text" class="form-control" id="outrasInformacoes" name="outrasInformacoes" value="<?php echo $dados['outrasInformacoes'] ?>" />
+                        <textarea  aria-label="With textarea" class="form-control" id="outrasInformacoes" name="outrasInformacoes" ><?php echo $dados['outrasInformacoes'] ?></textarea>
                       </div>
 
                       <div class="mb-3">
@@ -1175,18 +1175,7 @@ if (!mysqli_set_charset($conn, "utf8mb4")) {
                     <div class="row justify-content-center">
                       <a href="home.php" name="btn-cancel" class="btn btn-primary btn-lg m-2 col-md-3"><i class="fa fa-times" aria-hidden="true"></i>
                         Cancelar</a>
-                    </div>
-                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-                    <script type="text/javascript">
-                      $("#documentacaoFotografica").change(function() {
-                        $("#envia2").attr("disabled", false);
-                      });
-                    </script>
-                    <script type="text/javascript">
-                      $("#documentacaoGrafica").change(function() {
-                        $("#envia1").attr("disabled", false);
-                      });
-                    </script>
+                    </div>                 
                   </div>
                 </div>
               </div>
