@@ -295,7 +295,7 @@ if (!mysqli_set_charset($conn, "utf8mb4")) {
                                                                     <a href="editarPreenchimento.php?id=<?php echo $dados['id'];  ?>"><button class="btnEditar btn btn-warning" data-toggle="tooltip" title="Editar"><i class="fas fa-edit" aria-hidden="true"></i></button></a>
                                                                 <?php   }
                                                                 ?>
-                                                                <a href="pdf.php?id=<?php echo $dados['id'];  ?>"><button class="btnPdf btn btn-success" data-toggle="tooltip" title="Pdf"><i class="fas fa-print" aria-hidden="true"></i></button></a>
+                                                                <a href="teste2.php?id=<?php echo $dados['id'];  ?>"><button class="btnPdf btn btn-success" data-toggle="tooltip" title="Pdf"><i class="fas fa-print" aria-hidden="true"></i></button></a>
                                                             </div>
                                                         </div>
                                                     </td>

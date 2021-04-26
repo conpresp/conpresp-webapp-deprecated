@@ -153,7 +153,7 @@ $password = $_SESSION['password'];
                       <input type="text" class="form-control" id="codigo" name="codigo" disabled />
                     </div> -->
                     <div class="mb-3">
-                      <label>Responsal pelo Preenchimento:</label>
+                      <label>Responsável pelo Preenchimento:</label>
                       <input type="text" class="form-control" id="nome" name="responsavelPreenchimento" value="<?php echo $dados['responsavelPreenchimento'];?>" disabled />
                     </div>
                     <div class="mb-3">
@@ -982,7 +982,7 @@ $password = $_SESSION['password'];
                         <input type="number" class="form-control" id="areaLote" name="areaLote" value="<?php echo $dados['areaLote']?>" disabled/>
                       </div>
                       <div class="col-md-6 mb-3">
-                        <label>Área constuída (m²):</label>
+                        <label>Área construída (m²):</label>
                         <input type="number" class="form-control" id="areaConstruida" name="areaConstruida" value="<?php echo $dados['areaConstruida']?>" disabled/>
                       </div>
                     </div>

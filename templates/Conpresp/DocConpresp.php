@@ -142,7 +142,7 @@ else {
                         </div>
                       <?php } ?>
                     <div class="mb-3">
-                      <label>Responsal pelo Preenchimento:</label>
+                      <label>Responsável pelo Preenchimento:</label>
                       <input type="text" class="form-control" id="nome" name="responsavelPreenchimento"  />
                     </div>
                     <div class="mb-3">
@@ -979,7 +979,7 @@ else {
                         <input type="number" class="form-control" id="areaLote" name="areaLote" />
                       </div>
                       <div class="col-md-6 mb-3">
-                        <label>Área constuída (m²):</label>
+                        <label>Área construída (m²):</label>
                         <input type="number" class="form-control" id="areaConstruida" name="areaConstruida" />
                       </div>
                     </div>

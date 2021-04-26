@@ -165,7 +165,7 @@ if (!mysqli_set_charset($conn, "utf8mb4")) {
                         <input type="hidden" class="form-control" name="id" id="id" value="<?php echo $dados['id']; ?>">
                       </div>
                       <div class="mb-3">
-                        <label>Responsal pelo Preenchimento:</label>
+                        <label>Responsável pelo Preenchimento:</label>
                         <input type="text" class="form-control" id="responsavelPreenchimento" name="responsavelPreenchimento" value="<?php echo $dados['responsavelPreenchimento']; ?>" />
                       </div>
                       <div class="mb-3">
@@ -994,7 +994,7 @@ if (!mysqli_set_charset($conn, "utf8mb4")) {
                           <input type="number" class="form-control" id="areaLote" name="areaLote" value="<?php echo $dados['areaLote'] ?>" />
                         </div>
                         <div class="col-md-6 mb-3">
-                          <label>Área constuída (m²):</label>
+                          <label>Área construída (m²):</label>
                           <input type="number" class="form-control" id="areaConstruida" name="areaConstruida" value="<?php echo $dados['areaConstruida'] ?>" />
                         </div>
                       </div>

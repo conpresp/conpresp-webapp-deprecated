@@ -63,7 +63,7 @@ if (!mysqli_set_charset($conn, "utf8mb4")) {
   $autorOriginal = filter_input(INPUT_POST, 'autorOriginal', FILTER_SANITIZE_STRING);
   $construtor = filter_input(INPUT_POST, 'construtor', FILTER_SANITIZE_STRING);
   $dataConstrucao = filter_input(INPUT_POST, 'dataConstrucao', FILTER_SANITIZE_STRING);
-  $estiloArquitetonico = filter_input(INPUT_POST, '	estiloArquitetonico', FILTER_SANITIZE_STRING);
+  $estiloArquitetonico = filter_input(INPUT_POST, 'estiloArquitetonico', FILTER_SANITIZE_STRING);
   $tecnicaConstrutiva = filter_input(INPUT_POST, 'tecnicaConstrutiva', FILTER_SANITIZE_STRING);
   $numeroPavimentos = filter_input(INPUT_POST, 'numeroPavimentos', FILTER_SANITIZE_STRING);
   $areaLote = filter_input(INPUT_POST, 'areaLote', FILTER_SANITIZE_STRING);
