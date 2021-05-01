@@ -57,12 +57,11 @@ if (!mysqli_set_charset($conn, "utf8mb4")) {
 
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
-        <!-- DataTable -->
-        <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css" />
-
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-
         <link rel="stylesheet" href="css/usuarios.css" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
         <style>
             .hidden {
@@ -79,6 +78,7 @@ if (!mysqli_set_charset($conn, "utf8mb4")) {
     </head>
 
     <body>
+        <script src="validateCampos/usuario.js"></script>
         <div id="content-wrapper" class="d-flex flex-column">
             <div id="content">
                 <nav class="navbar navbar-expand navbar-dark bg-darkblue topbar static-top shadow">
@@ -236,10 +236,10 @@ if (!mysqli_set_charset($conn, "utf8mb4")) {
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form method="POST" action="database/validaCadastro.php">
+                        <form id="formUsuario" method="POST" action="database/validaCadastro.php">
 
                             <div class="form-group">
-                                <select class="custom-select" id="agregarUsuarioSelect" name="perfil" required>
+                                <select class="custom-select" id="perfil" name="perfil">
                                     <option value="Comum" selected>Usuário Comum</option>
                                     <option value="Moderador"> Usuário Moderador</option>
                                     <option value="Administrador">Usuário Administrador</option>
@@ -247,23 +247,23 @@ if (!mysqli_set_charset($conn, "utf8mb4")) {
                             </div>
 
                             <div class="form-group">
-                                <input type="text" id="agregarUsuarioName" class="form-control" placeholder="Nome" name="username" required />
+                                <input type="text" id="username" class="form-control" placeholder="Nome" name="username" />
                             </div>
 
                             <div class="form-group">
-                                <input type="email" id="agregarUsuarioEmail" class="form-control" placeholder="Email" name="email" required />
+                                <input type="email" id="email" class="form-control" placeholder="Email" name="email" />
                             </div>
 
 
                             <div class="form-group">
-                                <select class="custom-select" id="agregarUsuarioSelect" name="status" required>
+                                <select class="custom-select" id="agregarUsuarioSelect" name="status" id="status">
                                     <option value="Ativo" selected>Status Ativo</option>
                                     <option value="Inativo">Status Inativo</option>
                                 </select>
                             </div>
 
                             <div class="form-group">
-                                <input type="password" id="agregarUsuarioPassword" class="form-control" placeholder="Senha" name="password" required />
+                                <input type="password" id="password" class="form-control" placeholder="Senha" name="password" />
                             </div>
 
                             <button type="submit" class="btn btn-primary">Cadastrar</button>
@@ -366,15 +366,6 @@ if (!mysqli_set_charset($conn, "utf8mb4")) {
             </div>
         </footer>
 
-        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-        <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
-        <script type="text/javascript" src="personalizado.js"></script>
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
-        <!-- sweetalert2 -->
-        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9.14.2/dist/sweetalert2.all.min.js"></script>
     </body>
 <?php } ?>
 

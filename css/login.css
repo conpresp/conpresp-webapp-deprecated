@@ -55,6 +55,12 @@
   .text-muted:hover {
     color: var(--light) !important;
   }
+  .error {
+    color: white;
+    font-size: 14px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+}
   
   .hidden {
     display: none;

@@ -9,11 +9,10 @@ $status = $_SESSION['status'];
 $password = $_SESSION['password'];
 
 
-if(isset($_SESSION['formatoImagem2'])) {
+if (isset($_SESSION['formatoImagem2'])) {
   $msg = $_SESSION['formatoImagem2'];
   unset($_SESSION['formatoImagem2']);
-}
-else {
+} else {
   $msg = '';
 }
 
@@ -28,23 +27,25 @@ else {
 
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
-  <!-- DataTable -->
-  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css" />
-
   <link rel="stylesheet" href="css/home.css" />
   <link rel="stylesheet" href="css/doc_conpresp.css" />
-
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   <style>
     .hidden {
       display: none;
     }
+   
   </style>
   <script src="https://kit.fontawesome.com/5e195b88df.js" crossorigin="anonymous"></script>
   <link rel="icon" href="img/logo.png" />
   <title>CONPRESP</title>
+  
 </head>
 
 <body>
+<script src="../../validateCampos/imoveis.js"></script>
   <div id="content-wrapper" class="d-flex flex-column">
     <div id="content">
       <nav class="navbar navbar-expand navbar-dark bg-darkblue topbar static-top shadow">
@@ -131,24 +132,24 @@ else {
             <div class="card-body">
               <div class="row color-text">
                 <div class="col-md-12 order-md-1">
-                  <form method="POST" action="database/validaHome.php" enctype="multipart/form-data">
+                  <form id="formPatrimonios" method="POST" action="database/validaHome.php" enctype="multipart/form-data">
                     <div class="row justify-content-center">
                       <a href="home.php" name="btn-cancel" class="btn btn-primary btn-lg m-2 col-md-3"><i class="fa fa-times" aria-hidden="true"></i>
                         Cancelar</a>
                     </div>
                     <?php if ($msg != '') { ?>
-                        <div class="alert alert-danger" role="alert">
-                          <?php echo $msg ?>
-                        </div>
-                      <?php } ?>
+                      <div class="alert alert-danger" role="alert">
+                        <?php echo $msg ?>
+                      </div>
+                    <?php } ?>
                     <div class="mb-3">
                       <label>Responsável pelo Preenchimento:</label>
-                      <input type="text" class="form-control" id="nome" name="responsavelPreenchimento"  />
+                      <input type="text" class="form-control" id="nome" name="responsavelPreenchimento" />
                     </div>
                     <div class="mb-3">
                       <label for="grupoTipoEquipe">Grupo:</label>
-                      <select id="grupoTipoEquipe" class="custom-select d-block w-100" name="grupoTipoEquipe" >
-                        <option value="" selected >Selecione a classificação...</option>
+                      <select id="grupoTipoEquipe" class="custom-select d-block w-100" name="grupoTipoEquipe">
+                        <option value="" selected>Selecione a classificação...</option>
                         <option value="EquipeUAM">
                           Equipe UAM
                         </option>
@@ -168,7 +169,7 @@ else {
                         caso de resoluções com um bem apenas, identificá-lo
                         com o número 01 (um).
                       </h6>
-                      <input type="number" class="form-control" id="itemResolucao" name="itemResolucao"  />
+                      <input type="number" class="form-control" id="itemResolucao" name="itemResolucao" />
                     </div>
                     <div class="mb-3">
                       <label>Denominação:</label>
@@ -176,13 +177,13 @@ else {
                         Inserir a denominação oficial do bem, de acordo com a
                         resolução ou documento oficial.
                       </h6>
-                      <textarea id="denomicacao" class="form-control" aria-label="With textarea" name="denominacao" ></textarea>
+                      <textarea id="denomicacao" class="form-control" aria-label="With textarea" name="denominacao"></textarea>
                     </div>
                     <div class="row">
                       <div class="col-md-3 mb-3">
                         <label>Classificação:</label>
                         <select id="grupo-tipo-bem" class="custom-select d-block w-100" name="classificacao">
-                          <option value="" selected >
+                          <option value="" selected>
                             Selecionar classificação...
                           </option>
                           <option value="Imóvel">Imóvel</option>
@@ -194,11 +195,11 @@ else {
                       <div class="col-md-5 mb-3">
                         <label>Uso atual:</label>
                         <select id="usoAtual" class="custom-select d-block w-100" name="usoAtual">
-                          <option value="" selected >
+                          <option value="" selected>
                             Selecionar classificação...
                           </option>
                           <option value="Cemitérios, Mausoléus e Túmulos">
-                           Cemitérios, Mausoléus e Túmulos
+                            Cemitérios, Mausoléus e Túmulos
                           </option>
                           <option value="Cinemas, Conservatórios e Teatros">
                             Cinemas, Conservatórios e Teatros
@@ -262,7 +263,7 @@ else {
                       <div class="col-md-4 mb-3">
                         <label>Propriedade:</label>
                         <select id="propriedade" class="custom-select d-block w-100" id="grupo-propiedade" name="propriedade">
-                          <option value="" selected >
+                          <option value="" selected>
                             Selecionar classificação...
                           </option>
                           <option value="Pública Municipal">
@@ -294,7 +295,7 @@ else {
                       <div class="col-md-6 mb-3">
                         <label>Térreo (original)</label>
                         <select id="terreo" class="custom-select d-block w-100" name="terreo">
-                          <option value="" selected >
+                          <option value="" selected>
                             Selecionar classificação...
                           </option>
                           <option value="Evocativo">Evocativo</option>
@@ -318,7 +319,7 @@ else {
                         prefeitura como referência:
                         <a href="http://www.prefeitura.sp.gov.br/cidade/secretarias/cultura/conpresp/legislacao/resolucoes/index.php?p=1137" target="_blank">CLICK AQUI</a>
                       </h6>
-                      <input type="text" class="form-control" id="resolucaoTombamento" name="resolucaoTombamento"  />
+                      <input type="text" class="form-control" id="resolucaoTombamento" name="resolucaoTombamento" />
                     </div>
                     <div class="mb-3 p-2 subtitulos_sub">
                       <h4>CONDEPHAAT</h4>
@@ -330,7 +331,7 @@ else {
                         Utilizar o site da prefeitura como referência:
                         <a href=" http://www.prefeitura.sp.gov.br/cidade/secretarias/cultura/cit/index.php?p=1157" target="_blank">CLICK AQUI</a>
                       </h6>
-                      <input type="text" class="form-control" id="resolucaoCondephaat" name="resolucaoCondephaat"  />
+                      <input type="text" class="form-control" id="resolucaoCondephaat" name="resolucaoCondephaat" />
                     </div>
 
                     <div class="mb-3 p-2 subtitulos_sub">
@@ -361,8 +362,8 @@ else {
                     <div class="row">
                       <div class="col-md-6 mb-3">
                         <label>Tipo</label>
-                        <select id="tipo" class="custom-select d-block w-100" name="tipo" >
-                          <option value="" selected >Selecionar tipo...</option>
+                        <select id="tipo" class="custom-select d-block w-100" name="tipo">
+                          <option value="" selected>Selecionar tipo...</option>
                           <option value="ALAMEDA">ALAMEDA</option>
                           <option value="AVENIDA">AVENIDA</option>
                           <option value="CAMPO">CAMPO</option>
@@ -390,8 +391,8 @@ else {
                       </div>
                       <div class="col-md-6 mb-3">
                         <label>Título</label>
-                        <select id="titulo" class="custom-select d-block w-100" name="titulo" >
-                          <option value="" selected >
+                        <select id="titulo" class="custom-select d-block w-100" name="titulo">
+                          <option value="" selected>
                             Selecionar classificação...
                           </option>
                           <option value="ABADE">ABADE</option>
@@ -667,12 +668,12 @@ else {
                         acentuação e sem cedilha. Ex. para "Praça do
                         Patriarca", escrever só "Patriarca"
                       </h6>
-                      <input type="text" class="form-control" id="logradouro" name="logradouro"  />
+                      <input type="text" class="form-control" id="logradouro" name="logradouro" />
                     </div>
                     <div class="mb-3">
                       <label>Número:</label>
                       <h6>Ingressar o Número Atual do endereço</h6>
-                      <input type="text" class="form-control" id="numeroEndereco" name="numeroEndereco"  />
+                      <input type="text" class="form-control" id="numeroEndereco" name="numeroEndereco" />
                     </div>
                     <div class="row">
                       <div class="col-md-6 mb-3">
@@ -682,8 +683,8 @@ else {
                           referência. Camada: Limites Administrativos -
                           Distrito
                         </h6>
-                        <select id="distrito" class="custom-select d-block w-100" name="distrito" >
-                          <option value="" selected >Selecionar distrito...</option>
+                        <select id="distrito" class="custom-select d-block w-100" name="distrito">
+                          <option value="" selected>Selecionar distrito...</option>
                           <option value="Água Rasa">Água Rasa</option>
                           <option value="Alto de Pinheiros">
                             Alto de Pinheiros
@@ -814,7 +815,7 @@ else {
                           Administrativos - Prefeituras Regionais
                         </h6>
                         <select id="prefeituraRegional" class="custom-select d-block w-100" name="prefeituraRegional">
-                          <option value="" selected >
+                          <option value="" selected>
                             Selecionar uma classificação....
                           </option>
                           <option value="Aricanduva/Vila Formosa">
@@ -883,7 +884,7 @@ else {
                         Cadastro / Cadastro Fiscal ou o CIT - Pesquisa por
                         endereço
                       </h6>
-                      <input type="text" class="form-control" id="setor" name="setor"  />
+                      <input type="text" class="form-control" id="setor" name="setor" />
                     </div>
                     <div class="mb-3">
                       <label>Quadra:</label>
@@ -893,7 +894,7 @@ else {
                         Utilizar o GEOSAMPA como referência. Camada: Cadastro
                         / Cadastro Fiscal ou o CIT - Pesquisa por endereço
                       </h6>
-                      <input type="text" class="form-control" id="quadra" name="quadra"  />
+                      <input type="text" class="form-control" id="quadra" name="quadra" />
                     </div>
                     <div class="mb-3">
                       <label>Lote:</label>
@@ -904,7 +905,7 @@ else {
                         Patrimonial através da Pesquisa por Setor e Quadra ou
                         o CIT - Pesquisa por endereço
                       </h6>
-                      <input type="text" class="form-control" id="lote" name="lote"  />
+                      <input type="text" class="form-control" id="lote" name="lote" />
                     </div>
                     <div class="mb-3 p-2 subtitulos">
                       <h4>4. Ficha Técnica</h4>
@@ -912,22 +913,22 @@ else {
                     <div class="row">
                       <div class="col-md-6 mb-3">
                         <label for="state">Autor do projeto original</label>
-                        <input type="text" class="form-control" id="autorOriginal" name="autorOriginal"  />
+                        <input type="text" class="form-control" id="autorOriginal" name="autorOriginal" />
                       </div>
                       <div class="col-md-6 mb-3">
                         <label for="state">Construtor</label>
-                        <input type="text" class="form-control" id="construtor" name="construtor"  />
+                        <input type="text" class="form-control" id="construtor" name="construtor" />
                       </div>
                     </div>
                     <div class="mb-3">
                       <label>Data de Construção:</label>
-                      <input type="text" class="form-control" id="dataConstrucao" name="dataConstrucao"  />
+                      <input type="text" class="form-control" id="dataConstrucao" name="dataConstrucao" />
                     </div>
                     <div class="row">
                       <div class="col-md-6 mb-3">
                         <label>Estilo Arquitetônico</label>
-                        <select id="estiloArquitetonico" class="custom-select d-block w-100" name="estiloArquitetonico" >
-                          <option value="" selected >
+                        <select id="estiloArquitetonico" class="custom-select d-block w-100" name="estiloArquitetonico">
+                          <option value="" selected>
                             Selecionar uma classificação....
                           </option>
                           <option value="Art Deco">Art Deco</option>
@@ -943,8 +944,8 @@ else {
                       </div>
                       <div class="col-md-6 mb-3">
                         <label>Técnica Construtiva</label>
-                        <select id="tecnicaConstrutiva" class="custom-select d-block w-100" name="tecnicaConstrutiva" >
-                          <option value="" selected >
+                        <select id="tecnicaConstrutiva" class="custom-select d-block w-100" name="tecnicaConstrutiva">
+                          <option value="" selected>
                             Selecionar uma classificação....
                           </option>
                           <option value="Adobe">Adobe</option>
@@ -965,6 +966,7 @@ else {
                       </div>
                     </div>
 
+
                     <div class="mb-3">
                       <label>Número de Pavimentos:</label>
                       <h6>
@@ -976,11 +978,11 @@ else {
                     <div class="row">
                       <div class="col-md-6 mb-3">
                         <label>Área do lote (m²):</label>
-                        <input type="number" class="form-control" id="areaLote" name="areaLote" />
+                        <input type="text" class="form-control" id="areaLote" name="areaLote" onkeyup="formatarCampo(this);" />
                       </div>
                       <div class="col-md-6 mb-3">
                         <label>Área construída (m²):</label>
-                        <input type="number" class="form-control" id="areaConstruida" name="areaConstruida" />
+                        <input type="text" class="form-control" id="areaConstruida" name="areaConstruida" onkeyup="formatarCampo(this);" />
                       </div>
                     </div>
                     <div class="row">
@@ -991,7 +993,7 @@ else {
                       <div class="col-md-6 mb-3">
                         <label>Grau de alteração: </label>
                         <select id="grauAlteracao" class="custom-select d-block w-100" name="grauAlteracao">
-                          <option value="" selected >
+                          <option value="" selected>
                             Selecionar uma classificação....
                           </option>
                           <option value="Preservado">Preservado</option>
@@ -1016,7 +1018,7 @@ else {
                         características de estilo e ambiência preservadas.
                       </h6>
                       <select id="grauEstadoConservacao" class="custom-select d-block w-100" name="grauEstadoConservacao">
-                        <option value="" selected >
+                        <option value="" selected>
                           Selecionar uma classificação....
                         </option>
                         <option value="Bom">Bom</option>
@@ -1044,11 +1046,11 @@ else {
 
                     <div class="mb-3">
                       <label>Dados Históricos:</label>
-                      <textarea aria-label="With textarea"  class="form-control" id="dadosHistoricos" name="dadosHistoricos" ></textarea>
+                      <textarea aria-label="With textarea" class="form-control" id="dadosHistoricos" name="dadosHistoricos"></textarea>
                     </div>
                     <div class="mb-3">
                       <label>Dados Arquitetônicos:</label>
-                      <textarea aria-label="With textarea"  class="form-control" id="dadosArquitetonicos" name="dadosArquitetonicos"></textarea>
+                      <textarea aria-label="With textarea" class="form-control" id="dadosArquitetonicos" name="dadosArquitetonicos"></textarea>
                     </div>
                     <div class="mb-3">
                       <label>Dados de Ambiência:</label>
@@ -1076,60 +1078,60 @@ else {
                     </div>
 
                     <div class="mb-3 p-2 subtitulos">
-                        <h4>6. Documentação Gráfica</h4>
-                      </div>
+                      <h4>6. Documentação Gráfica</h4>
+                    </div>
 
-                      <div class="mb-3">
-                        <label>Documentação Gráfica:</label>
-                        <h6>
+                    <div class="mb-3">
+                      <label>Documentação Gráfica:</label>
+                      <h6>
                         Selecione uma imagem para a documentação fotográfica!
-                        </h6>
-                        <input type="file" class="form-control-file" name="documentacaoGrafica" id="documentacaoGrafica" required/>
-                      </div>
+                      </h6>
+                      <input type="file" class="form-control-file" name="documentacaoGrafica" id="documentacaoGrafica"  />
+                    </div>
 
-                      <div class="mb-3">
-                        <label>Documentação Gráfica:</label>
-                        <h6>
+                    <div class="mb-3">
+                      <label>Documentação Gráfica:</label>
+                      <h6>
                         Selecione uma imagem para a documentação fotográfica!
-                        </h6>
-                        <input type="file" class="form-control-file" name="documentacaoGrafica2" id="documentacaoGrafica2" />
-                      </div>
+                      </h6>
+                      <input type="file" class="form-control-file" name="documentacaoGrafica2" id="documentacaoGrafica2" />
+                    </div>
 
-                      <div class="mb-3">
-                        <label>Documentação Gráfica:</label>
-                        <h6>
+                    <div class="mb-3">
+                      <label>Documentação Gráfica:</label>
+                      <h6>
                         Selecione uma imagem para a documentação fotográfica!
-                        </h6>
-                        <input type="file" class="form-control-file" name="documentacaoGrafica3" id="documentacaoGrafica3" >
-                      </div>
+                      </h6>
+                      <input type="file" class="form-control-file" name="documentacaoGrafica3" id="documentacaoGrafica3">
+                    </div>
 
-                      <div class="mb-3 p-2 subtitulos">
-                        <h4>7. Documentação Fotográfica </h4>
-                      </div>
+                    <div class="mb-3 p-2 subtitulos">
+                      <h4>7. Documentação Fotográfica </h4>
+                    </div>
 
-                      <div class="mb-3">
-                        <label>Documentação Fotográfica:</label>
-                        <h6>
+                    <div class="mb-3">
+                      <label>Documentação Fotográfica:</label>
+                      <h6>
                         Selecione uma imagem para a documentação fotográfica!
-                        </h6>
-                        <input type="file" class="form-control-file" name="documentacaoFotografica" id="documentacaoFotografica" required/>
-                      </div>
+                      </h6>
+                      <input type="file" class="form-control-file" name="documentacaoFotografica" id="documentacaoFotografica" />
+                    </div>
 
-                      <div class="mb-3">
-                        <label>Documentação Fotográfica:</label>
-                        <h6>
+                    <div class="mb-3">
+                      <label>Documentação Fotográfica:</label>
+                      <h6>
                         Selecione uma imagem para a documentação fotográfica!
-                        </h6>
-                        <input type="file" class="form-control-file" name="documentacaoFotografica2" id="documentacaoFotografica2"/>
-                      </div>
+                      </h6>
+                      <input type="file" class="form-control-file" name="documentacaoFotografica2" id="documentacaoFotografica2" />
+                    </div>
 
-                      <div class="mb-3">
-                        <label>Documentação Fotográfica:</label>
-                        <h6>
+                    <div class="mb-3">
+                      <label>Documentação Fotográfica:</label>
+                      <h6>
                         Selecione uma imagem para a documentação fotográfica!
-                        </h6>
-                        <input type="file" class="form-control-file" name="documentacaoFotografica3" id="documentacaoFotografica3"/>
-                      </div>
+                      </h6>
+                      <input type="file" class="form-control-file" name="documentacaoFotografica3" id="documentacaoFotografica3" />
+                    </div>
 
                     <hr class="mb-4" />
 
@@ -1142,6 +1144,17 @@ else {
                       </button>
                     </div>
                   </form>
+
+                  <script>
+                    function formatarCampo(i) {
+                      var valor = i.value.replace(/\D/g, '');
+                      valor = (valor / 100).toFixed(2) + '';
+                      valor = valor.replace(".", ",");
+                      valor = valor.replace(/(\d)(\d{3})(\d{3}),/g, "$1.$2.$3,");
+                      valor = valor.replace(/(\d)(\d{3}),/g, "$1.$2,");
+                      i.value = valor;
+                    }
+                  </script>
                 </div>
               </div>
             </div>
@@ -1151,8 +1164,8 @@ else {
     </div>
   </div>
 
-<!-- Usuario Modal -->
-<div class="modal fade" id="usuario-modal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <!-- Usuario Modal -->
+  <div class="modal fade" id="usuario-modal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -1184,7 +1197,7 @@ else {
 
             <div class="form-group">
               <label style="color: black">Email</label>
-              <input type="email" class="form-control" name="email" value="<?php echo $email ?>" required >
+              <input type="email" class="form-control" name="email" value="<?php echo $email ?>" required>
             </div>
 
             <div class="form-group">
@@ -1208,7 +1221,7 @@ else {
 
             <div class="form-group">
               <label style="color: black">Senha</label>
-              <input type="password" class="form-control" name="password" placeholder="Nova Senha.." required>
+              <input type="password" class="form-control" name="password" id="password" placeholder="Nova Senha.." required>
             </div>
             <br>
             <div class="modal-footer">
@@ -1244,15 +1257,5 @@ else {
       </p>
     </div>
   </footer>
-
-  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
-  <!-- sweetalert2 -->
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9.14.2/dist/sweetalert2.all.min.js"></script>
-
 </body>
-
 </html>

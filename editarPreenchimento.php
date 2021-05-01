@@ -51,9 +51,9 @@ if (!mysqli_set_charset($conn, "utf8mb4")) {
 
     <link rel="stylesheet" href="css/home.css" />
     <link rel="stylesheet" href="css/doc_conpresp.css" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <style>
       .hidden {
         display: none;
@@ -65,6 +65,7 @@ if (!mysqli_set_charset($conn, "utf8mb4")) {
   </head>
 
   <body>
+  <script src="validateCampos/imoveis.js"></script>
     <div id="content-wrapper" class="d-flex flex-column">
       <div id="content">
         <nav class="navbar navbar-expand navbar-dark bg-darkblue topbar static-top shadow">
@@ -151,7 +152,7 @@ if (!mysqli_set_charset($conn, "utf8mb4")) {
               <div class="card-body">
                 <div class="row color-text">
                   <div class="col-md-12 order-md-1">
-                    <form class="needs-validation" method="POST" action="update.php" enctype="multipart/form-data" >
+                    <form id="formPatrimonios" method="POST" action="update.php" enctype="multipart/form-data" >
                       <div class="row justify-content-center">
                         <a href="home.php" name="btn-cancel" class="btn btn-primary btn-lg m-2 col-md-3"><i class="fa fa-times" aria-hidden="true"></i>
                           Cancelar</a>
@@ -991,11 +992,11 @@ if (!mysqli_set_charset($conn, "utf8mb4")) {
                       <div class="row">
                         <div class="col-md-6 mb-3">
                           <label>Área do lote (m²):</label>
-                          <input type="number" class="form-control" id="areaLote" name="areaLote" value="<?php echo $dados['areaLote'] ?>" />
+                          <input type="text" class="form-control" id="areaLote" name="areaLote" value="<?php echo $dados['areaLote'] ?>" onkeyup="formatarCampo(this);"/>
                         </div>
                         <div class="col-md-6 mb-3">
                           <label>Área construída (m²):</label>
-                          <input type="number" class="form-control" id="areaConstruida" name="areaConstruida" value="<?php echo $dados['areaConstruida'] ?>" />
+                          <input type="text" class="form-control" id="areaConstruida" name="areaConstruida" value="<?php echo $dados['areaConstruida'] ?>" onkeyup="formatarCampo(this);" />
                         </div>
                       </div>
                       <div class="row">
@@ -1175,7 +1176,17 @@ if (!mysqli_set_charset($conn, "utf8mb4")) {
                     <div class="row justify-content-center">
                       <a href="home.php" name="btn-cancel" class="btn btn-primary btn-lg m-2 col-md-3"><i class="fa fa-times" aria-hidden="true"></i>
                         Cancelar</a>
-                    </div>                 
+                    </div> 
+                    <script>
+                    function formatarCampo(i) {
+                      var valor = i.value.replace(/\D/g, '');
+                      valor = (valor / 100).toFixed(2) + '';
+                      valor = valor.replace(".", ",");
+                      valor = valor.replace(/(\d)(\d{3})(\d{3}),/g, "$1.$2.$3,");
+                      valor = valor.replace(/(\d)(\d{3}),/g, "$1.$2,");
+                      i.value = valor;
+                    }
+                  </script>                
                   </div>
                 </div>
               </div>
@@ -1278,15 +1289,6 @@ if (!mysqli_set_charset($conn, "utf8mb4")) {
         </p>
       </div>
     </footer>
-
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
-    <!-- sweetalert2 -->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9.14.2/dist/sweetalert2.all.min.js"></script>
-
   </body>
 <?php }; ?>
 

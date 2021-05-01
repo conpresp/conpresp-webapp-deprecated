@@ -149,6 +149,9 @@
     font-style: italic;
     font-weight: 300;
   }
+  .error {
+    color: red;
+}
   
   div.dataTables_length label,
   div.dataTables_filter label,

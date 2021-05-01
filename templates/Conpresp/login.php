@@ -34,10 +34,14 @@ else {
       src="https://kit.fontawesome.com/5e195b88df.js"
       crossorigin="anonymous"
     ></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <link rel="icon" href="img/logo.png" />
     <title>CONPRESP</title>
   </head>
   <body class="bg-darkblue">
+    <script src="../../validateCampos/usuario.js"></script>
     <section>
       <div class="row w-100 min-vh-100">
         <div class="col-lg-7 bg-darkgreen d-none d-lg-block">
@@ -63,7 +67,7 @@ else {
          <?php echo $msg ?>
           </div>
           <?php }?>
-            <form class="nb-5" id="loginForm" method="POST" action="database/validaLogin.php">
+            <form class="nb-5" id="formUsuario" method="POST" action="database/validaLogin.php">
               <div class="form-group mb-4">
                 <label for="exampleInputEmail1" class="font-weight-bold"
                   >Email:</label
@@ -75,7 +79,7 @@ else {
                   aria-describedby="emailHelp"
                   placeholder="Digite seu email"
                   name="email"
-                  required
+                  id="email"
                 />
               </div>
               <div class="form-group mb-4">
@@ -88,6 +92,7 @@ else {
                   id="inputPassword"
                   placeholder="Digite sua senha"
                   name="password"
+                  id="password"
                   
                 />
                 <a
@@ -155,17 +160,5 @@ else {
         </div>
       </div>
     </div>
-
-    <!-- jQuery and Bootstrap Bundle (includes Popper) -->
-    <script
-      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
-      crossorigin="anonymous"
-    ></script>
   </body>
 </html>

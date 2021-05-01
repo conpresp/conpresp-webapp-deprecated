@@ -30,11 +30,15 @@ if (isset($_SESSION['erroEmail'])) {
 
   <link rel="stylesheet" href="css/home.css" />
   <script src="https://kit.fontawesome.com/5e195b88df.js" crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   <link rel="icon" href="img/logo.png" />
   <title>CONPRESP</title>
 </head>
 
 <body>
+  <script src="../../validateCampos/usuario.js"></script>
   <div id="content-wrapper" class="d-flex flex-column">
     <div id="content">
       <nav class="navbar navbar-expand navbar-dark bg-darkblue topbar static-top shadow">
@@ -125,11 +129,11 @@ if (isset($_SESSION['erroEmail'])) {
                     <?php echo $msg ?>
                   </div>
                 <?php } ?>
-                <form method="post" action="database/validaCadastro.php">
+                <form id="formUsuario" method="post" action="database/validaCadastro.php">
 
                   <div class="form-group">
                     <label style="color: black">Perfil</label>
-                    <select class="custom-select" name="perfil" required>
+                    <select class="custom-select" name="perfil" id="perfil">
                       <option value="Comum">Comum </option>
                       <option value="Moderador">Moderador </option>
                       <option value="Administrador">Administrador</option>
@@ -138,17 +142,17 @@ if (isset($_SESSION['erroEmail'])) {
 
                   <div class="form-group">
                     <label style="color: black">Nome</label>
-                    <input type="text" class="form-control" name="username" required>
+                    <input type="text" class="form-control" name="username" id="username">
                   </div>
 
                   <div class="form-group">
                     <label style="color: black">Email</label>
-                    <input type="email" class="form-control" name="email" required>
+                    <input type="email" class="form-control" name="email" id="email">
                   </div>
 
                   <div class="form-group">
                     <label style="color: black">Status</label>
-                    <select class="custom-select" name="status" required>
+                    <select class="custom-select" name="status" id="status">
                       <option value="Ativo">Ativo </option>
                       <option value="Inativo">Inativo</option>
                     </select>
@@ -157,7 +161,7 @@ if (isset($_SESSION['erroEmail'])) {
 
                   <div class="form-group">
                     <label style="color: black">Senha</label>
-                    <input type="password" class="form-control" name="password" required>
+                    <input type="password" class="form-control" name="password" id="password">
                   </div>
                   <br>
                   <div class="form-group col-col-md-offset-4">
@@ -266,13 +270,6 @@ if (isset($_SESSION['erroEmail'])) {
     </div>
   </footer>
 
-  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
-  <!-- sweetalert2 -->
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9.14.2/dist/sweetalert2.all.min.js"></script>
 </body>
 
 </html>

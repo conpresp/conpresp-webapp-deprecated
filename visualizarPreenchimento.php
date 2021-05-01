@@ -39,11 +39,11 @@ $password = $_SESSION['password'];
 
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
-  <!-- DataTable -->
-  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css" />
-
   <link rel="stylesheet" href="css/home.css" />
   <link rel="stylesheet" href="css/doc_conpresp.css" />
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
 
   <style>
     .hidden {
@@ -979,11 +979,11 @@ $password = $_SESSION['password'];
                     <div class="row">
                       <div class="col-md-6 mb-3">
                         <label>Área do lote (m²):</label>
-                        <input type="number" class="form-control" id="areaLote" name="areaLote" value="<?php echo $dados['areaLote']?>" disabled/>
+                        <input type="text" class="form-control" id="areaLote" name="areaLote" value="<?php echo $dados['areaLote']?>" onkeyup="formatarCampo(this);" disabled/>
                       </div>
                       <div class="col-md-6 mb-3">
                         <label>Área construída (m²):</label>
-                        <input type="number" class="form-control" id="areaConstruida" name="areaConstruida" value="<?php echo $dados['areaConstruida']?>" disabled/>
+                        <input type="text" class="form-control" id="areaConstruida" name="areaConstruida" value="<?php echo $dados['areaConstruida']?>" onkeyup="formatarCampo(this);" disabled/>
                       </div>
                     </div>
                     <div class="row">
@@ -1160,6 +1160,17 @@ $password = $_SESSION['password'];
                         Cancelar</a>
                     </div>
                   </form>
+
+                  <script>
+                    function formatarCampo(i) {
+                      var valor = i.value.replace(/\D/g, '');
+                      valor = (valor / 100).toFixed(2) + '';
+                      valor = valor.replace(".", ",");
+                      valor = valor.replace(/(\d)(\d{3})(\d{3}),/g, "$1.$2.$3,");
+                      valor = valor.replace(/(\d)(\d{3}),/g, "$1.$2,");
+                      i.value = valor;
+                    }
+                  </script>
                 </div>
               </div>
             </div>
