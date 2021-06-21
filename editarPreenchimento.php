@@ -62,10 +62,149 @@ if (!mysqli_set_charset($conn, "utf8mb4")) {
     <script src="https://kit.fontawesome.com/5e195b88df.js" crossorigin="anonymous"></script>
     <link rel="icon" href="img/logo.png" />
     <title>CONPRESP</title>
+    <!-- <script>
+    $(document).ready(function() {
+      jQuery.validator.setDefaults({
+        debug: true,
+        success: "valid"
+      });
+      $("#formPatrimonios").validate({
+        rules: {
+          denominacao: {
+            required: true,
+
+          },
+          classificacao: {
+            required: true,
+          },
+          usoAtual: {
+            required: true,
+          },
+
+          propriedade: {
+            required: true,
+          },
+          resolucaoTombamento: {
+            required: true,
+          },
+          anoConpresp: {
+            required: true,
+            maxlength: 4,
+            minlength: 4
+          },
+          resolucaoCondephaat: {
+            required: true,
+          },
+          resolucaoIphan: {
+            required: true,
+          },
+          anoCondephaat: {
+            required: true,
+            maxlength: 4,
+            minlength: 4
+          },
+          anoIphan: {
+            required: true,
+            maxlength: 4,
+            minlength: 4
+          },
+          tipo: {
+            required: true,
+          },
+          titulo: {
+            required: true,
+          },
+          logradouro: {
+            required: true,
+          },
+          numeroEndereco: {
+            required: true,
+          },
+          distrito: {
+            required: true,
+          },
+          prefeituraRegional: {
+            required: true,
+          },
+          setor: {
+            required: true,
+          },
+          quadra: {
+            required: true,
+          },
+          lote: {
+            required: true,
+          },
+          dataConstrucao: {
+            required: true,
+          },
+          estiloArquitetonico: {
+            required: true,
+          },
+          tecnicaConstrutiva: {
+            required: true,
+          },
+          numeroPavimentos: {
+            required: true,
+          },
+          grauAlteracao: {
+            required: true,
+          },
+          dadosHistoricos: {
+            required: true,
+          },
+          dadosArquitetonicos: {
+            required: true,
+          },
+          dadosAmbiencia: {
+            required: true,
+          },
+          fontesBibliograficas: {
+            required: true
+          }
+        },
+        messages: {
+          denominacao: "Este campo é obrigatório!",
+          classificacao: "Este campo é obrigatório!",
+          usoAtual: "Este campo é obrigatório!",
+          propriedade: "Este campo é obrigatório!",
+          resolucaoTombamento: "Este campo é obrigatório!",
+          anoConpresp: "Este campo é obrigatório!",
+          resolucaoCondephaat: "Este campo é obrigatório!",
+          resolucaoIphan: "Este campo é obrigatório!",
+          tipo: "Este campo é obrigatório!",
+          titulo: "Este campo é obrigatório!",
+          logradouro: "Este campo é obrigatório!",
+          numeroEndereco: "Este campo é obrigatório!",
+          distrito: "Este campo é obrigatório!",
+          prefeituraRegional: "Este campo é obrigatório!",
+          setor: "Este campo é obrigatório!",
+          quadra: "Este campo é obrigatório!",
+          lote: "Este campo é obrigatório!",
+          dataConstrucao: "Este campo é obrigatório!",
+          estiloArquitetonico: "Este campo é obrigatório!",
+          tecnicaConstrutiva: "Este campo é obrigatório!",
+          numeroPavimentos: "Este campo é obrigatório!",
+          grauAlteracao: "Este campo é obrigatório!",
+          dadosHistoricos: "Este campo é obrigatório!",
+          dadosArquitetonicos: "Este campo é obrigatório!",
+          dadosAmbiencia: "Este campo é obrigatório!",
+          fontesBibliograficas: "Este campo é obrigatório!",
+          anoCondephaat: "Este campo é obrigatório!",
+          anoIphan: "Este campo é obrigatório!",
+        },
+
+        submitHandler: function(form) {
+          form.submit();
+        }
+
+      });
+    });
+  </script> -->
   </head>
 
   <body>
-  <script src="validateCampos/imoveis.js"></script>
+  <script src=""></script>
     <div id="content-wrapper" class="d-flex flex-column">
       <div id="content">
         <nav class="navbar navbar-expand navbar-dark bg-darkblue topbar static-top shadow">
@@ -128,6 +267,9 @@ if (!mysqli_set_charset($conn, "utf8mb4")) {
               <a class="nav-link" href="usuarios.php"><i class="fas fa-users bg-gray-icon"></i>Usuários</a>
             </li>
           <?php } ?>
+          <li class="nav-item active font-hover">
+                        <a class="nav-link" href="templates/glossario.pdf"><i class="fas fa-book bg-gray-icon"></i>Glossário</a>
+          </li>
         </ul>
       </div>
     </nav>
@@ -218,66 +360,24 @@ if (!mysqli_set_charset($conn, "utf8mb4")) {
                         <div class="col-md-5 mb-3">
                           <label>Uso atual:</label>
                           <select id="usoAtual" class="custom-select d-block w-100" name="usoAtual">
-                            <option value="" selected>
-                              Selecionar classificação...
-                            </option>
-                            <option value="Cemitérios, Mausoléus e Túmulos" <?php echo $dados['usoAtual'] == 'Cemitérios, Mausoléus e Túmulos' ? 'selected' : '' ?>>
-                              Cemitérios, Mausoléus e Túmulos
-                            </option>
-                            <option value="Cinemas, Conservatórios e Teatros" <?php echo $dados['usoAtual'] == 'Cinemas, Conservatórios e Teatros' ? 'selected' : '' ?>>
-                              Cinemas, Conservatórios e Teatros
-                            </option>
-                            <option value="Conjuntos Residenciais" <?php echo $dados['usoAtual'] == 'Conjuntos Residenciais' ? 'selected' : '' ?>>
-                              Conjuntos Residenciais
-                            </option>
-                            <option value="Edifícios Bancários" <?php echo $dados['usoAtual'] == 'Edifícios Bancários' ? 'selected' : '' ?>>
-                              Edifícios Bancários
-                            </option>
-                            <option value="Edifícios Comerciais" <?php echo $dados['usoAtual'] == 'Edifícios Comerciais' ? 'selected' : '' ?>>
-                              Edifícios Comerciais
-                            </option>
-                            <option value="Edifícios de Uso Administrativo" <?php echo $dados['usoAtual'] == 'Edifícios de Uso Administrativo' ? 'selected' : '' ?>>
-                              Edifícios de Uso Administrativo
-                            </option>
-                            <option value="Edifícios de Uso Especia" <?php echo $dados['usoAtual'] == '"Edifícios de Uso Especia' ? 'selected' : '' ?>>
-                              Edifícios de Uso Especia
-                            </option>
-                            <option value="Edifícios de Uso Ferroviário" <?php echo $dados['usoAtual'] == 'Edifícios de Uso Ferroviário' ? 'selected' : '' ?>>
-                              Edifícios de Uso Ferroviário
-                            </option>
-                            <option value="Edifícios de Uso Misto" <?php echo $dados['usoAtual'] == 'Edifícios de Uso Misto' ? 'selected' : '' ?>>
-                              Edifícios de Uso Misto
-                            </option>
-                            <option value="Edifícios Escolares" <?php echo $dados['usoAtual'] == 'Edifícios Escolares' ? 'selected' : '' ?>>
-                              Edifícios Escolares
-                            </option>
-                            <option value="Edifícios Hospitalares" <?php echo $dados['usoAtual'] == 'Edifícios Hospitalares' ? 'selected' : '' ?>>
-                              Edifícios Hospitalares
-                            </option>
-                            <option value="Edifícios Hoteleiros" <?php echo $dados['usoAtual'] == 'Edifícios Hoteleiros' ? 'selected' : '' ?>>
-                              Edifícios Hoteleiros
-                            </option>
-                            <option value="Edifícios Religiosos" <?php echo $dados['usoAtual'] == 'Edifícios Religiosos' ? 'selected' : '' ?>>
-                              Edifícios Religiosos
-                            </option>
-                            <option value="Edifícios Residenciais Multifamiliares" <?php echo $dados['usoAtual'] == 'Edifícios Residenciais Multifamiliares' ? 'selected' : '' ?>>
-                              Edifícios Residenciais Multifamiliares
-                            </option>
-                            <option value="Edifícios Residenciais Unifamiliares" <?php echo $dados['usoAtual'] == 'Edifícios Residenciais Unifamiliares' ? 'selected' : '' ?>>
-                              Edifícios Residenciais Unifamiliares
-                            </option>
-                            <option value="Ed. Res. Unifamiliares - Conj. Residenciais" <?php echo $dados['usoAtual'] == 'Ed. Res. Unifamiliares - Conj. Residenciais' ? 'selected' : '' ?>>
-                              Ed. Res. Unifamiliares - Conj. Residenciais
-                            </option>
-                            <option value="Edifícios Rurais" <?php echo $dados['usoAtual'] == 'Edifícios Rurais' ? 'selected' : '' ?>>
-                              Edifícios Rurais
-                            </option>
-                            <option value="Logradouros" <?php echo $dados['usoAtual'] == 'Logradouros' ? 'selected' : '' ?>>Logradouros</option>
-                            <option value="Monumentos" <?php echo $dados['usoAtual'] == 'Monumentos' ? 'selected' : '' ?>>Monumentos</option>
-                            <option value="Museus e Pavilhões de Exposição" <?php echo $dados['usoAtual'] == 'Museus e Pavilhões de Exposição' ? 'selected' : '' ?>>
-                              Museus e Pavilhões de Exposição
-                            </option>
-                            <option value="Obras de Arte" <?php echo $dados['usoAtual'] == 'Obras de Arte' ? 'selected' : '' ?>>Obras de Arte</option>
+                          <option value="" selected>
+                            Selecionar classificação...
+                          </option>
+                          <option value="Cemitérios, Mausoléus e Túmulos" <?php echo $dados['usoAtual'] == 'Cemitérios, Mausoléus e Túmulos' ? 'selected' : '' ?>>
+                            Cemitérios, Mausoléus e Túmulos
+                          </option>
+                          <option value="Comercial" <?php echo $dados['usoAtual'] == 'Comercial' ? 'selected' : '' ?>>Comercial</option>
+                          <option value="Cultural" <?php echo $dados['usoAtual'] == 'Cultural' ? 'selected' : '' ?>>Cultural</option>
+                          <option value="Educacional" <?php echo $dados['usoAtual'] == 'Educacional' ? 'selected' : '' ?>>Educacional</option>
+                          <option value="Espaço público" <?php echo $dados['usoAtual'] == 'Espaço público' ? 'selected' : '' ?>>Espaço público</option>
+                          <option value="Industrial" <?php echo $dados['usoAtual'] == 'Industrial' ? 'selected' : '' ?>>Industrial</option>
+                          <option value="Instituição de saúde" <?php echo $dados['usoAtual'] == 'Instituição de saúde' ? 'selected' : '' ?>>Instituição de saúde</option>
+                          <option value="Misto (Comércio e Serviço)" <?php echo $dados['usoAtual'] == 'Misto (Comércio e Serviço)' ? 'selected' : '' ?>> Misto (Comércio e Serviço)</option>
+                          <option value="Monumento e obras de arte" <?php echo $dados['usoAtual'] == 'Monumento e obras de arte' ? 'selected' : '' ?>>Monumento e obras de arte</option>
+                          <option value="Natural" <?php echo $dados['usoAtual'] == 'Natural' ? 'selected' : '' ?>>Natural</option>
+                          <option value="Religioso" <?php echo $dados['usoAtual'] == 'Religioso' ? 'selected' : '' ?>>Religioso</option>
+                          <option value="Residencial" <?php echo $dados['usoAtual'] == 'Residencial' ? 'selected' : '' ?>>Residencial</option>
+                          <option value="Serviço" <?php echo $dados['usoAtual'] == 'Serviço' ? 'selected' : '' ?>>Serviço</option>
                           </select>
                           <!-- <div class="invalid-feedback">
                             Por favor seleccione uma classificação.
@@ -289,22 +389,9 @@ if (!mysqli_set_charset($conn, "utf8mb4")) {
                             <option value="" selected>
                               Selecionar classificação...
                             </option>
-                            <option value="Pública Municipal" <?php echo $dados['propriedade'] == 'Pública Municipal' ? 'selected' : '' ?>>
-                              Pública Municipal
-                            </option>
-                            <option value="Pública Estadual" <?php echo $dados['propriedade'] == 'Pública Estadual' ? 'selected' : '' ?>>
-                              Pública Estadual
-                            </option>
-                            <option value="Pública Federal" <?php echo $dados['propriedade'] == 'Pública Federal' ? 'selected' : '' ?>>
-                              Pública Federal
-                            </option>
-                            <option value="Privada" <?php echo $dados['propriedade'] == 'Privada' ? 'selected' : '' ?>>
-                              Privada
-                            </option>
-                            <option value="Instituição Religiosa" <?php echo $dados['propriedade'] == 'Instituição Religiosa' ? 'selected' : '' ?>>
-                              Instituição Religiosa
-                            </option>
-                            <option value="Outros" <?php echo $dados['propriedade'] == 'Outros' ? 'selected' : '' ?>>Outros</option>
+                          <option value="Pública" <?php echo $dados['propriedade'] == 'Pública' ? 'selected' : '' ?>>Pública</option>      
+                          <option value="Particular" <?php echo $dados['propriedade'] == 'Particular' ? 'selected' : '' ?>>Particular</option>
+                          <option value="Religiosa" <?php echo $dados['propriedade'] == 'Religiosa' ? 'selected' : '' ?>>Religiosa</option>
                           </select>
                           <!-- <div class="invalid-feedback">
                             Por favor seleccione uma classificação.
@@ -315,27 +402,38 @@ if (!mysqli_set_charset($conn, "utf8mb4")) {
                         <h4>Uso Original</h4>
                       </div>
                       <div class="row">
-                        <div class="col-md-6 mb-3">
-                          <label>Térreo (original)</label>
-                          <select id="terreo" class="custom-select d-block w-100" name="terreo">
-                            <option value="" selected>
-                              Selecionar classificação...
-                            </option>
-                            <option value="Evocativo" <?php echo $dados['terreo'] == 'Evocativo' ? 'selected' : '' ?>>Evocativo</option>
-                            <option value="Funerário" <?php echo $dados['terreo'] == 'Funerário' ? 'selected' : '' ?>>Funerário</option>
-                            <option value="Industrial" <?php echo $dados['terreo'] == 'Industrial' ? 'selected' : '' ?>>Industrial</option>
-                            <option value="Institucional" <?php echo $dados['terreo'] == 'Institucional' ? 'selected' : '' ?>>Institucional</option>
-                            <option value="Residencial" <?php echo $dados['terreo'] == 'Residencial' ? 'selected' : '' ?>>Residencial</option>
-                            <option value="Serviços" <?php echo $dados['terreo'] == 'Serviços' ? 'selected' : '' ?>>Serviços</option>
-                            <option value="Outros" <?php echo $dados['terreo'] == 'Outros' ? 'selected' : '' ?>>Outros</option>
-                          </select>
-                        </div>
+                      <div class="col-md-6 mb-3">
+                        <label>Uso (original)</label>
+                        <select id="terreo" class="custom-select d-block w-100" name="terreo">
+                          <option value="" selected>
+                            Selecionar classificação...
+                          </option>
+                          <option value="Cemitérios, Mausoléus e Túmulos" <?php echo $dados['terreo'] == 'Cemitérios, Mausoléus e Túmulos' ? 'selected' : '' ?>>
+                            Cemitérios, Mausoléus e Túmulos
+                          </option>
+                          <option value="Comercial" <?php echo $dados['terreo'] == 'Comercial' ? 'selected' : '' ?>>Comercial</option>
+                          <option value="Cultural" <?php echo $dados['terreo'] == 'Cultural' ? 'selected' : '' ?>>Cultural</option>
+                          <option value="Educacional" <?php echo $dados['terreo'] == 'Educacional' ? 'selected' : '' ?>>Educacional</option>
+                          <option value="Espaço público" <?php echo $dados['terreo'] == 'Espaço público' ? 'selected' : '' ?>>Espaço público</option>
+                          <option value="Industrial" <?php echo $dados['terreo'] == 'Industrial' ? 'selected' : '' ?>>Industrial</option>
+                          <option value="Instituição de saúde" <?php echo $dados['terreo'] == 'Instituição de saúde' ? 'selected' : '' ?>>Instituição de saúde</option>
+                          <option value="Misto (Comércio e Serviço)" <?php echo $dados['terreo'] == 'Misto (Comércio e Serviço)' ? 'selected' : '' ?>> Misto (Comércio e Serviço)</option>
+                          <option value="Monumento e obras de arte" <?php echo $dados['terreo'] == 'Monumento e obras de arte' ? 'selected' : '' ?>>Monumento e obras de arte</option>
+                          <option value="Natural" <?php echo $dados['terreo'] == 'Natural' ? 'selected' : '' ?>>Natural</option>
+                          <option value="Religioso" <?php echo $dados['terreo'] == 'Religioso' ? 'selected' : '' ?>>Religioso</option>
+                          <option value="Residencial" <?php echo $dados['terreo'] == 'Residencial' ? 'selected' : '' ?>>Residencial</option>
+                          <option value="Serviço" <?php echo $dados['terreo'] == 'Serviço' ? 'selected' : '' ?>>Serviço</option>
+                        </select>
                       </div>
-
+                    </div>
                       <div class="mb-3 p-2 subtitulos">
                         <h4>2. Tombamento</h4>
                       </div>
-                      <div class="mb-3">
+                      <div class="mb-3 p-2 subtitulos_sub">
+                      <h4>CONPRESP</h4>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-9 mb-3">
                         <label>Resolução:</label>
                         <h6>
                           Seguir o formato: Ex.: Res. 05/91 Utilizar o site da
@@ -344,10 +442,16 @@ if (!mysqli_set_charset($conn, "utf8mb4")) {
                         </h6>
                         <input type="text" class="form-control" id="resolucaoTombamento" name="resolucaoTombamento" value="<?php echo $dados['resolucaoTombamento'] ?>" />
                       </div>
+                      <div class="col-md-3 mb-2" style="margin-top: 25px;" >
+                    <label>Ano de Tombamento</label>
+                    <input class="form-control" type="number" id="anoConpresp" name="anoConpresp" value="<?php echo $dados["anoConpresp"]?>"/>
+                    </div>
+                    </div>
                       <div class="mb-3 p-2 subtitulos_sub">
                         <h4>CONDEPHAAT</h4>
                       </div>
-                      <div class="mb-3">
+                      <div class="row">
+                      <div class="col-md-9 mb-3">
                         <label>Resolução:</label>
                         <h6>
                           Seguir o formato: Ex.: RES. SC SN/70 ou RES. SC 67/82
@@ -356,11 +460,17 @@ if (!mysqli_set_charset($conn, "utf8mb4")) {
                         </h6>
                         <input type="text" class="form-control" id="resolucaoCondephaat" name="resolucaoCondephaat" value="<?php echo $dados['resolucaoCondephaat'] ?>" />
                       </div>
+                      <div class="col-md-3 mb-2" style="margin-top: 25px;" >
+                    <label>Ano de Tombamento</label>
+                    <input class="form-control" type="number" id="anoCondephaat" name="anoCondephaat" value="<?php echo $dados["anoCondephaat"]?>"/>
+                    </div>
+                      </div>
 
                       <div class="mb-3 p-2 subtitulos_sub">
                         <h4>IPHAN</h4>
                       </div>
-                      <div class="mb-3">
+                      <div class="row">
+                      <div class="col-md-9 mb-3">
                         <label>Resolução:</label>
                         <h6>
                           Seguir o formato: Ex.: nº 353 Ano 1951 Utilizar a
@@ -368,6 +478,11 @@ if (!mysqli_set_charset($conn, "utf8mb4")) {
                           <a href="http://portal.iphan.gov.br/uploads/ckfinder/arquivos/2016-11-25_Lista_Bens_Tombados.pdf" target="_blank">CLICK AQUI</a>
                         </h6>
                         <input type="text" class="form-control" id="resolucaoIphan" name="resolucaoIphan" value="<?php echo $dados['resolucaoIphan'] ?>" />
+                      </div>
+                      <div class="col-md-3 mb-2" style="margin-top: 25px;" >
+                    <label>Ano de Tombamento</label>
+                    <input class="form-control" type="number" id="anoIphan" name="anoIphan" value="<?php echo $dados["anoIphan"]?>"/>
+                    </div>
                       </div>
                       <div class="mb-3 p-2 subtitulos">
                         <h4>3. Localização</h4>
@@ -935,10 +1050,24 @@ if (!mysqli_set_charset($conn, "utf8mb4")) {
                           <input type="text" class="form-control" id="construtor" name="construtor" value="<?php echo $dados['construtor'] ?>" />
                         </div>
                       </div>
-                      <div class="mb-3">
-                        <label>Data de Construção:</label>
-                        <input type="text" class="form-control" id="dataConstrucao" name="dataConstrucao" value="<?php echo $dados['dataConstrucao'] ?>" />
+
+                      
+                    <label>Data de Construção:</label>
+                    <div class="mb-3">
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="dataAproximada" id="datasim" value="datasim" <?php echo $dados['dataAproximada'] == 'datasim' ? 'checked' : null ?>> 
+                        <label class="form-check-label" for="datasim">
+                          Data aproximada
+                        </label>
                       </div>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="dataAproximada" id="datanao" value="datanao" <?php echo $dados['dataAproximada'] == 'datanao' ? 'checked' : null ?>>
+                        <label class="form-check-label" for="datanao">
+                          Data não aproximada
+                        </label>
+                      </div>
+                      <input type="text" class="form-control" id="dataConstrucao" name="dataConstrucao" value="<?php echo $dados['dataConstrucao'] ?>"/>
+                    </div>
                       <div class="row">
                         <div class="col-md-6 mb-3">
                           <label>Estilo Arquitetônico</label>

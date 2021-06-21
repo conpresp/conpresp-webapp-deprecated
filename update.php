@@ -62,6 +62,7 @@ if (!mysqli_set_charset($conn, "utf8mb4")) {
   $lote = filter_input(INPUT_POST, 'lote', FILTER_SANITIZE_STRING);
   $autorOriginal = filter_input(INPUT_POST, 'autorOriginal', FILTER_SANITIZE_STRING);
   $construtor = filter_input(INPUT_POST, 'construtor', FILTER_SANITIZE_STRING);
+  $dataAproximada = filter_input(INPUT_POST, 'dataAproximada', FILTER_SANITIZE_STRING);
   $dataConstrucao = filter_input(INPUT_POST, 'dataConstrucao', FILTER_SANITIZE_STRING);
   $estiloArquitetonico = filter_input(INPUT_POST, 'estiloArquitetonico', FILTER_SANITIZE_STRING);
   $tecnicaConstrutiva = filter_input(INPUT_POST, 'tecnicaConstrutiva', FILTER_SANITIZE_STRING);
@@ -80,6 +81,9 @@ if (!mysqli_set_charset($conn, "utf8mb4")) {
   $fontesBibliograficas = filter_input(INPUT_POST, 'fontesBibliograficas', FILTER_SANITIZE_STRING);
   $outrasInformacoes= filter_input(INPUT_POST, 'outrasInformacoes', FILTER_SANITIZE_STRING);
   $observacoes = filter_input(INPUT_POST, 'observacoes', FILTER_SANITIZE_STRING);
+  $anoConpresp = filter_input(INPUT_POST, 'anoConpresp', FILTER_SANITIZE_NUMBER_INT);
+  $anoCondephaat= filter_input(INPUT_POST, 'anoCondephaat', FILTER_SANITIZE_NUMBER_INT);
+  $anoIphan = filter_input(INPUT_POST, 'anoIphan', FILTER_SANITIZE_NUMBER_INT);
   $documentacaoFotografica = null;
   $documentacaoFotografica2 = null;
   $documentacaoFotografica3 = null;
@@ -262,9 +266,9 @@ if(isset($_FILES['documentacaoGrafica3'])) {
 
   $result_usuario = "UPDATE imovel SET responsavelPreenchimento ='$responsavelPreenchimento', grupoTipoEquipe='$grupoTipoEquipe', 
   itemResolucao=$itemResolucao, denominacao='$denominacao', classificacao='$classificacao', usoAtual='$usoAtual', propriedade='$propriedade',
-  terreo='$terreo', resolucaoTombamento='$resolucaoTombamento', resolucaoCondephaat='$resolucaoCondephaat', resolucaoIphan='$resolucaoIphan',
+  terreo='$terreo', resolucaoTombamento='$resolucaoTombamento', anoConpresp='$anoConpresp', resolucaoCondephaat='$resolucaoCondephaat', anoCondephaat='$anoCondephaat', resolucaoIphan='$resolucaoIphan', anoIphan='$anoIphan',
   tipo='$tipo', titulo='$titulo', logradouro='$logradouro', numeroEndereco='$numeroEndereco', distrito='$distrito', prefeituraRegional='$prefeituraRegional',
-  setor='$setor', quadra='$quadra', lote='$lote', 	autorOriginal='$autorOriginal', construtor='$construtor', dataConstrucao='$dataConstrucao',
+  setor='$setor', quadra='$quadra', lote='$lote', 	autorOriginal='$autorOriginal', construtor='$construtor', dataAproximada='$dataAproximada', dataConstrucao='$dataConstrucao',
   estiloArquitetonico='$estiloArquitetonico', tecnicaConstrutiva='$tecnicaConstrutiva', numeroPavimentos='$numeroPavimentos', areaLote='$areaLote',
   areaConstruida='$areaConstruida', grauTombamento='$grauTombamento', grauAlteracao='$grauAlteracao', comentarioGrauAlteracao='$comentarioGrauAlteracao',
   grauEstadoConservacao='$grauEstadoConservacao', comentarioEstadoConservacao='$comentarioEstadoConservacao', observacoesPavimentos='$observacoesPavimentos',

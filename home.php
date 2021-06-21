@@ -175,6 +175,9 @@ if (!mysqli_set_charset($conn, "utf8mb4")) {
                             <a class="nav-link" href="usuarios.php"><i class="fas fa-users bg-gray-icon"></i>Usuários</a>
                         </li>
                     <?php } ?>
+                    <li class="nav-item active font-hover">
+                        <a class="nav-link" href="templates/glossario.pdf"><i class="fas fa-book bg-gray-icon"></i>Glossário</a>
+                    </li>
                 </ul>
             </div>
         </nav>

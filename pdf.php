@@ -65,6 +65,9 @@ ob_start();
 <body>
     <?php
 while($dados = mysqli_fetch_assoc($result)) {
+
+$mostrarData = '';
+$dados['dataConstrucao'] != '' ? $mostrarData = $dados['dataAproximada'] === 'datasim' ? 'c' : '' : '';
 ?>
 
 <table id="customers">
@@ -98,7 +101,7 @@ while($dados = mysqli_fetch_assoc($result)) {
   <tr>
     <th>Uso Atual</th>
     <th>Propriedade</th>
-    <th>Térreo</th>
+    <th>Uso Original</th>
   </tr>
   <tr>
     <td><?php echo $dados['usoAtual'] ?></th>
@@ -108,31 +111,38 @@ while($dados = mysqli_fetch_assoc($result)) {
 </table>
 <table id="customers">
   <tr>
-    <th>Resolução Tombamento</th>
+    <th style="text-align: center;">Tombamento</th>
+  </tr>
+</table>
+<table id="customers">
+  <tr>
+    <th>Resolução Conpresp</th>
+    <th>A.T</th>
     <th>Resolução Condephaat</th>
+    <th>A.T</th>
     <th>Resolução Iphan</th>
+    <th>A.T</th>
   </tr>
   <tr>
     <td><?php echo $dados['resolucaoTombamento'] ?></td>
+    <td><?php echo $dados['anoConpresp'] ?></td>
     <td><?php echo $dados['resolucaoCondephaat'] ?></td>
+    <td><?php echo $dados['anoCondephaat'] ?></td>
     <td><?php echo $dados['resolucaoIphan'] ?></td>
+    <td><?php echo $dados['anoIphan'] ?></td>
   </tr>
 </table>
 <table id="customers">
   <tr>
-    <th style="text-align: center;">Localização</th>
+    <th style="text-align: center;">Endereço</th>
   </tr>
 </table>
 <table id="customers">
   <tr>
-    <th>Tipo</th>
-    <th>Título</th>
     <th>Logradouro</th>
     <th>Número</th>
   </tr>
   <tr>
-    <td><?php echo $dados['tipo'] ?></td>
-    <td><?php echo $dados['titulo'] ?></td>
     <td><?php echo $dados['logradouro'] ?></td>
     <td><?php echo $dados['numeroEndereco'] ?></td>
   </tr>
@@ -175,7 +185,7 @@ while($dados = mysqli_fetch_assoc($result)) {
     <th>Técnica Construtiva</th>
   </tr>
   <tr>
-    <td><?php echo $dados['dataConstrucao'] ?></td>
+    <td><?php echo $dados['dataConstrucao']. ' ' ?> <i><?php echo $mostrarData ?></i></td>
     <td><?php echo $dados['estiloArquitetonico'] ?></td>
     <td><?php echo $dados['tecnicaConstrutiva'] ?></td>
   </tr>
@@ -200,19 +210,83 @@ while($dados = mysqli_fetch_assoc($result)) {
 </table>
 <table id="customers">
   <tr>
-    <th>Documentação Gráfica</th>
-    <th>Documentação Fotográfica</th>
+    <th style="text-align: center;">Descrição</th>
   </tr>
+</table>
+<table id="customers">
+  <tr>
+    <th>Dados Históricos</th>
+    <th>Dados Arquitetônico</th>
+  </tr>
+  <tr>
+    <td><?php echo $dados['dadosHistoricos'] ?></td>
+    <td><?php echo $dados['dadosArquitetonicos'] ?></td>
+  </tr>
+</table>
+<table id="customers">
+  <tr>
+    <th style="width: 50%;">Dados de Ambiência</th>
+    <th style="width: 50%;">Fontes Bibliográficas</th>
+  </tr>
+  <tr>
+    <td ><?php echo $dados['dadosAmbiencia'] ?></td>
+    <td><?php echo $dados['fontesBibliograficas'] ?></td>
+  </tr>
+  <tr>
+    <th>Outras Informações</th>
+    <th>observações</th>
+  </tr>
+  <tr>
+    <td><?php echo $dados['outrasInformacoes'] ?></td>
+    <td><?php echo $dados['observacoes'] ?></td>
+  </tr>
+</table>
+<table id="customers">
+  <tr>
+    <th style="text-align: center;">Documentação Fotográfica</th>
+  </tr>
+</table>
+<table id="customers">
+  <tr>
+    <td>
+    <?php if (isset($dados['documentacaoFotografica']) && $dados['documentacaoFotografica'] != null && $dados['documentacaoFotografica'] != ' ') {   ?>
+    <img src="http://conpresp-api.test/imgFotografica/img1/<?php echo $dados['documentacaoFotografica'] ?>" width="200px" height="100px"/>
+    <?php } ?>
+    </td>
+    <td>
+    <?php if (isset($dados['documentacaoFotografica2']) && $dados['documentacaoFotografica2'] != null && $dados['documentacaoFotografica2'] != ' ') {   ?>
+    <img src="http://conpresp-api.test/imgFotografica/img2/<?php echo $dados['documentacaoFotografica2'] ?>" width="200px" height="100px"/>
+    <?php } ?>
+    </td>
+    <td>
+    <?php if (isset($dados['documentacaoFotografica3']) && $dados['documentacaoFotografica3'] != null && $dados['documentacaoFotografica3'] != ' ') {   ?>
+    <img src="http://conpresp-api.test/imgFotografica/img3/<?php echo $dados['documentacaoFotografica3'] ?>" width="200px" height="100px"/>
+    <?php } ?>
+    </td>
+  </tr>
+</table>
+
+<table id="customers">
+  <tr>
+    <th style="text-align: center;">Documentação Gráfica</th>
+  </tr>
+</table>
+<table id="customers">
   <tr>
     <td>
     <?php if (isset($dados['documentacaoGrafica']) && $dados['documentacaoGrafica'] != null && $dados['documentacaoGrafica'] != ' ') {   ?>
-    <img src="http://conpresp-api.test/imgGrafica/img1/<?php echo $dados['documentacaoGrafica'] ?>" width="100px" height="100px"/>
+    <img src="http://conpresp-api.test/imgGrafica/img1/<?php echo $dados['documentacaoGrafica'] ?>" width="200px" height="100px"/>
      <?php } ?>
     </td>
     <td>
-    <?php if (isset($dados['documentacaoFotografica']) && $dados['documentacaoFotografica'] != null && $dados['documentacaoFotografica'] != ' ') {   ?>
-    <img src="http://conpresp-api.test/imgFotografica/img1/<?php echo $dados['documentacaoFotografica'] ?>" width="100px" height="100px"/>
-    <?php } ?>
+    <?php if (isset($dados['documentacaoGrafica2']) && $dados['documentacaoGrafica2'] != null && $dados['documentacaoGrafica2'] != ' ') {   ?>
+    <img src="http://conpresp-api.test/imgGrafica/img2/<?php echo $dados['documentacaoGrafica2'] ?>" width="200px" height="100px"/>
+     <?php } ?>
+    </td>
+    <td>
+    <?php if (isset($dados['documentacaoGrafica3']) && $dados['documentacaoGrafica3'] != null && $dados['documentacaoGrafica3'] != ' ') {   ?>
+    <img src="http://conpresp-api.test/imgGrafica/img3/<?php echo $dados['documentacaoGrafica3'] ?>" width="200px" height="100px"/>
+     <?php } ?>
     </td>
   </tr>
 </table>

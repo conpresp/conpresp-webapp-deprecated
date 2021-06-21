@@ -1,7 +1,7 @@
 :root {
     --dark: #0e2033ec;
-    --darkblue: #2c3d51;
-    --darkgreen: #1ca896;
+    --darkblue: white;
+    --darkgreen:#29a3a3;
     --darkgreenhover: #5bcebf;
     --light: #ffffff;
   }
@@ -12,9 +12,7 @@
     color: var(--light);
   }
   
-  .bg-darkblue {
-    background-color: var(--darkblue) !important;
-  }
+
   .bg-darkgreen {
     background-color: var(--darkgreen) !important;
   }
@@ -56,7 +54,7 @@
     color: var(--light) !important;
   }
   .error {
-    color: white;
+    color: red;
     font-size: 14px;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 

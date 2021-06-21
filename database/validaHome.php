@@ -62,6 +62,7 @@ mysqli_close($mysqli);
     $quadra = $_POST["quadra"] ? $quadra = $_POST["quadra"] : '';
     $lote = $_POST["lote"] ? $lote = $_POST["lote"] : '';
     $autorOriginal = $_POST["autorOriginal"] ? $autorOriginal = $_POST["autorOriginal"] : '';
+    $dataAproximada = $_POST["dataAproximada"] ? $dataAproximada = $_POST["dataAproximada"] : '';
     $construtor = $_POST["construtor"] ? $construtor = $_POST["construtor"] :  '';
     $dataConstrucao = $_POST["dataConstrucao"] ? $dataConstrucao = $_POST["dataConstrucao"] : '';
     $estiloArquitetonico = $_POST["estiloArquitetonico"] ? $estiloArquitetonico = $_POST["estiloArquitetonico"] : '';
@@ -81,6 +82,9 @@ mysqli_close($mysqli);
     $fontesBibliograficas = $_POST["fontesBibliograficas"] ? $fontesBibliograficas = $_POST["fontesBibliograficas"] : '';
     $outrasInformacoes = $_POST["outrasInformacoes"] ? $outrasInformacoes = $_POST["outrasInformacoes"] : '';
     $observacoes = $_POST["observacoes"] ?  $observacoes = $_POST["observacoes"] : '';
+    $anoConpresp = $_POST["anoConpresp"] ? $anoConpresp = $_POST["anoConpresp"] : '';
+    $anoCondephaat = $_POST["anoCondephaat"] ? $anoConpresp = $_POST["anoCondephaat"] : '';
+    $anoIphan = $_POST["anoIphan"] ? $anoConpresp = $_POST["anoIphan"] : '';
     $documentacaoFotografica2 = null;
     $documentacaoFotografica3 = null;
     $documentacaoGrafica2 = null;
@@ -251,13 +255,13 @@ mysqli_close($mysqli);
   }
 
     $sql = "INSERT into imovel(responsavelPreenchimento,grupoTipoEquipe,itemResolucao,denominacao,classificacao,usoAtual,propriedade,terreo,
-    resolucaoTombamento,resolucaoCondephaat,resolucaoIphan,tipo,titulo,logradouro,numeroEndereco,distrito,prefeituraRegional,setor,quadra,lote,
-    autorOriginal,construtor,dataConstrucao,estiloArquitetonico,tecnicaConstrutiva,numeroPavimentos,areaLote,areaConstruida,grauTombamento,
+    resolucaoTombamento,anoConpresp,resolucaoCondephaat,anoCondephaat,resolucaoIphan,anoIphan,tipo,titulo,logradouro,numeroEndereco,distrito,prefeituraRegional,setor,quadra,lote,
+    autorOriginal,construtor,dataAproximada,dataConstrucao,estiloArquitetonico,tecnicaConstrutiva,numeroPavimentos,areaLote,areaConstruida,grauTombamento,
     grauAlteracao,comentarioGrauAlteracao, grauEstadoConservacao, comentarioEstadoConservacao,observacoesPavimentos,dadosHistoricos,dadosArquitetonicos,
     dadosAmbiencia,fontesBibliograficas,outrasInformacoes,observacoes,documentacaoFotografica,documentacaoFotografica2,documentacaoFotografica3,documentacaoGrafica,documentacaoGrafica2,documentacaoGrafica3) values";
               $sql .=  "('$responsavelPreenchimento','$grupoTipoEquipe', $itemResolucao, '$denominacao', '$classificacao','$usoAtual','$propriedade', '$terreo',
-    '$resolucaoTombamento', '$resolucaoCondephaat', '$resolucaoIphan', '$tipo','$titulo','$logradouro','$numeroEndereco', '$distrito', '$prefeituraRegional','$setor','$quadra','$lote',
-    '$autorOriginal','$construtor','$dataConstrucao', '$estiloArquitetonico','$tecnicaConstrutiva', $numeroPavimentos,'$areaLote', '$areaConstruida','$grauTombamento',
+    '$resolucaoTombamento', '$anoConpresp' ,'$resolucaoCondephaat', '$anoCondephaat', '$resolucaoIphan', '$anoIphan', '$tipo','$titulo','$logradouro','$numeroEndereco', '$distrito', '$prefeituraRegional','$setor','$quadra','$lote',
+    '$autorOriginal','$construtor', '$dataAproximada', '$dataConstrucao', '$estiloArquitetonico','$tecnicaConstrutiva', $numeroPavimentos,'$areaLote', '$areaConstruida','$grauTombamento',
     '$grauAlteracao', '$comentarioGrauAlteracao', '$grauEstadoConservacao', '$comentarioEstadoConservacao', '$observacoesPavimentos', '$dadosHistoricos','$dadosArquitetonicos',
     '$dadosAmbiencia', '$fontesBibliograficas', '$outrasInformacoes', '$observacoes', '$documentacaoFotografica','$documentacaoFotografica2','$documentacaoFotografica3','$documentacaoGrafica','$documentacaoGrafica2','$documentacaoGrafica3')";
 

@@ -36,16 +36,152 @@ if (isset($_SESSION['formatoImagem2'])) {
     .hidden {
       display: none;
     }
-   
   </style>
   <script src="https://kit.fontawesome.com/5e195b88df.js" crossorigin="anonymous"></script>
   <link rel="icon" href="img/logo.png" />
   <title>CONPRESP</title>
-  
+  <script>
+    $(document).ready(function() {
+      jQuery.validator.setDefaults({
+        debug: true,
+        success: "valid"
+      });
+      $("#formPatrimonios").validate({
+        rules: {
+          denominacao: {
+            required: true,
+
+          },
+          classificacao: {
+            required: true,
+          },
+          usoAtual: {
+            required: true,
+          },
+
+          propriedade: {
+            required: true,
+          },
+          resolucaoTombamento: {
+            required: true,
+          },
+          anoConpresp: {
+            required: true,
+            maxlength: 4,
+            minlength: 4
+          },
+          resolucaoCondephaat: {
+            required: true,
+          },
+          resolucaoIphan: {
+            required: true,
+          },
+          anoCondephaat: {
+            required: true,
+            maxlength: 4,
+            minlength: 4
+          },
+          anoIphan: {
+            required: true,
+            maxlength: 4,
+            minlength: 4
+          },
+          tipo: {
+            required: true,
+          },
+          titulo: {
+            required: true,
+          },
+          logradouro: {
+            required: true,
+          },
+          numeroEndereco: {
+            required: true,
+          },
+          distrito: {
+            required: true,
+          },
+          prefeituraRegional: {
+            required: true,
+          },
+          setor: {
+            required: true,
+          },
+          quadra: {
+            required: true,
+          },
+          lote: {
+            required: true,
+          },
+          dataConstrucao: {
+            required: true,
+          },
+          estiloArquitetonico: {
+            required: true,
+          },
+          tecnicaConstrutiva: {
+            required: true,
+          },
+          numeroPavimentos: {
+            required: true,
+          },
+          grauAlteracao: {
+            required: true,
+          },
+          dadosHistoricos: {
+            required: true,
+          },
+          dadosArquitetonicos: {
+            required: true,
+          },
+          dadosAmbiencia: {
+            required: true,
+          },
+          fontesBibliograficas: {
+            required: true
+          }
+        },
+        messages: {
+          denominacao: "Este campo é obrigatório!",
+          classificacao: "Este campo é obrigatório!",
+          usoAtual: "Este campo é obrigatório!",
+          propriedade: "Este campo é obrigatório!",
+          resolucaoTombamento: "Este campo é obrigatório!",
+          anoConpresp: "Este campo é obrigatório!",
+          resolucaoCondephaat: "Este campo é obrigatório!",
+          resolucaoIphan: "Este campo é obrigatório!",
+          tipo: "Este campo é obrigatório!",
+          titulo: "Este campo é obrigatório!",
+          logradouro: "Este campo é obrigatório!",
+          numeroEndereco: "Este campo é obrigatório!",
+          distrito: "Este campo é obrigatório!",
+          prefeituraRegional: "Este campo é obrigatório!",
+          setor: "Este campo é obrigatório!",
+          quadra: "Este campo é obrigatório!",
+          lote: "Este campo é obrigatório!",
+          dataConstrucao: "Este campo é obrigatório!",
+          estiloArquitetonico: "Este campo é obrigatório!",
+          tecnicaConstrutiva: "Este campo é obrigatório!",
+          numeroPavimentos: "Este campo é obrigatório!",
+          grauAlteracao: "Este campo é obrigatório!",
+          dadosHistoricos: "Este campo é obrigatório!",
+          dadosArquitetonicos: "Este campo é obrigatório!",
+          dadosAmbiencia: "Este campo é obrigatório!",
+          fontesBibliograficas: "Este campo é obrigatório!",
+          anoCondephaat: "Este campo é obrigatório!",
+          anoIphan: "Este campo é obrigatório!",
+        },
+
+        submitHandler: function(form) {
+          form.submit();
+        }
+
+      });
+    });
+  </script>
 </head>
 
 <body>
-<script src="../../validateCampos/imoveis.js"></script>
   <div id="content-wrapper" class="d-flex flex-column">
     <div id="content">
       <nav class="navbar navbar-expand navbar-dark bg-darkblue topbar static-top shadow">
@@ -108,6 +244,9 @@ if (isset($_SESSION['formatoImagem2'])) {
             <a class="nav-link" href="usuarios.php"><i class="fas fa-users bg-gray-icon"></i>Usuários</a>
           </li>
         <?php } ?>
+        <li class="nav-item active font-hover">
+                        <a class="nav-link" href="templates/glossario.pdf"><i class="fas fa-book bg-gray-icon"></i>Glossário</a>
+        </li>
       </ul>
     </div>
   </nav>
@@ -201,60 +340,18 @@ if (isset($_SESSION['formatoImagem2'])) {
                           <option value="Cemitérios, Mausoléus e Túmulos">
                             Cemitérios, Mausoléus e Túmulos
                           </option>
-                          <option value="Cinemas, Conservatórios e Teatros">
-                            Cinemas, Conservatórios e Teatros
-                          </option>
-                          <option value="Conjuntos Residenciais">
-                            Conjuntos Residenciais
-                          </option>
-                          <option value="Edifícios Bancários">
-                            Edifícios Bancários
-                          </option>
-                          <option value="Edifícios Comerciais">
-                            Edifícios Comerciais
-                          </option>
-                          <option value="Edifícios de Uso Administrativo">
-                            Edifícios de Uso Administrativo
-                          </option>
-                          <option value="Edifícios de Uso Especia">
-                            Edifícios de Uso Especia
-                          </option>
-                          <option value="Edifícios de Uso Ferroviário">
-                            Edifícios de Uso Ferroviário
-                          </option>
-                          <option value="Edifícios de Uso Misto">
-                            Edifícios de Uso Misto
-                          </option>
-                          <option value="Edifícios Escolares">
-                            Edifícios Escolares
-                          </option>
-                          <option value="Edifícios Hospitalares">
-                            Edifícios Hospitalares
-                          </option>
-                          <option value="Edifícios Hoteleiros">
-                            Edifícios Hoteleiros
-                          </option>
-                          <option value="Edifícios Religiosos">
-                            Edifícios Religiosos
-                          </option>
-                          <option value="Edifícios Residenciais Multifamiliares">
-                            Edifícios Residenciais Multifamiliares
-                          </option>
-                          <option value="Edifícios Residenciais Unifamiliares">
-                            Edifícios Residenciais Unifamiliares
-                          </option>
-                          <option value="Ed. Res. Unifamiliares - Conj. Residenciais">
-                            Ed. Res. Unifamiliares - Conj. Residenciais
-                          </option>
-                          <option value="Edifícios Rurais">
-                            Edifícios Rurais
-                          </option>
-                          <option value="Logradouros">Logradouros</option>
-                          <option value="Monumentos">Monumentos</option>
-                          <option value="Museus e Pavilhões de Exposição">
-                            Museus e Pavilhões de Exposição
-                          </option>
-                          <option value="Obras de Arte">Obras de Arte</option>
+                          <option value="Comercial">Comercial</option>
+                          <option value="Cultural">Cultural</option>
+                          <option value="Educacional">Educacional</option>
+                          <option value="Espaço público">Espaço público</option>
+                          <option value="Industrial">Industrial</option>
+                          <option value="Instituição de saúde">Instituição de saúde</option>
+                          <option value="Misto (Comércio e Serviço)"> Misto (Comércio e Serviço)</option>
+                          <option value="Monumento e obras de arte">Monumento e obras de arte</option>
+                          <option value="Natural">Natural</option>
+                          <option value="Religioso">Religioso</option>
+                          <option value="Residencial">Residencial</option>
+                          <option value="Serviço">Serviço</option>
                         </select>
                         <!-- <div class="invalid-feedback">
                             Por favor seleccione uma classificação.
@@ -266,22 +363,9 @@ if (isset($_SESSION['formatoImagem2'])) {
                           <option value="" selected>
                             Selecionar classificação...
                           </option>
-                          <option value="Pública Municipal">
-                            Pública Municipal
-                          </option>
-                          <option value="Pública Estadual">
-                            Pública Estadual
-                          </option>
-                          <option value="Pública Federal">
-                            Pública Federal
-                          </option>
-                          <option value="Privada">
-                            Privada
-                          </option>
-                          <option value="Instituição Religiosa">
-                            Instituição Religiosa
-                          </option>
-                          <option value="Outros">Outros</option>
+                          <option value="Pública">Pública</option>      
+                          <option value="Particular">Particular</option>
+                          <option value="Religiosa">Religiosa</option>
                         </select>
                         <!-- <div class="invalid-feedback">
                             Por favor seleccione uma classificação.
@@ -293,18 +377,26 @@ if (isset($_SESSION['formatoImagem2'])) {
                     </div>
                     <div class="row">
                       <div class="col-md-6 mb-3">
-                        <label>Térreo (original)</label>
+                        <label>Uso (original)</label>
                         <select id="terreo" class="custom-select d-block w-100" name="terreo">
                           <option value="" selected>
                             Selecionar classificação...
                           </option>
-                          <option value="Evocativo">Evocativo</option>
-                          <option value="Funerário">Funerário</option>
+                          <option value="Cemitérios, Mausoléus e Túmulos">
+                            Cemitérios, Mausoléus e Túmulos
+                          </option>
+                          <option value="Comercial">Comercial</option>
+                          <option value="Cultural">Cultural</option>
+                          <option value="Educacional">Educacional</option>
+                          <option value="Espaço público">Espaço público</option>
                           <option value="Industrial">Industrial</option>
-                          <option value="Institucional">Institucional</option>
+                          <option value="Instituição de saúde">Instituição de saúde</option>
+                          <option value="Misto (Comércio e Serviço)"> Misto (Comércio e Serviço)</option>
+                          <option value="Monumento e obras de arte">Monumento e obras de arte</option>
+                          <option value="Natural">Natural</option>
+                          <option value="Religioso">Religioso</option>
                           <option value="Residencial">Residencial</option>
-                          <option value="Serviços">Serviços</option>
-                          <option value="Outros">Outros</option>
+                          <option value="Serviço">Serviço</option>
                         </select>
                       </div>
                     </div>
@@ -312,39 +404,61 @@ if (isset($_SESSION['formatoImagem2'])) {
                     <div class="mb-3 p-2 subtitulos">
                       <h4>2. Tombamento</h4>
                     </div>
-                    <div class="mb-3">
-                      <label>Resolução:</label>
-                      <h6>
-                        Seguir o formato: Ex.: Res. 05/91 Utilizar o site da
-                        prefeitura como referência:
-                        <a href="http://www.prefeitura.sp.gov.br/cidade/secretarias/cultura/conpresp/legislacao/resolucoes/index.php?p=1137" target="_blank">CLICK AQUI</a>
-                      </h6>
-                      <input type="text" class="form-control" id="resolucaoTombamento" name="resolucaoTombamento" />
+                    <div class="mb-3 p-2 subtitulos_sub">
+                      <h4>CONPRESP</h4>
                     </div>
+                    <div class="row">
+                      <div class="col-md-9 mb-3">
+                        <label>Resolução:</label>
+                        <h6>
+                          Seguir o formato: Ex.: Res. 05/91 Utilizar o site da
+                          prefeitura como referência:
+                          <a href="http://www.prefeitura.sp.gov.br/cidade/secretarias/cultura/conpresp/legislacao/resolucoes/index.php?p=1137" target="_blank">CLICK AQUI</a>
+                        </h6>
+                        <input type="text" class="form-control" id="resolucaoTombamento" name="resolucaoTombamento" />
+                      </div>
+                      <div class="col-md-3 mb-2" style="margin-top: 25px;">
+                        <label>Ano de Tombamento</label>
+                        <input class="form-control" type="number" id="anoConpresp" name="anoConpresp" />
+                      </div>
+                    </div>
+
                     <div class="mb-3 p-2 subtitulos_sub">
                       <h4>CONDEPHAAT</h4>
                     </div>
-                    <div class="mb-3">
-                      <label>Resolução:</label>
-                      <h6>
-                        Seguir o formato: Ex.: RES. SC SN/70 ou RES. SC 67/82
-                        Utilizar o site da prefeitura como referência:
-                        <a href=" http://www.prefeitura.sp.gov.br/cidade/secretarias/cultura/cit/index.php?p=1157" target="_blank">CLICK AQUI</a>
-                      </h6>
-                      <input type="text" class="form-control" id="resolucaoCondephaat" name="resolucaoCondephaat" />
+                    <div class="row">
+                      <div class="col-md-9 mb-3">
+                        <label>Resolução:</label>
+                        <h6>
+                          Seguir o formato: Ex.: RES. SC SN/70 ou RES. SC 67/82
+                          Utilizar o site da prefeitura como referência:
+                          <a href=" http://www.prefeitura.sp.gov.br/cidade/secretarias/cultura/cit/index.php?p=1157" target="_blank">CLICK AQUI</a>
+                        </h6>
+                        <input type="text" class="form-control" id="resolucaoCondephaat" name="resolucaoCondephaat" />
+                      </div>
+                      <div class="col-md-3 mb-2" style="margin-top: 25px;">
+                        <label>Ano de Tombamento</label>
+                        <input class="form-control" type="number" id="anoCondephaat" name="anoCondephaat" />
+                      </div>
                     </div>
 
                     <div class="mb-3 p-2 subtitulos_sub">
                       <h4>IPHAN</h4>
                     </div>
-                    <div class="mb-3">
-                      <label>Resolução:</label>
-                      <h6>
-                        Seguir o formato: Ex.: nº 353 Ano 1951 Utilizar a
-                        lista de bens tombados do Iphan como referência:
-                        <a href="http://portal.iphan.gov.br/uploads/ckfinder/arquivos/2016-11-25_Lista_Bens_Tombados.pdf" target="_blank">CLICK AQUI</a>
-                      </h6>
-                      <input type="text" class="form-control" id="resolucaoIphan" name="resolucaoIphan" />
+                    <div class="row">
+                      <div class="col-md-9 mb-3">
+                        <label>Resolução:</label>
+                        <h6>
+                          Seguir o formato: Ex.: nº 353 Ano 1951 Utilizar a
+                          lista de bens tombados do Iphan como referência:
+                          <a href="http://portal.iphan.gov.br/uploads/ckfinder/arquivos/2016-11-25_Lista_Bens_Tombados.pdf" target="_blank">CLICK AQUI</a>
+                        </h6>
+                        <input type="text" class="form-control" id="resolucaoIphan" name="resolucaoIphan" />
+                      </div>
+                      <div class="col-md-3 mb-2" style="margin-top: 25px;">
+                        <label>Ano de Tombamento</label>
+                        <input class="form-control" type="number" id="anoIphan" name="anoIphan" />
+                      </div>
                     </div>
                     <div class="mb-3 p-2 subtitulos">
                       <h4>3. Localização</h4>
@@ -920,10 +1034,24 @@ if (isset($_SESSION['formatoImagem2'])) {
                         <input type="text" class="form-control" id="construtor" name="construtor" />
                       </div>
                     </div>
+
+                    <label>Data de Construção:</label>
                     <div class="mb-3">
-                      <label>Data de Construção:</label>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="dataAproximada" id="datasim" value="datasim" checked>
+                        <label class="form-check-label" for="datasim">
+                          Data aproximada
+                        </label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="dataAproximada" id="datanao" value="datanao">
+                        <label class="form-check-label" for="datanao">
+                          Data não aproximada
+                        </label>
+                      </div>
                       <input type="text" class="form-control" id="dataConstrucao" name="dataConstrucao" />
                     </div>
+
                     <div class="row">
                       <div class="col-md-6 mb-3">
                         <label>Estilo Arquitetônico</label>
@@ -1086,7 +1214,7 @@ if (isset($_SESSION['formatoImagem2'])) {
                       <h6>
                         Selecione uma imagem para a documentação fotográfica!
                       </h6>
-                      <input type="file" class="form-control-file" name="documentacaoGrafica" id="documentacaoGrafica"  />
+                      <input type="file" class="form-control-file" name="documentacaoGrafica" id="documentacaoGrafica" />
                     </div>
 
                     <div class="mb-3">
@@ -1258,4 +1386,5 @@ if (isset($_SESSION['formatoImagem2'])) {
     </div>
   </footer>
 </body>
+
 </html>

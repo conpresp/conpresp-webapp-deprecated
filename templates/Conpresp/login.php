@@ -40,27 +40,28 @@ else {
     <link rel="icon" href="img/logo.png" />
     <title>CONPRESP</title>
   </head>
-  <body class="bg-darkblue">
+  <body style="background-color: white;">
     <script src="../../validateCampos/usuario.js"></script>
     <section>
       <div class="row w-100 min-vh-100">
         <div class="col-lg-7 bg-darkgreen d-none d-lg-block">
           <!-- <div class="align-self-center"> -->
-          <div class="px-lg-5 py-lg-4 p-4">
+          <!-- <div class="px-lg-5 py-lg-4 p-4">
             <h1 class="text-center font-weight-bold mb-4">
               Bem-vindo ao CONPRESP
             </h1>
-          </div>
-          <div class="px-lg-5 pt-lg-4 pb-lg-3 p-4">
-            <img src="img/login.svg" class="img-fluid" alt="" />
+          </div> -->
+          <div >
+            <img src="img/new_login.jpeg" style="width: 100%;height:749px;"  />
           </div>
           <!-- </div> -->
         </div>
         <div class="col-lg-5 bg-darkblue align-self-center">
           <div class="d-flex justify-content-around w-100">
-            <h2 class="font-weight-normal mb-4">Login</h2>
+            <img src="img/new_logo.png"  height="80px" style="margin-top: 50px; margin-left:20px" />
             <img src="img/logo_1.png" class="p-2 img-logo" alt="" />
           </div>
+          <h2 class="font-weight-normal mb-1" style="color: black; margin-left: 50px;">Login</h2>
           <div class="px-lg-5 py-lg-4 p-4 w-100 mt-auto">
           <?php if($msg != '') { ?>
           <div class="alert alert-danger" role="alert">
@@ -74,7 +75,7 @@ else {
                 >
                 <input
                   type="email"
-                  class="form-control bg-dark-x border-0"
+                  class="form-control bg-dark-x border-1"
                   id="inputEmail"
                   aria-describedby="emailHelp"
                   placeholder="Digite seu email"
@@ -88,18 +89,17 @@ else {
                 >
                 <input
                   type="password"
-                  class="form-control bg-dark-x border-0 mb-2"
-                  id="inputPassword"
+                  class="form-control bg-dark-x border-1 mb-2"
                   placeholder="Digite sua senha"
                   name="password"
                   id="password"
-                  
                 />
                 <a
-                  class="form-text text-muted"
+                  class="form-text"
                   href="#"
                   data-toggle="modal"
                   data-target="#resetPasswordModal"
+                  style="color: #737373"
                   >Esqueceu a senha?</a
                 >
               </div>
