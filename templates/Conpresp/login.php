@@ -52,7 +52,12 @@ else {
             </h1>
           </div> -->
           <div >
-            <img src="img/new_login.jpeg" style="width: 100%;height:749px;"  />
+            <img src="img/imgLogin2.jpeg" style="width: 100%;height:749px;"  />
+            <p style="margin-left:20px; margin-top: -680px; font-size: 35px; font-family: Arial, Helvetica, sans-serif;"><b>Banco de Dados dos</b></p>
+            <p style="margin-left:20px; margin-top: -15px;font-size: 35px;font-family: Arial, Helvetica, sans-serif;"><b>Bens Tombados da</b></p>
+            <p style="margin-left:20px; margin-top: -15px; font-size: 35px;font-family: Arial, Helvetica, sans-serif;"><b>cidade de São Paulo</b></p>
+            <p style="margin-left:97%; margin-top: 30px; font-size: 12px;font-family: Arial, Helvetica, sans-serif;writing-mode: vertical-lr;transform: rotate(180deg)"><b>Ilustrações feitas por Mariana Cerqueira </b></p>
+
           </div>
           <!-- </div> -->
         </div>
