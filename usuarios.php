@@ -84,7 +84,7 @@ if (!mysqli_set_charset($conn, "utf8mb4")) {
                 <nav class="navbar navbar-expand navbar-dark bg-darkblue topbar static-top shadow">
                     <a class="navbar-brand" href="home.php">
                         <img src="img/logo_1.png" width="30" height="30" class="d-inline-block align-top" alt="" />
-                        CONPRESP
+                        Banco de dados dos bens tombados da cidade de São Paulo
                     </a>
 
                     <ul class="navbar-nav ml-auto">

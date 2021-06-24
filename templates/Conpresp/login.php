@@ -44,7 +44,7 @@ else {
     <script src="../../validateCampos/usuario.js"></script>
     <section>
       <div class="row w-100 min-vh-100">
-        <div class="col-lg-7 bg-darkgreen d-none d-lg-block">
+        <div class="col-lg-7 d-none d-lg-block" style="background-color:#55AAB5">
           <!-- <div class="align-self-center"> -->
           <!-- <div class="px-lg-5 py-lg-4 p-4">
             <h1 class="text-center font-weight-bold mb-4">
@@ -52,12 +52,13 @@ else {
             </h1>
           </div> -->
           <div >
-            <img src="img/imgLogin2.jpeg" style="width: 100%;height:749px;"  />
-            <p style="margin-left:20px; margin-top: -680px; font-size: 35px; font-family: Arial, Helvetica, sans-serif;"><b>Banco de Dados dos</b></p>
-            <p style="margin-left:20px; margin-top: -15px;font-size: 35px;font-family: Arial, Helvetica, sans-serif;"><b>Bens Tombados da</b></p>
-            <p style="margin-left:20px; margin-top: -15px; font-size: 35px;font-family: Arial, Helvetica, sans-serif;"><b>cidade de São Paulo</b></p>
+            <img src="img/imgLogin2.jpeg" style="width: 100%;height:100%"  />
+            <div class="responsivoFonteLogin">
+            <p style="margin-left:5%; margin-top: -72%; font-size: 35px; font-family: Arial, Helvetica, sans-serif;"><b>Banco de Dados dos</b></p>
+            <p style="margin-left:5%; margin-top: -15px;font-size: 35px;font-family: Arial, Helvetica, sans-serif;"><b>Bens Tombados da</b></p>
+            <p style="margin-left:5%; margin-top: -15px; font-size: 35px;font-family: Arial, Helvetica, sans-serif;"><b>cidade de São Paulo</b></p>
             <p style="margin-left:97%; margin-top: 30px; font-size: 12px;font-family: Arial, Helvetica, sans-serif;writing-mode: vertical-lr;transform: rotate(180deg)"><b>Ilustrações feitas por Mariana Cerqueira </b></p>
-
+            </div>
           </div>
           <!-- </div> -->
         </div>
@@ -75,7 +76,7 @@ else {
           <?php }?>
             <form class="nb-5" id="formUsuario" method="POST" action="database/validaLogin.php">
               <div class="form-group mb-4">
-                <label for="exampleInputEmail1" class="font-weight-bold"
+                <label for="exampleInputEmail1" class="font-weight-bold" style="color: black;"
                   >Email:</label
                 >
                 <input
@@ -89,7 +90,7 @@ else {
                 />
               </div>
               <div class="form-group mb-4">
-                <label for="exampleInputPassword1" class="font-weight-bold"
+                <label for="exampleInputPassword1" class="font-weight-bold" style="color: black;"
                   >Senha:</label
                 >
                 <input
@@ -98,7 +99,7 @@ else {
                   placeholder="Digite sua senha"
                   name="password"
                   id="password"
-                />
+                                />
                 <a
                   class="form-text"
                   href="#"

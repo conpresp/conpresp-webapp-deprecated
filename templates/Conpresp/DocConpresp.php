@@ -187,7 +187,7 @@ if (isset($_SESSION['formatoImagem2'])) {
       <nav class="navbar navbar-expand navbar-dark bg-darkblue topbar static-top shadow">
         <a class="navbar-brand" href="home.php">
           <img src="img/logo_1.png" width="30" height="30" class="d-inline-block align-top" alt="" />
-          CONPRESP
+          Banco de dados dos bens tombados da cidade de São Paulo
         </a>
 
         <ul class="navbar-nav ml-auto">
@@ -267,7 +267,7 @@ if (isset($_SESSION['formatoImagem2'])) {
                 Dados a cadastrar
               </h6>
             </div>
-            <img class="card-img" src="img/banner.png" alt="Card image" />
+            <img class="card-img" src="img/newBanner.png" alt="Card image" />
             <div class="card-body">
               <div class="row color-text">
                 <div class="col-md-12 order-md-1">

@@ -63,4 +63,12 @@
   .hidden {
     display: none;
   }
+
+  /* @media only screen and (max-width: 900px){
+    .responsivoFonteLogin {
+      font-size: 10px;
+      color:black;
+    }
+    
+  } */
   

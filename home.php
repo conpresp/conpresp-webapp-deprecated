@@ -118,7 +118,7 @@ if (!mysqli_set_charset($conn, "utf8mb4")) {
                 <nav class="navbar navbar-expand navbar-dark bg-darkblue topbar static-top shadow">
                     <a class="navbar-brand" href="home.php">
                         <img src="img/logo_1.png" width="30" height="30" class="d-inline-block align-top" alt="" />
-                        CONPRESP
+                        Banco de dados dos bens tombados da cidade de São Paulo
                     </a>
 
                     <ul class="navbar-nav ml-auto">
@@ -241,7 +241,7 @@ if (!mysqli_set_charset($conn, "utf8mb4")) {
 
                 <!-- Page Heading -->
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                    <h1 class="h3 mb-0 text-gray-800">Fichas da preserva</h1>
+                    <h1 class="h3 mb-0 text-gray-800">Fichas do PRESERVA</h1>
                 </div>
 
                 <!-- Content Row -->
