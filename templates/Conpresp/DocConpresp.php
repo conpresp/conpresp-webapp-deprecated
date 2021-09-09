@@ -39,7 +39,7 @@ if (isset($_SESSION['formatoImagem2'])) {
   </style>
   <script src="https://kit.fontawesome.com/5e195b88df.js" crossorigin="anonymous"></script>
   <link rel="icon" href="img/logo.png" />
-  <title>CONPRESP</title>
+  <title>Banco de dados dos bens tombados da cidade de São Paulo</title>
   <script>
     $(document).ready(function() {
       jQuery.validator.setDefaults({
@@ -255,7 +255,7 @@ if (isset($_SESSION['formatoImagem2'])) {
     <div class="container-fluid">
       <!-- Page Heading -->
       <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h2 class="h3 mb-0 text-gray-800 nombre-titulo">Registro Conpresp</h2>
+        <h2 class="h3 mb-0 text-gray-800 nombre-titulo"></h2>
       </div>
 
       <!-- Content Row -->
@@ -264,7 +264,7 @@ if (isset($_SESSION['formatoImagem2'])) {
           <div class="card shadow mb-4">
             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
               <h6 class="m-0 font-weight-bold text-primary nombre-subtitulo">
-                Dados a cadastrar
+              Registro | Banco de dados dos bens tombados da cidade de São Paulo
               </h6>
             </div>
             <img class="card-img" src="img/newBanner.png" alt="Card image" />
@@ -1364,7 +1364,7 @@ if (isset($_SESSION['formatoImagem2'])) {
     <div class="footer-content">
       <a class="" href="home.php">
         <img src="img/logo_1.png" width="40" height="40" class="justify-content-center align-items-center" alt="" />
-        CONPRESP
+        PRESERVA
       </a>
       <ul class="socials">
         <li>

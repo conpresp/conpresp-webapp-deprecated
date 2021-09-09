@@ -61,146 +61,7 @@ if (!mysqli_set_charset($conn, "utf8mb4")) {
     </style>
     <script src="https://kit.fontawesome.com/5e195b88df.js" crossorigin="anonymous"></script>
     <link rel="icon" href="img/logo.png" />
-    <title>CONPRESP</title>
-    <!-- <script>
-    $(document).ready(function() {
-      jQuery.validator.setDefaults({
-        debug: true,
-        success: "valid"
-      });
-      $("#formPatrimonios").validate({
-        rules: {
-          denominacao: {
-            required: true,
-
-          },
-          classificacao: {
-            required: true,
-          },
-          usoAtual: {
-            required: true,
-          },
-
-          propriedade: {
-            required: true,
-          },
-          resolucaoTombamento: {
-            required: true,
-          },
-          anoConpresp: {
-            required: true,
-            maxlength: 4,
-            minlength: 4
-          },
-          resolucaoCondephaat: {
-            required: true,
-          },
-          resolucaoIphan: {
-            required: true,
-          },
-          anoCondephaat: {
-            required: true,
-            maxlength: 4,
-            minlength: 4
-          },
-          anoIphan: {
-            required: true,
-            maxlength: 4,
-            minlength: 4
-          },
-          tipo: {
-            required: true,
-          },
-          titulo: {
-            required: true,
-          },
-          logradouro: {
-            required: true,
-          },
-          numeroEndereco: {
-            required: true,
-          },
-          distrito: {
-            required: true,
-          },
-          prefeituraRegional: {
-            required: true,
-          },
-          setor: {
-            required: true,
-          },
-          quadra: {
-            required: true,
-          },
-          lote: {
-            required: true,
-          },
-          dataConstrucao: {
-            required: true,
-          },
-          estiloArquitetonico: {
-            required: true,
-          },
-          tecnicaConstrutiva: {
-            required: true,
-          },
-          numeroPavimentos: {
-            required: true,
-          },
-          grauAlteracao: {
-            required: true,
-          },
-          dadosHistoricos: {
-            required: true,
-          },
-          dadosArquitetonicos: {
-            required: true,
-          },
-          dadosAmbiencia: {
-            required: true,
-          },
-          fontesBibliograficas: {
-            required: true
-          }
-        },
-        messages: {
-          denominacao: "Este campo é obrigatório!",
-          classificacao: "Este campo é obrigatório!",
-          usoAtual: "Este campo é obrigatório!",
-          propriedade: "Este campo é obrigatório!",
-          resolucaoTombamento: "Este campo é obrigatório!",
-          anoConpresp: "Este campo é obrigatório!",
-          resolucaoCondephaat: "Este campo é obrigatório!",
-          resolucaoIphan: "Este campo é obrigatório!",
-          tipo: "Este campo é obrigatório!",
-          titulo: "Este campo é obrigatório!",
-          logradouro: "Este campo é obrigatório!",
-          numeroEndereco: "Este campo é obrigatório!",
-          distrito: "Este campo é obrigatório!",
-          prefeituraRegional: "Este campo é obrigatório!",
-          setor: "Este campo é obrigatório!",
-          quadra: "Este campo é obrigatório!",
-          lote: "Este campo é obrigatório!",
-          dataConstrucao: "Este campo é obrigatório!",
-          estiloArquitetonico: "Este campo é obrigatório!",
-          tecnicaConstrutiva: "Este campo é obrigatório!",
-          numeroPavimentos: "Este campo é obrigatório!",
-          grauAlteracao: "Este campo é obrigatório!",
-          dadosHistoricos: "Este campo é obrigatório!",
-          dadosArquitetonicos: "Este campo é obrigatório!",
-          dadosAmbiencia: "Este campo é obrigatório!",
-          fontesBibliograficas: "Este campo é obrigatório!",
-          anoCondephaat: "Este campo é obrigatório!",
-          anoIphan: "Este campo é obrigatório!",
-        },
-
-        submitHandler: function(form) {
-          form.submit();
-        }
-
-      });
-    });
-  </script> -->
+    <title>Banco de dados dos bens tombados da cidade de São Paulo</title>
   </head>
 
   <body>
@@ -278,7 +139,7 @@ if (!mysqli_set_charset($conn, "utf8mb4")) {
       <div class="container-fluid">
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
-          <h2 class="h3 mb-0 text-gray-800 nombre-titulo">Registro Conpresp</h2>
+          <h2 class="h3 mb-0 text-gray-800 nombre-titulo"></h2>
         </div>
 
         <!-- Content Row -->
@@ -287,7 +148,7 @@ if (!mysqli_set_charset($conn, "utf8mb4")) {
             <div class="card shadow mb-4">
               <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                 <h6 class="m-0 font-weight-bold text-primary nombre-subtitulo">
-                  Dados a cadastrar
+                Registro | Banco de dados dos bens tombados da cidade de São Paulo
                 </h6>
               </div>
               <img class="card-img" src="img/newBanner.png" alt="Card image" />
@@ -1397,7 +1258,7 @@ if (!mysqli_set_charset($conn, "utf8mb4")) {
       <div class="footer-content">
         <a class="" href="home.php">
           <img src="img/logo_1.png" width="40" height="40" class="justify-content-center align-items-center" alt="" />
-          CONPRESP
+          PRESERVA
         </a>
         <ul class="socials">
           <li>

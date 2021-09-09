@@ -41,7 +41,7 @@ $password = $_SESSION['password'];
   <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
     <link rel="icon" href="img/logo.png" />
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <title>CONPRESP</title>
+    <title>Banco de dados dos bens tombados da cidade de São Paulo</title>
 </head>
 
 <body>
@@ -97,13 +97,13 @@ $password = $_SESSION['password'];
 
         <div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample10">
             <ul class="navbar-nav">
-                <li class="nav-item font-hover">
+                <li class="nav-item active font-hover">
                     <a class="nav-link" href="home.php"><i class="fas fa-home bg-gray-icon"></i>Home</a>
                 </li>
                 <?php
                 if ($perfil == 'Administrador') {
                 ?>
-                    <li class="nav-item font-hover">
+                    <li class="nav-item active font-hover">
                         <a class="nav-link" href="usuarios.php"><i class="fas fa-users bg-gray-icon"></i>Usuários</a>
                     </li>
                 <?php } ?>
@@ -116,7 +116,7 @@ $password = $_SESSION['password'];
 
             <!-- Page Heading -->
             <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                <h1 class="h3 mb-0 text-gray-800">Novo Usuário</h1>
+                <h1 class="h3 mb-0 text-gray-800"></h1>
             </div>
 
             <!-- Content Row -->
@@ -262,7 +262,7 @@ $password = $_SESSION['password'];
         <div class="footer-content">
             <a class="" href="home.php">
                 <img src="img/logo_1.png" width="40" height="40" class="justify-content-center align-items-center" alt="" />
-                CONPRESP
+                PRESERVA
             </a>
             <ul class="socials">
                 <li>

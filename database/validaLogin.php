@@ -56,6 +56,8 @@ if($mysqli-> connect_errno)
 
   if ($row > 0) {
     while ($consulta = mysqli_fetch_array($result)) {
+
+      if($consulta['status'] == 'Ativo'){
       $_SESSION['id'] = $consulta['id'];
       $_SESSION['perfil'] = $consulta['perfil'];
       $_SESSION['username'] = $consulta['username'];
@@ -63,10 +65,16 @@ if($mysqli-> connect_errno)
       $_SESSION['status'] = $consulta['status'];
       $_SESSION['password']= $consulta['password'];
 
-    }
-
     echo "<p style='text-align: center; margin-top: 50px;'>Você foi autenticado com sucesso! Aguarde um instante...</p>";
     echo "<script>loginsuccess()</script>";
+      } else {
+        $_SESSION['erroLogin'] = 'Usuário não está ativo!';
+        header('Location: ../index.php?modulo=Conpresp&acao=login');
+
+      }
+    }
+
+    
 ?>
 <div class="d-flex justify-content-center" style="margin-top: 100px;">
     <div class="spinner-border text-primary" style="width: 6rem; height: 6rem;"  role="status" >

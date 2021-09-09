@@ -120,7 +120,7 @@ if (!mysqli_set_charset($conn, "utf8mb4")) {
         </style>
         <script src="https://kit.fontawesome.com/5e195b88df.js" crossorigin="anonymous"></script>
         <link rel="icon" href="img/logo.png" />
-        <title>CONPRESP</title>
+        <title>Banco de dados dos bens tombados da cidade de São Paulo</title>
     </head>
 
     <body>
@@ -389,7 +389,7 @@ if (!mysqli_set_charset($conn, "utf8mb4")) {
             <div class="footer-content">
                 <a class="" href="home.php">
                     <img src="img/logo_1.png" width="40" height="40" class="justify-content-center align-items-center" alt="" />
-                    CONPRESP
+                    PRESERVA
                 </a>
                 <ul class="socials">
                     <li>

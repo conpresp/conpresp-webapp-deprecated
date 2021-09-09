@@ -34,7 +34,7 @@ if (isset($_SESSION['erroEmail'])) {
   <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   <link rel="icon" href="img/logo.png" />
-  <title>CONPRESP</title>
+  <title>Banco de dados dos bens tombados da cidade de São Paulo</title>
 </head>
 
 <body>
@@ -110,7 +110,7 @@ if (isset($_SESSION['erroEmail'])) {
 
       <!-- Page Heading -->
       <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Novo Usuário</h1>
+        <h1 class="h3 mb-0 text-gray-800"></h1>
       </div>
 
       <!-- Content Row -->
@@ -248,7 +248,7 @@ if (isset($_SESSION['erroEmail'])) {
     <div class="footer-content">
       <a class="" href="#">
         <img src="img/logo_1.png" width="40" height="40" class="justify-content-center align-items-center" alt="" />
-        CONPRESP
+        PRESERVA
       </a>
       <ul class="socials">
         <li>

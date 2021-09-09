@@ -292,7 +292,7 @@ autorOriginal like '%$autorOriginal%' and dataConstrucao like '%$dataConstrucao%
         </style>
         <script src="https://kit.fontawesome.com/5e195b88df.js" crossorigin="anonymous"></script>
         <link rel="icon" href="img/logo.png" />
-        <title>CONPRESP</title>
+        <title>Banco de dados dos bens tombados da cidade de São Paulo</title>
     </head>
 
     <body>
@@ -421,7 +421,7 @@ autorOriginal like '%$autorOriginal%' and dataConstrucao like '%$dataConstrucao%
 
                 <!-- Page Heading -->
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                    <h1 class="h3 mb-0 text-gray-800">Fichas do PRESERVA</h1>
+                    <h1 class="h3 mb-0 text-gray-800"></h1>
                 </div>
 
                 <!-- Content Row -->
@@ -430,7 +430,7 @@ autorOriginal like '%$autorOriginal%' and dataConstrucao like '%$dataConstrucao%
                         <div class="card shadow mb-4">
                             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                                 <h6 class="m-0 font-weight-bold text-primary">
-                                    Lista de preenchimentos
+                                Lista de preenchimentos | Fichas do PRESERVA
                                 </h6>
                             </div>
                             <div class="card-body">
@@ -885,7 +885,7 @@ autorOriginal like '%$autorOriginal%' and dataConstrucao like '%$dataConstrucao%
             <div class="footer-content">
                 <a class="" href="home.php">
                     <img src="img/logo_1.png" width="40" height="40" class="justify-content-center align-items-center" alt="" />
-                    CONPRESP
+                    PRESERVA
                 </a>
                 <ul class="socials">
                     <li>

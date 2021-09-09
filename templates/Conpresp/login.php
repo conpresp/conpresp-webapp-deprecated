@@ -38,7 +38,7 @@ else {
   <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <link rel="icon" href="img/logo.png" />
-    <title>CONPRESP</title>
+    <title>Banco de dados dos bens tombados da cidade de São Paulo</title>
   </head>
   <body style="background-color: white;">
     <script src="../../validateCampos/usuario.js"></script>
