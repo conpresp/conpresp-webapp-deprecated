@@ -64,7 +64,7 @@ else {
         </div>
         <div class="col-lg-5 bg-darkblue align-self-center">
           <div class="d-flex justify-content-around w-100">
-            <img src="img/new_logo.png"  height="80px" style="margin-top: 50px; margin-left:20px" />
+            <img src="img/new_logo.PNG"  height="80px" style="margin-top: 50px; margin-left:20px" />
             <img src="img/logo_1.png" class="p-2 img-logo" alt="" />
           </div>
           <h2 class="font-weight-normal mb-1" style="color: black; margin-left: 50px;">Login</h2>
