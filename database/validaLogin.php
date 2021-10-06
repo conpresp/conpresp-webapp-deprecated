@@ -1,9 +1,9 @@
 <?php
 session_start();
 
-$host = "localhost";
+$host = "db";
 $usuario = "root";
-$senha = "";
+$senha = "123";
 $bd = "conpresp_db";
 
 $mysqli = mysqli_connect($host, $usuario,$senha, $bd);
@@ -51,7 +51,7 @@ if($mysqli-> connect_errno)
 //   $_SESSION['salvar'] = $nomeUsuario;
   $sql = "SELECT * from users where email='$email' and password='$deco'";
 
-  $result = mysqli_query($conecta, $sql) or die('Erro ao conectar2');
+  $result = mysqli_query($conecta, $sql) or die(mysqli_error($conecta)); // Travado aqui no momento.
   $row = mysqli_num_rows($result);
 
   if ($row > 0) {
