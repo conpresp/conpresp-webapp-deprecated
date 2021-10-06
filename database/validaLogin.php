@@ -3,7 +3,7 @@ session_start();
 
 $host = "db";
 $usuario = "root";
-$senha = "";
+$senha = "123";
 $bd = "conpresp_db";
 $port = 3306;
 
@@ -48,11 +48,9 @@ mysqli_close($mysqli);
     $deco = md5($password);
     //   $salvar = $nomeUsuario;
 
+    $sql = "SELECT * from users where email='$email' and password='$deco'";
 
-  $result = mysqli_query($conecta, $sql) or die(mysqli_error($conecta)); // Travado aqui no momento.
-  $row = mysqli_num_rows($result);
-
-    $result = mysqli_query($conecta, $sql) or die('Erro ao conectar2');
+    $result = mysqli_query($conecta, $sql) or die(mysqli_error($conecta)); //Travado aqui no momento!!
     $row = mysqli_num_rows($result);
 
     if ($row > 0) {

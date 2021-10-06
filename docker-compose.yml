@@ -13,7 +13,4 @@ db:
     - /var/lib/mysql
   environment:
     - MYSQL_DATABASE=conpresp_db
-    - MYSQL_USER=root
-    - MYSQL_PASSWORD=
-    - MYSQL_ROOT_PASSWORD=
-    - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+    - MYSQL_ROOT_PASSWORD=123
