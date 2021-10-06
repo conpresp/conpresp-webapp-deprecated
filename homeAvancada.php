@@ -1,6 +1,6 @@
 <?php
 session_start();
-$servername = "localhost";
+$servername = "db";
 $usernames = "root";
 $passwords = "";
 $dbname = "conpresp_db";
@@ -430,7 +430,7 @@ autorOriginal like '%$autorOriginal%' and dataConstrucao like '%$dataConstrucao%
                         <div class="card shadow mb-4">
                             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                                 <h6 class="m-0 font-weight-bold text-primary">
-                                Lista de preenchimentos | Fichas do PRESERVA
+                                    Lista de preenchimentos | Fichas do PRESERVA
                                 </h6>
                             </div>
                             <div class="card-body">

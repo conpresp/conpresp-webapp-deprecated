@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-$servername = "localhost";
+$servername = "db";
 $usernames = "root";
 $passwords = "";
 $dbname = "conpresp_db";
@@ -87,7 +87,7 @@ if (!mysqli_set_charset($conn, "utf8mb4")) {
     $total_registros = mysqli_num_rows($resultado_registro);
 
     $msg = '';
-    if($total_registros == 0) {
+    if ($total_registros == 0) {
         $msg = 'Nenhum resultado encontrado!';
     }
 
@@ -212,7 +212,7 @@ if (!mysqli_set_charset($conn, "utf8mb4")) {
                 <a href="usuarios.php"><button type="button" class="btn btn-primary mb-2" style="margin-left: 10px;">Resetar</button></a>
             </form>
             <div class="table-responsive-sm">
-            <p style="color: black;text-align: center" ><?php echo $msg?></p>
+                <p style="color: black;text-align: center"><?php echo $msg ?></p>
                 <table class="table" style="margin-top: 30px">
                     <thead class="thead-dark">
                         <tr>

@@ -3,14 +3,15 @@ session_start();
 
 $host = "db";
 $usuario = "root";
-$senha = "123";
+$senha = "";
 $bd = "conpresp_db";
+$port = 3306;
 
-$mysqli = mysqli_connect($host, $usuario,$senha, $bd);
+$mysqli = mysqli_connect($host, $usuario, $senha, $bd, $port);
 
-if($mysqli-> connect_errno)
- echo "Falha na conexao: (".$mysqli->connect_errno.") ".$mysqli->connect_errno;
- mysqli_close($mysqli);
+if ($mysqli->connect_errno)
+  echo "Falha na conexao: (" . $mysqli->connect_errno . ") " . $mysqli->connect_errno;
+mysqli_close($mysqli);
 ?>
 
 <meta charset="UTF-8">
@@ -40,60 +41,58 @@ if($mysqli-> connect_errno)
   if (!mysqli_set_charset($conecta, "utf8mb4")) {
     printf("Error loading character set utf8mb4: %s\n", mysqli_error($conecta));
     exit();
-} else {
+  } else {
 
-  $email = $_POST["email"];
-  $password = $_POST["password"];
-  $deco = md5($password);
-//   $salvar = $nomeUsuario;
+    $email = $_POST["email"];
+    $password = $_POST["password"];
+    $deco = md5($password);
+    //   $salvar = $nomeUsuario;
 
-
-//   $_SESSION['salvar'] = $nomeUsuario;
-  $sql = "SELECT * from users where email='$email' and password='$deco'";
 
   $result = mysqli_query($conecta, $sql) or die(mysqli_error($conecta)); // Travado aqui no momento.
   $row = mysqli_num_rows($result);
 
-  if ($row > 0) {
-    while ($consulta = mysqli_fetch_array($result)) {
+    $result = mysqli_query($conecta, $sql) or die('Erro ao conectar2');
+    $row = mysqli_num_rows($result);
 
-      if($consulta['status'] == 'Ativo'){
-      $_SESSION['id'] = $consulta['id'];
-      $_SESSION['perfil'] = $consulta['perfil'];
-      $_SESSION['username'] = $consulta['username'];
-      $_SESSION['email'] = $consulta['email'];
-      $_SESSION['status'] = $consulta['status'];
-      $_SESSION['password']= $consulta['password'];
+    if ($row > 0) {
+      while ($consulta = mysqli_fetch_array($result)) {
 
-    echo "<p style='text-align: center; margin-top: 50px;'>Você foi autenticado com sucesso! Aguarde um instante...</p>";
-    echo "<script>loginsuccess()</script>";
-      } else {
-        $_SESSION['erroLogin'] = 'Usuário não está ativo!';
-        header('Location: ../index.php?modulo=Conpresp&acao=login');
+        if ($consulta['status'] == 'Ativo') {
+          $_SESSION['id'] = $consulta['id'];
+          $_SESSION['perfil'] = $consulta['perfil'];
+          $_SESSION['username'] = $consulta['username'];
+          $_SESSION['email'] = $consulta['email'];
+          $_SESSION['status'] = $consulta['status'];
+          $_SESSION['password'] = $consulta['password'];
 
+          echo "<p style='text-align: center; margin-top: 50px;'>Você foi autenticado com sucesso! Aguarde um instante...</p>";
+          echo "<script>loginsuccess()</script>";
+        } else {
+          $_SESSION['erroLogin'] = 'Usuário não está ativo!';
+          header('Location: ../index.php?modulo=Conpresp&acao=login');
+        }
       }
-    }
 
-    
-?>
-<div class="d-flex justify-content-center" style="margin-top: 100px;">
-    <div class="spinner-border text-primary" style="width: 6rem; height: 6rem;"  role="status" >
-      <span class="sr-only">Loading...</span>
-    </div>
-  </div>
- 
+
+  ?>
+      <div class="d-flex justify-content-center" style="margin-top: 100px;">
+        <div class="spinner-border text-primary" style="width: 6rem; height: 6rem;" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+      </div>
+
 </font>
 </meta>
 
 <?php
-  } else {
+    } else {
 
-    $_SESSION['erroLogin'] = 'Usuário ou senha inválidos!';
-    header('Location: ../index.php?modulo=Conpresp&acao=login');
-    // echo "<p style='text-align: center; margin-top: 50px;'>Você não foi autenticado com sucesso! Aguarde um instante...</p>";
-    // echo "<script>loginfailed()</script>";
+      $_SESSION['erroLogin'] = 'Usuário ou senha inválidos!';
+      header('Location: ../index.php?modulo=Conpresp&acao=login');
+      // echo "<p style='text-align: center; margin-top: 50px;'>Você não foi autenticado com sucesso! Aguarde um instante...</p>";
+      // echo "<script>loginfailed()</script>";
+    }
+    mysqli_close($conecta);
   }
-  mysqli_close($conecta);
-}
-  ?> 
-  
+?>
