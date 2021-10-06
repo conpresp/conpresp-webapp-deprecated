@@ -1,8 +1,8 @@
 <?php
 
 session_start();
-$servername = "localhost";
-$username= "root";
+$servername = "db";
+$username = "root";
 $password = "";
 $dbname = "conpresp_db";
 
@@ -25,31 +25,31 @@ if ($conn->connect_error) {
     function deletar2() {
       setTimeout("window.location='logout.php'", 3000);
     }
- </script>
-<?php
-$idInput = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
-$id = $_SESSION['id'];
+  </script>
+  <?php
+  $idInput = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
+  $id = $_SESSION['id'];
 
-if(!empty($id)){
-	$result_usuario = "DELETE FROM users WHERE id='$idInput'";
-	$resultado_usuario = mysqli_query($conn, $result_usuario);
-    if(mysqli_affected_rows($conn)){
-        if($id == $idInput ){
+  if (!empty($id)) {
+    $result_usuario = "DELETE FROM users WHERE id='$idInput'";
+    $resultado_usuario = mysqli_query($conn, $result_usuario);
+    if (mysqli_affected_rows($conn)) {
+      if ($id == $idInput) {
         echo "<p style='text-align: center; margin-top: 50px;'>Sua conta foi deletada com sucesso. Aguarde um instante para realizar login novamente! </p>";
-        echo "<script>deletar2()</script>"; 
-        } else {
+        echo "<script>deletar2()</script>";
+      } else {
         echo "<p style='text-align: center; margin-top: 50px;'>Conta deletada com sucesso. Aguarde um instante!</p>";
         echo "<script>deletar()</script>";
-        }
-	}else{
-		echo "Erro ao deletar! Por favor entrar em contato com o administrador de sistemas!" . mysqli_error($conn);
-	}
-}
+      }
+    } else {
+      echo "Erro ao deletar! Por favor entrar em contato com o administrador de sistemas!" . mysqli_error($conn);
+    }
+  }
 
-?>
+  ?>
 
-<div class="d-flex justify-content-center" style="margin-top: 100px;">
-    <div class="spinner-border text-primary" style="width: 6rem; height: 6rem;"  role="status" >
+  <div class="d-flex justify-content-center" style="margin-top: 100px;">
+    <div class="spinner-border text-primary" style="width: 6rem; height: 6rem;" role="status">
       <span class="sr-only">Loading...</span>
     </div>
   </div>

@@ -1,6 +1,6 @@
 <?php
 session_start();
-$servername = "localhost";
+$servername = "db";
 $usernames = "root";
 $passwords = "";
 $dbname = "conpresp_db";

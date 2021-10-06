@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-$servername = "localhost";
+$servername = "db";
 $usernames = "root";
 $passwords = "";
 $dbname = "conpresp_db";
@@ -65,7 +65,7 @@ if (!mysqli_set_charset($conn, "utf8mb4")) {
   </head>
 
   <body>
-  <script src=""></script>
+    <script src=""></script>
     <div id="content-wrapper" class="d-flex flex-column">
       <div id="content">
         <nav class="navbar navbar-expand navbar-dark bg-darkblue topbar static-top shadow">
@@ -129,7 +129,7 @@ if (!mysqli_set_charset($conn, "utf8mb4")) {
             </li>
           <?php } ?>
           <li class="nav-item active font-hover">
-                        <a class="nav-link" href="templates/glossario.pdf"><i class="fas fa-book bg-gray-icon"></i>Glossário</a>
+            <a class="nav-link" href="templates/glossario.pdf"><i class="fas fa-book bg-gray-icon"></i>Glossário</a>
           </li>
         </ul>
       </div>
@@ -148,14 +148,14 @@ if (!mysqli_set_charset($conn, "utf8mb4")) {
             <div class="card shadow mb-4">
               <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                 <h6 class="m-0 font-weight-bold text-primary nombre-subtitulo">
-                Registro | Banco de dados dos bens tombados da cidade de São Paulo
+                  Registro | Banco de dados dos bens tombados da cidade de São Paulo
                 </h6>
               </div>
               <img class="card-img" src="img/newBanner.png" alt="Card image" />
               <div class="card-body">
                 <div class="row color-text">
                   <div class="col-md-12 order-md-1">
-                    <form id="formPatrimonios" method="POST" action="update.php" enctype="multipart/form-data" >
+                    <form id="formPatrimonios" method="POST" action="update.php" enctype="multipart/form-data">
                       <div class="row justify-content-center">
                         <a href="home.php" name="btn-cancel" class="btn btn-primary btn-lg m-2 col-md-3"><i class="fa fa-times" aria-hidden="true"></i>
                           Cancelar</a>
@@ -221,24 +221,24 @@ if (!mysqli_set_charset($conn, "utf8mb4")) {
                         <div class="col-md-5 mb-3">
                           <label>Uso atual:</label>
                           <select id="usoAtual" class="custom-select d-block w-100" name="usoAtual">
-                          <option value="" selected>
-                            Selecionar classificação...
-                          </option>
-                          <option value="Cemitérios, Mausoléus e Túmulos" <?php echo $dados['usoAtual'] == 'Cemitérios, Mausoléus e Túmulos' ? 'selected' : '' ?>>
-                            Cemitérios, Mausoléus e Túmulos
-                          </option>
-                          <option value="Comercial" <?php echo $dados['usoAtual'] == 'Comercial' ? 'selected' : '' ?>>Comercial</option>
-                          <option value="Cultural" <?php echo $dados['usoAtual'] == 'Cultural' ? 'selected' : '' ?>>Cultural</option>
-                          <option value="Educacional" <?php echo $dados['usoAtual'] == 'Educacional' ? 'selected' : '' ?>>Educacional</option>
-                          <option value="Espaço público" <?php echo $dados['usoAtual'] == 'Espaço público' ? 'selected' : '' ?>>Espaço público</option>
-                          <option value="Industrial" <?php echo $dados['usoAtual'] == 'Industrial' ? 'selected' : '' ?>>Industrial</option>
-                          <option value="Instituição de saúde" <?php echo $dados['usoAtual'] == 'Instituição de saúde' ? 'selected' : '' ?>>Instituição de saúde</option>
-                          <option value="Misto (Comércio e Serviço)" <?php echo $dados['usoAtual'] == 'Misto (Comércio e Serviço)' ? 'selected' : '' ?>> Misto (Comércio e Serviço)</option>
-                          <option value="Monumento e obras de arte" <?php echo $dados['usoAtual'] == 'Monumento e obras de arte' ? 'selected' : '' ?>>Monumento e obras de arte</option>
-                          <option value="Natural" <?php echo $dados['usoAtual'] == 'Natural' ? 'selected' : '' ?>>Natural</option>
-                          <option value="Religioso" <?php echo $dados['usoAtual'] == 'Religioso' ? 'selected' : '' ?>>Religioso</option>
-                          <option value="Residencial" <?php echo $dados['usoAtual'] == 'Residencial' ? 'selected' : '' ?>>Residencial</option>
-                          <option value="Serviço" <?php echo $dados['usoAtual'] == 'Serviço' ? 'selected' : '' ?>>Serviço</option>
+                            <option value="" selected>
+                              Selecionar classificação...
+                            </option>
+                            <option value="Cemitérios, Mausoléus e Túmulos" <?php echo $dados['usoAtual'] == 'Cemitérios, Mausoléus e Túmulos' ? 'selected' : '' ?>>
+                              Cemitérios, Mausoléus e Túmulos
+                            </option>
+                            <option value="Comercial" <?php echo $dados['usoAtual'] == 'Comercial' ? 'selected' : '' ?>>Comercial</option>
+                            <option value="Cultural" <?php echo $dados['usoAtual'] == 'Cultural' ? 'selected' : '' ?>>Cultural</option>
+                            <option value="Educacional" <?php echo $dados['usoAtual'] == 'Educacional' ? 'selected' : '' ?>>Educacional</option>
+                            <option value="Espaço público" <?php echo $dados['usoAtual'] == 'Espaço público' ? 'selected' : '' ?>>Espaço público</option>
+                            <option value="Industrial" <?php echo $dados['usoAtual'] == 'Industrial' ? 'selected' : '' ?>>Industrial</option>
+                            <option value="Instituição de saúde" <?php echo $dados['usoAtual'] == 'Instituição de saúde' ? 'selected' : '' ?>>Instituição de saúde</option>
+                            <option value="Misto (Comércio e Serviço)" <?php echo $dados['usoAtual'] == 'Misto (Comércio e Serviço)' ? 'selected' : '' ?>> Misto (Comércio e Serviço)</option>
+                            <option value="Monumento e obras de arte" <?php echo $dados['usoAtual'] == 'Monumento e obras de arte' ? 'selected' : '' ?>>Monumento e obras de arte</option>
+                            <option value="Natural" <?php echo $dados['usoAtual'] == 'Natural' ? 'selected' : '' ?>>Natural</option>
+                            <option value="Religioso" <?php echo $dados['usoAtual'] == 'Religioso' ? 'selected' : '' ?>>Religioso</option>
+                            <option value="Residencial" <?php echo $dados['usoAtual'] == 'Residencial' ? 'selected' : '' ?>>Residencial</option>
+                            <option value="Serviço" <?php echo $dados['usoAtual'] == 'Serviço' ? 'selected' : '' ?>>Serviço</option>
                           </select>
                           <!-- <div class="invalid-feedback">
                             Por favor seleccione uma classificação.
@@ -250,9 +250,9 @@ if (!mysqli_set_charset($conn, "utf8mb4")) {
                             <option value="" selected>
                               Selecionar classificação...
                             </option>
-                          <option value="Pública" <?php echo $dados['propriedade'] == 'Pública' ? 'selected' : '' ?>>Pública</option>      
-                          <option value="Particular" <?php echo $dados['propriedade'] == 'Particular' ? 'selected' : '' ?>>Particular</option>
-                          <option value="Religiosa" <?php echo $dados['propriedade'] == 'Religiosa' ? 'selected' : '' ?>>Religiosa</option>
+                            <option value="Pública" <?php echo $dados['propriedade'] == 'Pública' ? 'selected' : '' ?>>Pública</option>
+                            <option value="Particular" <?php echo $dados['propriedade'] == 'Particular' ? 'selected' : '' ?>>Particular</option>
+                            <option value="Religiosa" <?php echo $dados['propriedade'] == 'Religiosa' ? 'selected' : '' ?>>Religiosa</option>
                           </select>
                           <!-- <div class="invalid-feedback">
                             Por favor seleccione uma classificação.
@@ -263,87 +263,87 @@ if (!mysqli_set_charset($conn, "utf8mb4")) {
                         <h4>Uso Original</h4>
                       </div>
                       <div class="row">
-                      <div class="col-md-6 mb-3">
-                        <label>Uso (original)</label>
-                        <select id="terreo" class="custom-select d-block w-100" name="terreo">
-                          <option value="" selected>
-                            Selecionar classificação...
-                          </option>
-                          <option value="Cemitérios, Mausoléus e Túmulos" <?php echo $dados['terreo'] == 'Cemitérios, Mausoléus e Túmulos' ? 'selected' : '' ?>>
-                            Cemitérios, Mausoléus e Túmulos
-                          </option>
-                          <option value="Comercial" <?php echo $dados['terreo'] == 'Comercial' ? 'selected' : '' ?>>Comercial</option>
-                          <option value="Cultural" <?php echo $dados['terreo'] == 'Cultural' ? 'selected' : '' ?>>Cultural</option>
-                          <option value="Educacional" <?php echo $dados['terreo'] == 'Educacional' ? 'selected' : '' ?>>Educacional</option>
-                          <option value="Espaço público" <?php echo $dados['terreo'] == 'Espaço público' ? 'selected' : '' ?>>Espaço público</option>
-                          <option value="Industrial" <?php echo $dados['terreo'] == 'Industrial' ? 'selected' : '' ?>>Industrial</option>
-                          <option value="Instituição de saúde" <?php echo $dados['terreo'] == 'Instituição de saúde' ? 'selected' : '' ?>>Instituição de saúde</option>
-                          <option value="Misto (Comércio e Serviço)" <?php echo $dados['terreo'] == 'Misto (Comércio e Serviço)' ? 'selected' : '' ?>> Misto (Comércio e Serviço)</option>
-                          <option value="Monumento e obras de arte" <?php echo $dados['terreo'] == 'Monumento e obras de arte' ? 'selected' : '' ?>>Monumento e obras de arte</option>
-                          <option value="Natural" <?php echo $dados['terreo'] == 'Natural' ? 'selected' : '' ?>>Natural</option>
-                          <option value="Religioso" <?php echo $dados['terreo'] == 'Religioso' ? 'selected' : '' ?>>Religioso</option>
-                          <option value="Residencial" <?php echo $dados['terreo'] == 'Residencial' ? 'selected' : '' ?>>Residencial</option>
-                          <option value="Serviço" <?php echo $dados['terreo'] == 'Serviço' ? 'selected' : '' ?>>Serviço</option>
-                        </select>
+                        <div class="col-md-6 mb-3">
+                          <label>Uso (original)</label>
+                          <select id="terreo" class="custom-select d-block w-100" name="terreo">
+                            <option value="" selected>
+                              Selecionar classificação...
+                            </option>
+                            <option value="Cemitérios, Mausoléus e Túmulos" <?php echo $dados['terreo'] == 'Cemitérios, Mausoléus e Túmulos' ? 'selected' : '' ?>>
+                              Cemitérios, Mausoléus e Túmulos
+                            </option>
+                            <option value="Comercial" <?php echo $dados['terreo'] == 'Comercial' ? 'selected' : '' ?>>Comercial</option>
+                            <option value="Cultural" <?php echo $dados['terreo'] == 'Cultural' ? 'selected' : '' ?>>Cultural</option>
+                            <option value="Educacional" <?php echo $dados['terreo'] == 'Educacional' ? 'selected' : '' ?>>Educacional</option>
+                            <option value="Espaço público" <?php echo $dados['terreo'] == 'Espaço público' ? 'selected' : '' ?>>Espaço público</option>
+                            <option value="Industrial" <?php echo $dados['terreo'] == 'Industrial' ? 'selected' : '' ?>>Industrial</option>
+                            <option value="Instituição de saúde" <?php echo $dados['terreo'] == 'Instituição de saúde' ? 'selected' : '' ?>>Instituição de saúde</option>
+                            <option value="Misto (Comércio e Serviço)" <?php echo $dados['terreo'] == 'Misto (Comércio e Serviço)' ? 'selected' : '' ?>> Misto (Comércio e Serviço)</option>
+                            <option value="Monumento e obras de arte" <?php echo $dados['terreo'] == 'Monumento e obras de arte' ? 'selected' : '' ?>>Monumento e obras de arte</option>
+                            <option value="Natural" <?php echo $dados['terreo'] == 'Natural' ? 'selected' : '' ?>>Natural</option>
+                            <option value="Religioso" <?php echo $dados['terreo'] == 'Religioso' ? 'selected' : '' ?>>Religioso</option>
+                            <option value="Residencial" <?php echo $dados['terreo'] == 'Residencial' ? 'selected' : '' ?>>Residencial</option>
+                            <option value="Serviço" <?php echo $dados['terreo'] == 'Serviço' ? 'selected' : '' ?>>Serviço</option>
+                          </select>
+                        </div>
                       </div>
-                    </div>
                       <div class="mb-3 p-2 subtitulos">
                         <h4>2. Tombamento</h4>
                       </div>
                       <div class="mb-3 p-2 subtitulos_sub">
-                      <h4>CONPRESP</h4>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-9 mb-3">
-                        <label>Resolução:</label>
-                        <h6>
-                          Seguir o formato: Ex.: Res. 05/91 Utilizar o site da
-                          prefeitura como referência:
-                          <a href="http://www.prefeitura.sp.gov.br/cidade/secretarias/cultura/conpresp/legislacao/resolucoes/index.php?p=1137" target="_blank">CLICK AQUI</a>
-                        </h6>
-                        <input type="text" class="form-control" id="resolucaoTombamento" name="resolucaoTombamento" value="<?php echo $dados['resolucaoTombamento'] ?>" />
+                        <h4>CONPRESP</h4>
                       </div>
-                      <div class="col-md-3 mb-2" style="margin-top: 25px;" >
-                    <label>Ano de Tombamento</label>
-                    <input class="form-control" type="number" id="anoConpresp" name="anoConpresp" value="<?php echo $dados["anoConpresp"]?>"/>
-                    </div>
-                    </div>
+                      <div class="row">
+                        <div class="col-md-9 mb-3">
+                          <label>Resolução:</label>
+                          <h6>
+                            Seguir o formato: Ex.: Res. 05/91 Utilizar o site da
+                            prefeitura como referência:
+                            <a href="http://www.prefeitura.sp.gov.br/cidade/secretarias/cultura/conpresp/legislacao/resolucoes/index.php?p=1137" target="_blank">CLICK AQUI</a>
+                          </h6>
+                          <input type="text" class="form-control" id="resolucaoTombamento" name="resolucaoTombamento" value="<?php echo $dados['resolucaoTombamento'] ?>" />
+                        </div>
+                        <div class="col-md-3 mb-2" style="margin-top: 25px;">
+                          <label>Ano de Tombamento</label>
+                          <input class="form-control" type="number" id="anoConpresp" name="anoConpresp" value="<?php echo $dados["anoConpresp"] ?>" />
+                        </div>
+                      </div>
                       <div class="mb-3 p-2 subtitulos_sub">
                         <h4>CONDEPHAAT</h4>
                       </div>
                       <div class="row">
-                      <div class="col-md-9 mb-3">
-                        <label>Resolução:</label>
-                        <h6>
-                          Seguir o formato: Ex.: RES. SC SN/70 ou RES. SC 67/82
-                          Utilizar o site da prefeitura como referência:
-                          <a href=" http://www.prefeitura.sp.gov.br/cidade/secretarias/cultura/cit/index.php?p=1157" target="_blank">CLICK AQUI</a>
-                        </h6>
-                        <input type="text" class="form-control" id="resolucaoCondephaat" name="resolucaoCondephaat" value="<?php echo $dados['resolucaoCondephaat'] ?>" />
-                      </div>
-                      <div class="col-md-3 mb-2" style="margin-top: 25px;" >
-                    <label>Ano de Tombamento</label>
-                    <input class="form-control" type="number" id="anoCondephaat" name="anoCondephaat" value="<?php echo $dados["anoCondephaat"]?>"/>
-                    </div>
+                        <div class="col-md-9 mb-3">
+                          <label>Resolução:</label>
+                          <h6>
+                            Seguir o formato: Ex.: RES. SC SN/70 ou RES. SC 67/82
+                            Utilizar o site da prefeitura como referência:
+                            <a href=" http://www.prefeitura.sp.gov.br/cidade/secretarias/cultura/cit/index.php?p=1157" target="_blank">CLICK AQUI</a>
+                          </h6>
+                          <input type="text" class="form-control" id="resolucaoCondephaat" name="resolucaoCondephaat" value="<?php echo $dados['resolucaoCondephaat'] ?>" />
+                        </div>
+                        <div class="col-md-3 mb-2" style="margin-top: 25px;">
+                          <label>Ano de Tombamento</label>
+                          <input class="form-control" type="number" id="anoCondephaat" name="anoCondephaat" value="<?php echo $dados["anoCondephaat"] ?>" />
+                        </div>
                       </div>
 
                       <div class="mb-3 p-2 subtitulos_sub">
                         <h4>IPHAN</h4>
                       </div>
                       <div class="row">
-                      <div class="col-md-9 mb-3">
-                        <label>Resolução:</label>
-                        <h6>
-                          Seguir o formato: Ex.: nº 353 Ano 1951 Utilizar a
-                          lista de bens tombados do Iphan como referência:
-                          <a href="http://portal.iphan.gov.br/uploads/ckfinder/arquivos/2016-11-25_Lista_Bens_Tombados.pdf" target="_blank">CLICK AQUI</a>
-                        </h6>
-                        <input type="text" class="form-control" id="resolucaoIphan" name="resolucaoIphan" value="<?php echo $dados['resolucaoIphan'] ?>" />
-                      </div>
-                      <div class="col-md-3 mb-2" style="margin-top: 25px;" >
-                    <label>Ano de Tombamento</label>
-                    <input class="form-control" type="number" id="anoIphan" name="anoIphan" value="<?php echo $dados["anoIphan"]?>"/>
-                    </div>
+                        <div class="col-md-9 mb-3">
+                          <label>Resolução:</label>
+                          <h6>
+                            Seguir o formato: Ex.: nº 353 Ano 1951 Utilizar a
+                            lista de bens tombados do Iphan como referência:
+                            <a href="http://portal.iphan.gov.br/uploads/ckfinder/arquivos/2016-11-25_Lista_Bens_Tombados.pdf" target="_blank">CLICK AQUI</a>
+                          </h6>
+                          <input type="text" class="form-control" id="resolucaoIphan" name="resolucaoIphan" value="<?php echo $dados['resolucaoIphan'] ?>" />
+                        </div>
+                        <div class="col-md-3 mb-2" style="margin-top: 25px;">
+                          <label>Ano de Tombamento</label>
+                          <input class="form-control" type="number" id="anoIphan" name="anoIphan" value="<?php echo $dados["anoIphan"] ?>" />
+                        </div>
                       </div>
                       <div class="mb-3 p-2 subtitulos">
                         <h4>3. Localização</h4>
@@ -912,23 +912,23 @@ if (!mysqli_set_charset($conn, "utf8mb4")) {
                         </div>
                       </div>
 
-                      
-                    <label>Data de Construção:</label>
-                    <div class="mb-3">
-                      <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="dataAproximada" id="datasim" value="datasim" <?php echo $dados['dataAproximada'] == 'datasim' ? 'checked' : null ?>> 
-                        <label class="form-check-label" for="datasim">
-                          Data aproximada
-                        </label>
+
+                      <label>Data de Construção:</label>
+                      <div class="mb-3">
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="radio" name="dataAproximada" id="datasim" value="datasim" <?php echo $dados['dataAproximada'] == 'datasim' ? 'checked' : null ?>>
+                          <label class="form-check-label" for="datasim">
+                            Data aproximada
+                          </label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="radio" name="dataAproximada" id="datanao" value="datanao" <?php echo $dados['dataAproximada'] == 'datanao' ? 'checked' : null ?>>
+                          <label class="form-check-label" for="datanao">
+                            Data não aproximada
+                          </label>
+                        </div>
+                        <input type="text" class="form-control" id="dataConstrucao" name="dataConstrucao" value="<?php echo $dados['dataConstrucao'] ?>" />
                       </div>
-                      <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="dataAproximada" id="datanao" value="datanao" <?php echo $dados['dataAproximada'] == 'datanao' ? 'checked' : null ?>>
-                        <label class="form-check-label" for="datanao">
-                          Data não aproximada
-                        </label>
-                      </div>
-                      <input type="text" class="form-control" id="dataConstrucao" name="dataConstrucao" value="<?php echo $dados['dataConstrucao'] ?>"/>
-                    </div>
                       <div class="row">
                         <div class="col-md-6 mb-3">
                           <label>Estilo Arquitetônico</label>
@@ -982,7 +982,7 @@ if (!mysqli_set_charset($conn, "utf8mb4")) {
                       <div class="row">
                         <div class="col-md-6 mb-3">
                           <label>Área do lote (m²):</label>
-                          <input type="text" class="form-control" id="areaLote" name="areaLote" value="<?php echo $dados['areaLote'] ?>" onkeyup="formatarCampo(this);"/>
+                          <input type="text" class="form-control" id="areaLote" name="areaLote" value="<?php echo $dados['areaLote'] ?>" onkeyup="formatarCampo(this);" />
                         </div>
                         <div class="col-md-6 mb-3">
                           <label>Área construída (m²):</label>
@@ -1050,15 +1050,15 @@ if (!mysqli_set_charset($conn, "utf8mb4")) {
 
                       <div class="mb-3">
                         <label>Dados Históricos:</label>
-                        <textarea aria-label="With textarea" class="form-control" id="dadosHistoricos" name="dadosHistoricos" ><?php echo $dados['dadosHistoricos'] ?></textarea>
+                        <textarea aria-label="With textarea" class="form-control" id="dadosHistoricos" name="dadosHistoricos"><?php echo $dados['dadosHistoricos'] ?></textarea>
                       </div>
                       <div class="mb-3">
                         <label>Dados Arquitetônicos:</label>
-                        <textarea aria-label="With textarea" class="form-control" id="dadosArquitetonicos" name="dadosArquitetonicos" ><?php echo $dados['dadosArquitetonicos'] ?></textarea>
+                        <textarea aria-label="With textarea" class="form-control" id="dadosArquitetonicos" name="dadosArquitetonicos"><?php echo $dados['dadosArquitetonicos'] ?></textarea>
                       </div>
                       <div class="mb-3">
                         <label>Dados de Ambiência:</label>
-                        <textarea aria-label="With textarea" class="form-control" id="dadosAmbiencia" name="dadosAmbiencia" ><?php echo $dados['dadosAmbiencia'] ?></textarea>
+                        <textarea aria-label="With textarea" class="form-control" id="dadosAmbiencia" name="dadosAmbiencia"><?php echo $dados['dadosAmbiencia'] ?></textarea>
                       </div>
 
                       <div class="mb-3">
@@ -1073,52 +1073,52 @@ if (!mysqli_set_charset($conn, "utf8mb4")) {
                       </div>
                       <div class="mb-3">
                         <label>Outras Informações:</label>
-                        <textarea  aria-label="With textarea" class="form-control" id="outrasInformacoes" name="outrasInformacoes" ><?php echo $dados['outrasInformacoes'] ?></textarea>
+                        <textarea aria-label="With textarea" class="form-control" id="outrasInformacoes" name="outrasInformacoes"><?php echo $dados['outrasInformacoes'] ?></textarea>
                       </div>
 
                       <div class="mb-3">
                         <label>Observações:</label>
                         <textarea id="observacoes" class="form-control" aria-label="With textarea" name="observacoes"><?php echo $dados['observacoes'] ?></textarea>
                       </div>
-      
-                    <div class="mb-3 p-2 subtitulos">
+
+                      <div class="mb-3 p-2 subtitulos">
                         <h4>6. Documentação Gráfica</h4>
                       </div>
 
                       <div class="mb-3">
                         <label>Documentação Gráfica:</label>
                         <h6>
-                        Selecione uma imagem para a documentação fotográfica!
+                          Selecione uma imagem para a documentação fotográfica!
                         </h6>
-                        <input type="file" class="form-control-file" name="documentacaoGrafica" id="documentacaoGrafica"/>
+                        <input type="file" class="form-control-file" name="documentacaoGrafica" id="documentacaoGrafica" />
                         <?php if (isset($dados['documentacaoGrafica']) && $dados['documentacaoGrafica'] != null && $dados['documentacaoGrafica'] != ' ') {   ?>
-                            <div><img src="imgGrafica/img1/<?php echo $dados['documentacaoGrafica'] ?>" width="300px" height="300px" style="margin-left: 50%"/></div>
-                         <?php } ?>
+                          <div><img src="imgGrafica/img1/<?php echo $dados['documentacaoGrafica'] ?>" width="300px" height="300px" style="margin-left: 50%" /></div>
+                        <?php } ?>
                       </div>
 
                       <div class="mb-3">
                         <label>Documentação Gráfica:</label>
                         <h6>
-                        Selecione uma imagem para a documentação fotográfica!
+                          Selecione uma imagem para a documentação fotográfica!
                         </h6>
                         <input type="file" class="form-control-file" name="documentacaoGrafica2" id="documentacaoGrafica2" />
                         <?php if (isset($dados['documentacaoGrafica2']) && $dados['documentacaoGrafica2'] != null && $dados['documentacaoGrafica2'] != ' ') {   ?>
-                            <div><img src="imgGrafica/img2/<?php echo $dados['documentacaoGrafica2'] ?>" width="300px" height="300px" style="margin-left: 50%"/></div>
-                         <?php } ?>
+                          <div><img src="imgGrafica/img2/<?php echo $dados['documentacaoGrafica2'] ?>" width="300px" height="300px" style="margin-left: 50%" /></div>
+                        <?php } ?>
                       </div>
 
                       <div class="mb-3">
                         <label>Documentação Gráfica:</label>
                         <h6>
-                        Selecione uma imagem para a documentação fotográfica!
+                          Selecione uma imagem para a documentação fotográfica!
                         </h6>
-                        <input type="file" class="form-control-file" name="documentacaoGrafica3" id="documentacaoGrafica3" >
+                        <input type="file" class="form-control-file" name="documentacaoGrafica3" id="documentacaoGrafica3">
                         <?php if (isset($dados['documentacaoGrafica3']) && $dados['documentacaoGrafica3'] != null && $dados['documentacaoGrafica3'] != ' ') {   ?>
-                            <div><img src="imgGrafica/img3/<?php echo $dados['documentacaoGrafica3'] ?>" width="300px" height="300px" style="margin-left: 50%"/></div>
-                         <?php } ?>
-                 
+                          <div><img src="imgGrafica/img3/<?php echo $dados['documentacaoGrafica3'] ?>" width="300px" height="300px" style="margin-left: 50%" /></div>
+                        <?php } ?>
+
                       </div>
-                         
+
                       <div class="mb-3 p-2 subtitulos">
                         <h4>7. Documentação Fotográfica </h4>
                       </div>
@@ -1126,57 +1126,57 @@ if (!mysqli_set_charset($conn, "utf8mb4")) {
                       <div class="mb-3">
                         <label>Documentação Fotográfica:</label>
                         <h6>
-                        Selecione uma imagem para a documentação fotográfica!
+                          Selecione uma imagem para a documentação fotográfica!
                         </h6>
-                        <input type="file" class="form-control-file" name="documentacaoFotografica" id="documentacaoFotografica"/>
+                        <input type="file" class="form-control-file" name="documentacaoFotografica" id="documentacaoFotografica" />
                         <?php if (isset($dados['documentacaoFotografica']) && $dados['documentacaoFotografica'] != null && $dados['documentacaoFotografica'] != ' ') {   ?>
-                            <div><img src="imgFotografica/img1/<?php echo $dados['documentacaoFotografica'] ?>" width="300px" height="300px" style="margin-left: 50%"/></div>
-                         <?php } ?>
+                          <div><img src="imgFotografica/img1/<?php echo $dados['documentacaoFotografica'] ?>" width="300px" height="300px" style="margin-left: 50%" /></div>
+                        <?php } ?>
                       </div>
 
                       <div class="mb-3">
                         <label>Documentação Fotográfica:</label>
                         <h6>
-                        Selecione uma imagem para a documentação fotográfica!
+                          Selecione uma imagem para a documentação fotográfica!
                         </h6>
-                        <input type="file" class="form-control-file" name="documentacaoFotografica2" id="documentacaoFotografica2"/>
+                        <input type="file" class="form-control-file" name="documentacaoFotografica2" id="documentacaoFotografica2" />
                         <?php if (isset($dados['documentacaoFotografica2']) && $dados['documentacaoFotografica2'] != null && $dados['documentacaoFotografica2'] != ' ') {   ?>
-                            <div><img src="imgFotografica/img2/<?php echo $dados['documentacaoFotografica2'] ?>" width="300px" height="300px" style="margin-left: 50%"/></div>
-                         <?php } ?>
+                          <div><img src="imgFotografica/img2/<?php echo $dados['documentacaoFotografica2'] ?>" width="300px" height="300px" style="margin-left: 50%" /></div>
+                        <?php } ?>
                       </div>
 
                       <div class="mb-3">
                         <label>Documentação Fotográfica:</label>
                         <h6>
-                        Selecione uma imagem para a documentação fotográfica!
+                          Selecione uma imagem para a documentação fotográfica!
                         </h6>
-                        <input type="file" class="form-control-file" name="documentacaoFotografica3" id="documentacaoFotografica3"/>
+                        <input type="file" class="form-control-file" name="documentacaoFotografica3" id="documentacaoFotografica3" />
                         <?php if (isset($dados['documentacaoFotografica3']) && $dados['documentacaoFotografica3'] != null && $dados['documentacaoFotografica3'] != ' ') {   ?>
-                            <div><img src="imgFotografica/img3/<?php echo $dados['documentacaoFotografica3'] ?>" width="300px" height="300px" style="margin-left: 50%"/></div>
-                         <?php } ?>
+                          <div><img src="imgFotografica/img3/<?php echo $dados['documentacaoFotografica3'] ?>" width="300px" height="300px" style="margin-left: 50%" /></div>
+                        <?php } ?>
                       </div>
-                      
+
                       <div class="row justify-content-center">
                         <button class="btn btn-info btn-lg m-2 col-md-3" name="btn-guardar" type="submit">
                           <i class="fa fa-floppy-o" aria-hidden="true"></i>
                           Salvar
                         </button>
                       </div>
-                      </form>
+                    </form>
                     <div class="row justify-content-center">
                       <a href="home.php" name="btn-cancel" class="btn btn-primary btn-lg m-2 col-md-3"><i class="fa fa-times" aria-hidden="true"></i>
                         Cancelar</a>
-                    </div> 
+                    </div>
                     <script>
-                    function formatarCampo(i) {
-                      var valor = i.value.replace(/\D/g, '');
-                      valor = (valor / 100).toFixed(2) + '';
-                      valor = valor.replace(".", ",");
-                      valor = valor.replace(/(\d)(\d{3})(\d{3}),/g, "$1.$2.$3,");
-                      valor = valor.replace(/(\d)(\d{3}),/g, "$1.$2,");
-                      i.value = valor;
-                    }
-                  </script>                
+                      function formatarCampo(i) {
+                        var valor = i.value.replace(/\D/g, '');
+                        valor = (valor / 100).toFixed(2) + '';
+                        valor = valor.replace(".", ",");
+                        valor = valor.replace(/(\d)(\d{3})(\d{3}),/g, "$1.$2.$3,");
+                        valor = valor.replace(/(\d)(\d{3}),/g, "$1.$2,");
+                        i.value = valor;
+                      }
+                    </script>
                   </div>
                 </div>
               </div>
