@@ -461,8 +461,8 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `perfil`, `username`, `email`, `status`, `password`, `created_at`, `updated_at`) VALUES
 (2, 'Comum', 'Comum', 'comum@comum.com', 'Ativo', 'e10adc3949ba59abbe56e057f20f883e', '2021-03-24 20:28:31', '2021-03-24 17:28:31'),
-(3, 'Moderador', 'Moderador', 'moderador@moderador.com', 'Inativo', '202cb962ac59075b964b07152d234b70', '2021-03-24 20:29:07', '2021-06-29 09:43:47'),
-(4, 'Administrador', ' Admin', 'admin@admin.com', 'Inativo', '202cb962ac59075b964b07152d234b70', '2021-03-24 20:29:51', '2021-04-03 18:52:28');
+(3, 'Moderador', 'Moderador', 'moderador@moderador.com', 'Ativo', 'e10adc3949ba59abbe56e057f20f883e', '2021-03-24 20:29:07', '2021-06-29 09:43:47'),
+(4, 'Administrador', ' Admin', 'admin@admin.com', 'Ativo', 'e10adc3949ba59abbe56e057f20f883e', '2021-03-24 20:29:51', '2021-04-03 18:52:28');
 
 --
 -- Índices para tabelas despejadas
