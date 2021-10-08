@@ -4,7 +4,7 @@ session_start();
 header("Content-Type: text/html; charset=utf-8");
 $servername = "db";
 $usernames = "root";
-$passwords = "";
+$passwords = "123";
 $dbname = "conpresp_db";
 // Create connection
 $conn = mysqli_connect($servername, $usernames, $passwords, $dbname) or die('Erro ao conectar');

@@ -3,7 +3,7 @@
 session_start();
 $servername = "db";
 $username = "root";
-$password = "";
+$password = "123";
 $dbname = "conpresp_db";
 
 // Create connection
