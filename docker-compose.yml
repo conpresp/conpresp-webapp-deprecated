@@ -1,18 +1,18 @@
 services:
   php:
-        build: .
-        ports:
-          - "80:80"
-        volumes:
-          - ./:/var/www/html/
-        links:
-          - db
+    build: .
+    ports:
+      - "80:80"
+    volumes:
+      - ./:/var/www/html/
+    links:
+      - db
   db:
-        image: mysql
-        command: --default-authentication-plugin=mysql_native_password
-        environment: 
-            MYSQL_ROOT_PASSWORD: 123
-            MYSQL_DATABASE: conpresp_db
-    
-        volumes: 
-            - ./init:/docker-entrypoint-initdb.d
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_ROOT_PASSWORD: 123
+      MYSQL_DATABASE: conpresp_db
+
+    volumes:
+      - ./init:/docker-entrypoint-initdb.d

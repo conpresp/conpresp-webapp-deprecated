@@ -2,7 +2,7 @@
 session_start();
 $host = "db";
 $usuario = "root";
-$senha = "";
+$senha = "123";
 $bd = "conpresp_db";
 
 $mysqli = mysqli_connect($host, $usuario, $senha, $bd);

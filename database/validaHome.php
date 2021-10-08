@@ -3,7 +3,7 @@ session_start();
 header("Content-Type: text/html; charset=utf-8");
 $host = "db";
 $usuario = "root";
-$senha = "";
+$senha = "123";
 $bd = "conpresp_db";
 
 $mysqli = mysqli_connect($host, $usuario, $senha, $bd);
